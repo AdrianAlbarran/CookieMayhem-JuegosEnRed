@@ -19,7 +19,7 @@ Cookie Mayhem is an online-cooperative shooter in third person in which two play
 
 - Engine:
 
- ## Team:
+ - Team:
   -       FULL_NAME           /           COLLEGE_EMAIL         /     GITHUB   
   - Adrián Albarrán Alcalde   / a.albarran.2020@alumnos.urjc.es / [AdrianAlbarran](https://github.com/AdrianAlbarran)
   - Luis Morón Álvarez        / l.moron.2020@alumnos.urjc.es    / [Moromon](https://github.com/Moromon)
