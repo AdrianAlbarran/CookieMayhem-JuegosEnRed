@@ -20,14 +20,45 @@ Cookie Mayhem is an online-cooperative shooter in third person in which two play
 - Engine:
 
  ## Team:
- <list>
- <thead>
- <hrow>
-  -       FULL_NAME           /           COLLEGE_EMAIL         /     GITHUB   
-  - Adrián Albarrán Alcalde   / a.albarran.2020@alumnos.urjc.es / [AdrianAlbarran](https://github.com/AdrianAlbarran)
-  - Luis Morón Álvarez        / l.moron.2020@alumnos.urjc.es    / [Moromon](https://github.com/Moromon)
-  - Gloria Turati Domínguez   / g.turati.2020@alumnos.urjc.es   / [Glorimm](https://github.com/glorimm)
-  - Marco Ozaeta Velasco      / m.ozaeta.2020@alumnos.urjc.es   / [Marcooza](https://github.com/Marcooza)
-  - Adrián Serrano Monteiro   / a.serranom.2020@alumnos.urjc.es / [PinguinoTocho](https://github.com/PinguinoTocho)
-  - Daniel Salguero Fernández / d.salguero.2020@alumnos.urjc.es / [DaniSF1](https://github.com/DaniSF1)
+ <table>
+  <thead>
+    <tr>
+      <th> FULL_NAME </th> 
+      <th> COLLEGE_EMAIL </th> 
+      <th> GITHUB </th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr> 
+      <td> Adrián Albarrán Alcalde </td>
+      <td> a.albarran.2020@alumnos.urjc.es </td>
+     <td> <a href = "https://github.com/AdrianAlbarran"> AdrianAlbarran </a> </td>
+    </tr>
+    <tr> 
+      <td> Luis Morón Álvarez </td>
+      <td> l.moron.2020@alumnos.urjc.es </td>
+      <td> <a href = "https://github.com/Moromon"> Moromon </a> </td>
+    </tr>
+    <tr> 
+      <td> Gloria Turati Domínguez </td>
+      <td> g.turati.2020@alumnos.urjc.es </td>
+      <td> <a href = "https://github.com/glorimm"> Glorimm </a> </td>
+    </tr>
+    <tr> 
+      <td> Marco Ozaeta Velasco </td>
+      <td> m.ozaeta.2020@alumnos.urjc.es </td>
+      <td> <a href = "https://github.com/Marcooza"> Marcooza </a> </td>
+    </tr>
+    <tr> 
+      <td> Adrián Serrano Monteiro </td>
+      <td> a.serranom.2020@alumnos.urjc.es </td>
+      <td> <a href = "https://github.com/PinguinoTocho"> PinguinoTocho </a> </td>
+    </tr>
+    <tr> 
+      <td> Daniel Salguero Fernández </td>
+      <td> d.salguero.2020@alumnos.urjc.es </td>
+      <td> <a href = "https://github.com/DaniSF1"> DaniSF1 </a> </td>
+    </tr>
+   </tbody>
+  </table>
 
