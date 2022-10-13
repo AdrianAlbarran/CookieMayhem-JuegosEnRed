@@ -32,31 +32,31 @@ Cookie Mayhem is an online-cooperative shooter in third person in which two play
     <tr> 
       <td> Adrián Albarrán Alcalde </td>
       <td> a.albarran.2020@alumnos.urjc.es </td>
-     <td> <a href = "https://github.com/AdrianAlbarran>AdrianAlbarran"> AdrianAlbarran </a> </td>
+     <td> <a href = "https://github.com/AdrianAlbarran"> AdrianAlbarran </a> </td>
     </tr>
     <tr> 
       <td> Luis Morón Álvarez </td>
       <td> l.moron.2020@alumnos.urjc.es </td>
-      <td> [Moromon](https://github.com/Moromon) </td>
+      <td> <a href = "https://github.com/Moromon"> Moromon </a> </td>
     </tr>
     <tr> 
       <td> Gloria Turati Domínguez </td>
       <td> g.turati.2020@alumnos.urjc.es </td>
-      <td> [Glorimm](https://github.com/glorimm) </td>
+      <td> <a href = "https://github.com/glorimm"> Glorimm </a> </td>
     </tr>
     <tr> 
       <td> Marco Ozaeta Velasco </td>
       <td> m.ozaeta.2020@alumnos.urjc.es </td>
-      <td> [Marcooza](https://github.com/Marcooza) </td>
+      <td> <a href = "https://github.com/Marcooza"> Marcooza </a> </td>
     </tr>
     <tr> 
       <td> Adrián Serrano Monteiro </td>
       <td> a.serranom.2020@alumnos.urjc.es </td>
-      <td> [PinguinoTocho](https://github.com/PinguinoTocho) </td>
+      <td> <a href = "https://github.com/PinguinoTocho"> PinguinoTocho </a> </td>
     </tr>
     <tr> 
       <td> Daniel Salguero Fernández </td>
       <td> d.salguero.2020@alumnos.urjc.es </td>
-      <td> [DaniSF1](https://github.com/DaniSF1) </td>
+      <td> <a href = "https://github.com/DaniSF1"> DaniSF1 </a> </td>
     </tr>
   <\table>
