@@ -32,7 +32,7 @@ Cookie Mayhem is an online-cooperative shooter in third person in which two play
     <tr> 
       <td> Adrián Albarrán Alcalde </td>
       <td> a.albarran.2020@alumnos.urjc.es </td>
-      <td> [AdrianAlbarran](https://github.com/AdrianAlbarran) </td>
+     <td> <href = https://github.com/AdrianAlbarran>AdrianAlbarran </a> </td>
     </tr>
     <tr> 
       <td> Luis Morón Álvarez </td>
