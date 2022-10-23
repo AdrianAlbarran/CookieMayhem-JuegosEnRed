@@ -1,8 +1,7 @@
 # COOKIE MAYHEM - JUEGOS EN RED
 
-This project is subject to change.
+Este proyecto está sujeto a cambios.
 
-We are a group of Videogame URJC students making a brand new Phaser3.0 browser multiplayer game. Come and support us!
 Somos un grupo de estudiantes de Diseño y Desesarrollo de Videojuegos en la Universidad Rey Juan Carlos desarrollando un juego multijugador con Phaser3.0
 
 - Concepto principal:
