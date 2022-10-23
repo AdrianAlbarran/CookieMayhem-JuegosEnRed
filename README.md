@@ -17,7 +17,10 @@ Cookie Mayhem is an online-cooperative shooter in third person in which two play
 
 - Publishing:
 
-- Engine:
+- Motor de Juego:
+Usaremos <a href = "https://phaser.io/phaser3"> Phaser3 </a> 
+- Coordinación del equipo.
+Para la coordinación del equipo se usará Trello, usando <a href = "https://trello.com/invite/b/JZrPiCv6/ATTI46729dd3a9ab2625894f6d3f58aaac69019100A5/juegos-en-red">este tablero</a> .
 
  ## Team:
  <table>
