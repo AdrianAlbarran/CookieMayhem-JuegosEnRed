@@ -6,9 +6,7 @@
 
 /** @type { import ("../typings/phaser") } */
 
- //IMPORTS
 
-var mainScene = new GameScene();
-var game = new Phaser.Game(window.gameConfig);
-game.scene.add('mainScene', mainScene);
-game.scene.start('mainScene');
+
+
+var game = new Phaser.Game(gameConfig);
