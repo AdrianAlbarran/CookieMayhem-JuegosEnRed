@@ -37,38 +37,45 @@ Para la coordinación del equipo se usará Trello, usando <a href = "https://tre
       <th> INTEGRANTES </th> 
       <th> CORREO UNIVERSITARIO </th> 
       <th> GITHUB </th> 
+      <th> ROL </th> 
     </tr>
   </thead>
   <tbody>
     <tr> 
       <td> Adrián Albarrán Alcalde </td>
       <td> a.albarran.2020@alumnos.urjc.es </td>
-     <td> <a href = "https://github.com/AdrianAlbarran"> AdrianAlbarran </a> </td>
+      <td> <a href = "https://github.com/AdrianAlbarran"> AdrianAlbarran </a> </td>
+      <td> Lider Proyecto </td>
     </tr>
     <tr> 
       <td> Luis Morón Álvarez </td>
       <td> l.moron.2020@alumnos.urjc.es </td>
       <td> <a href = "https://github.com/Moromon"> Moromon </a> </td>
+      <td> Programador </td>
     </tr>
     <tr> 
       <td> Gloria Turati Domínguez </td>
       <td> g.turati.2020@alumnos.urjc.es </td>
       <td> <a href = "https://github.com/glorimm"> Glorimm </a> </td>
+      <td> Músico </td>
     </tr>
     <tr> 
       <td> Marco Ozaeta Velasco </td>
       <td> m.ozaeta.2020@alumnos.urjc.es </td>
       <td> <a href = "https://github.com/Marcooza"> Marcooza </a> </td>
+      <td> Guionista </td>
     </tr>
     <tr> 
       <td> Adrián Serrano Monteiro </td>
       <td> a.serranom.2020@alumnos.urjc.es </td>
       <td> <a href = "https://github.com/PinguinoTocho"> PinguinoTocho </a> </td>
+      <td> Redes sociales y Arte </td>
     </tr>
     <tr> 
       <td> Daniel Salguero Fernández </td>
       <td> d.salguero.2020@alumnos.urjc.es </td>
       <td> <a href = "https://github.com/DaniSF1"> DaniSF1 </a> </td>
+      <td> Arte </td>
     </tr>
    </tbody>
   </table>
