@@ -1,0 +1,1 @@
+//var mainScene = game.scene.add('mainScene', GameScene, true);
