@@ -1,15 +1,15 @@
-/** @type { import ("../../typings/phaser") } */
+/** @type { import ("./typings/phaser") } */
 
 var gameConfig = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    scene: [MainScene],
+    scene: [LoadingScene, MainScene ],
     physics: 
     {
         default: 'arcade',
         arcade: {
-            gravity: { y: 300 },
+            gravity: { y: 0 },
             debug: false
         }
     },

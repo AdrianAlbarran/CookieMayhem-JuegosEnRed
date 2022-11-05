@@ -1,23 +1,36 @@
+/** @type { import ("../../typings/phaser") } */
+
 class MainScene extends Phaser.Scene 
 {
     constructor()
     {
         super('mainScene'); 
+       
     }
-
+    
     preload()
     {
-         this.load.image("id1", "assets/sky.png");
-         this.load.image("id2", "assets/bomb.png");
-         this.load.image("id3", "assets/star.png");
+        
     }
     create()
     {
-        var star1 = this.add.image(0, 0, "id1").setOrigin(0,0);
-        var star2 = this.add.image(400, 400, "id2").setOrigin(0,0);
-        var star3 = this.add.image(400, 400, "id3").setOrigin(0,0);
+        //varaibles
+        this.background = this.add.image(400, 300, "BACKGROUND");
+        this.background.setScale(0.37);
 
-        this.add.text(20, 20, "Loading game...");
+        var star2 = this.add.image(400, 400, "ID2").setOrigin(0,0);
+        var star3 = this.add.image(400, 400, "ID3").setOrigin(0,0);
 
+        //playerIntialize(this.player1, 'PLAYER1', 100, 400);
+        console.log(this);
+        
+        //Initialize Player1
+        player1.playerIntialize(200, 400, 'DUDE', this)
+
+    }
+
+    update()
+    {
+        player1.movement(this);
     }
 }
