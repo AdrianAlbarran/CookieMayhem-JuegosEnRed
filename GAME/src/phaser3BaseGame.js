@@ -7,8 +7,11 @@
 /** @type { import ("../typings/phaser") } */
 
 //GLOBALES
-var player1 = new Player('PLAYER1');
-var player2 = new Player('PLAYER2');
+var economy = new Economy();
+var tienda = new Tienda(economy);
+
+var player1 = new Player('PLAYER1', economy);
+var player2 = new Player('PLAYER2', economy);
 
 
 var game = new Phaser.Game(gameConfig);

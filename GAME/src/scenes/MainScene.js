@@ -25,6 +25,9 @@ class MainScene extends Phaser.Scene
         player1.playerIntialize(200, 400, 'DUDE', this);
         player2.playerIntialize(400, 400, 'DUDE', this);
 
+        economy.economyIntialize(this);
+        tienda.shopIntialize();
+
     }
 
     update()
@@ -32,6 +35,10 @@ class MainScene extends Phaser.Scene
         player1.movement(this);
         player2.movement(this);
         
+        //esto será provisional, lo he añadido para ver si la función tiraba
+        if(this.input.keyboard.addKey('P').isDown) {
+            tienda.openShop(this);
+        }
     }
 
 }

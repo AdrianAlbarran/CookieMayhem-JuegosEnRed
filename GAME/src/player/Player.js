@@ -2,9 +2,10 @@
 
 class Player
 {
-    constructor(id)
+    constructor(id, economy)
     {
         this.id = id;
+        this.economy = economy;
         this.player;
     }
 
