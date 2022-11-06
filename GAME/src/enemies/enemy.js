@@ -15,6 +15,7 @@ class Enemy{
         those.setCollideWorldBounds(true);
         those.body.setGravity(0);
         those.onWorldBounds = true;
+        return those;
 
     }
 }
