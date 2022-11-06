@@ -20,7 +20,7 @@ class MainMenu extends Phaser.Scene
         this.logo.setScale(0.5);
 
         var texto = this.add.text(400, 350, 'Jugar', { 
-            fontSize: '30px', fill: '#e78999', fontFamily: 'Pixel'
+            fontSize: '27px', fill: '#e78999', fontFamily: 'Pixel'
         }).setOrigin(0.5).setInteractive();
         texto.on('pointerdown', () => {
             this.scene.start('loadingScene');

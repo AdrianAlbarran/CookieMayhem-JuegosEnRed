@@ -12,6 +12,6 @@ class Economy
     economyIntialize(that)
     {
         this.money = 0;
-        this.text = that.add.text(16, 16, 'score: ' + this.money, { fontSize: '24px', fill: '#000' });
+        this.text = that.add.text(16, 16, 'score: ' + this.money, { fontSize: '24px', fill: '#000', fontFamily: 'Pixel' });
     }
 }
