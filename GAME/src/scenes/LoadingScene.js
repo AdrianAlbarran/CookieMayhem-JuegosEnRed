@@ -17,6 +17,7 @@ class LoadingScene extends Phaser.Scene
         this.load.image("ID3", "assets/star.png");
         this.load.image("BACKGROUND", "assets/fondo.png");
         this.load.spritesheet('DUDE', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
+        this.load.image("CHIPCOOKIE",'../../../art/galletas/cookie_idle.png');
 
     }
     create()
