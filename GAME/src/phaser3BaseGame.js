@@ -7,7 +7,8 @@
 /** @type { import ("../typings/phaser") } */
 
 //GLOBALES
-var player1 = new Player('PLAYER1');;
+var player1 = new Player('PLAYER1');
+var galleta = new ChipCookie('Galleta',100,50,10,'Melee');
 
 
 var game = new Phaser.Game(gameConfig);

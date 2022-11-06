@@ -1,5 +1,5 @@
 /** @type { import ("../../typings/phaser") } */
-class enemy{
+class Enemy{
 
     constructor(id,hp,movementSpeed,dmg,tipoCombate){
         this.id =id;
@@ -10,11 +10,11 @@ class enemy{
         this.tipoCombate =tipoCombate;
     }
 
-    spawnEnemy(positionX,positionY,spriteID,that){
-        that.enemy = that.physics.add.image(positionX,positionY,spriteID,this)
-        that.enemy.setCollideWorldBounds(true);
-        that.enemy.body.setGravity(0);
-        that.enemy.onWorldBounds = true;
+    spawnEnemy(positionX,positionY,spriteID,that,those){
+        those = that.physics.add.image(positionX,positionY,spriteID,this)
+        those.setCollideWorldBounds(true);
+        those.body.setGravity(0);
+        those.onWorldBounds = true;
 
     }
 }

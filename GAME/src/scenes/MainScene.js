@@ -14,11 +14,11 @@ class MainScene extends Phaser.Scene
     }
     create()
     {
+        
         //varaibles
-        var galleta = new chipCookie('Galleta',100,50,10,'Melee');
         this.background = this.add.image(400, 300, "BACKGROUND");
         this.background.setScale(0.37);
-        galleta.spawnEnemy(200,200,"CHIPCOOKIE");
+        galleta.spawnEnemy(200,200,"CHIPCOOKIE",this);
         var star2 = this.add.image(400, 400, "ID2").setOrigin(0,0);
         var star3 = this.add.image(400, 400, "ID3").setOrigin(0,0);
 
