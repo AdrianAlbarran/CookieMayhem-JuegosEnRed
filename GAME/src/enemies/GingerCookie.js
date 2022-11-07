@@ -1,11 +1,11 @@
 /** @type { import ("../../typings/phaser") } */
-class ChipCookie extends Enemy{
+class GingerCookie extends Enemy{
 
     constructor(id,hp,movementSpeed,dmg,tipoCombate){
 
         super(id,hp,movementSpeed,dmg,tipoCombate);
-        this.sprite = "CHIPCOOKIE";
-        this.value = 100;
+        this.sprite = "GINGERCOOKIE";
+        this.value = 50;
         this.foe;
     }
 
