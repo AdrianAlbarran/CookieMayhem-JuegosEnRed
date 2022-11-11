@@ -22,7 +22,6 @@ class LoadingScene extends Phaser.Scene
     create()
     {
         this.add.text(20, 20, "loading data...");
-        
         this.scene.start("mainScene");
     }
 

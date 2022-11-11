@@ -12,7 +12,7 @@ class MainMenu extends Phaser.Scene
     {  
         this.load.image("background", "assets/sky.png");
         this.load.image("Logo", "assets/interface/logoCM.png");
-        this.load.image("galletaIcon", "assets/interface/galleta.png");
+        this.load.image("sugarIcon", "assets/interface/sugarCube.png");
     }
     create()
     {
@@ -20,8 +20,8 @@ class MainMenu extends Phaser.Scene
 
         this.background = this.add.image(400, 300, "background");
         this.logo = this.add.image(400,200, "Logo");
-        let mouseSpritePlay = this.add.image(500, 370, "galletaIcon");
-        let mouseSpriteSettings = this.add.image(520, 430, "galletaIcon");
+        let mouseSpritePlay = this.add.image(500, 370, "sugarIcon");
+        let mouseSpriteSettings = this.add.image(520, 430, "sugarIcon");
         this.logo.setScale(0.5);
         let settings = this.add.text(500, 500, 'UwU');
 
