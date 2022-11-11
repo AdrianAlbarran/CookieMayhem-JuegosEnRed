@@ -3,3 +3,7 @@
     src: local("Pixel"),
        url("assets/interface/interfaceFont.ttf") 
 }
+
+canvas {
+    cursor: url('assets/interface/galleta.png') 8 8, default;
+  }
