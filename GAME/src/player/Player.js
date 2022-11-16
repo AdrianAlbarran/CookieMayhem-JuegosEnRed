@@ -12,7 +12,7 @@ class Player
     playerIntialize (positionX, positionY, spriteID, that)
     {
         
-        this.player = that.physics.add.sprite(positionX, positionY, spriteID, this); 
+        this.player = that.physics.add.sprite(positionX, positionY, spriteID, this);
         this.player.setCollideWorldBounds(true);
         this.player.body.setGravity(0);
         this.player.onWorldBounds = true;
