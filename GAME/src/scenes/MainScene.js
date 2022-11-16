@@ -4,20 +4,10 @@ class MainScene extends Phaser.Scene
 {
     constructor()
     {
-        super('mainScene'); 
-       
-        // ! FIX
-        this.bulletGroup;
-    }
-    
-    preload()
-    {
-    
-    }
+        super('mainScene');
 
-    shootLaser() 
-    {
-        this.bulletGroup.fireLaser(this.player1.x, this.player2.y - 20);
+        // ? poner en otro lado
+        var bullets;
     }
 
     create()
@@ -40,7 +30,11 @@ class MainScene extends Phaser.Scene
         tienda.shopIntialize();
 
         // This should be a function 
-        this.bulletGroup = new BaseBulletGroup(this);
+       this.bullets = new Bullets(this);
+
+       this.input.on('pointerdown', (pointer) => {
+        this.bullets.fireBullet(player1.player.x, player1.player.y, )
+       })
     }
 
     update()
