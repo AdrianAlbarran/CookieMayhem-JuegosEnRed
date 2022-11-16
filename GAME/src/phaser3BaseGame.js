@@ -8,7 +8,7 @@
 
 //GLOBALES
 var economy = new Economy();
-var tienda = new Tienda(economy);
+var tienda;
 
 var player1 = new Player('PLAYER1', economy);
 var player2 = new Player('PLAYER2', economy);

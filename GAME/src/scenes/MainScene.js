@@ -17,16 +17,17 @@ class MainScene extends Phaser.Scene
         //varaibles
         this.background = this.add.image(400, 300, "BACKGROUND");
         this.background.setScale(0.37);
-
-        var star2 = this.add.image(400, 400, "ID2").setOrigin(0,0);
-        var star3 = this.add.image(400, 400, "ID3").setOrigin(0,0);
         
         //Initialize Player1
         player1.playerIntialize(200, 400, 'DUDE', this);
         player2.playerIntialize(400, 400, 'DUDE', this);
 
         economy.economyIntialize(this);
-        tienda.shopIntialize();
+
+        tienda = new Tienda(this, 400, 300);
+
+        this.physics.add.collider(tienda, player1.player);
+        this.physics.add.collider(tienda, player2.player);
 
     }
 
@@ -37,7 +38,7 @@ class MainScene extends Phaser.Scene
         
         //esto será provisional, lo he añadido para ver si la función tiraba
         if(this.input.keyboard.addKey('P').isDown) {
-            tienda.openShop(this);
+            tienda.openShop(player1, player2);
         }
     }
 
