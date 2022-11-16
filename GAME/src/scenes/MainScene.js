@@ -6,15 +6,26 @@ class MainScene extends Phaser.Scene
     {
         super('mainScene'); 
        
+        // ! FIX
+        this.bulletGroup;
     }
     
     preload()
     {
-        
+    
     }
+
+    shootLaser() 
+    {
+        this.bulletGroup.fireLaser(this.player1.x, this.player2.y - 20);
+    }
+
     create()
     {
-        //varaibles
+        // test
+        var bala = this.add.image(400, 300, "laser");
+        bala.depth = 3;
+        //variables
         this.background = this.add.image(400, 300, "BACKGROUND");
         this.background.setScale(0.37);
 
@@ -28,17 +39,25 @@ class MainScene extends Phaser.Scene
         economy.economyIntialize(this);
         tienda.shopIntialize();
 
+        // This should be a function 
+        this.bulletGroup = new BaseBulletGroup(this);
     }
 
     update()
-    {
-        player1.movement(this);
-        player2.movement(this);
-        
-        //esto será provisional, lo he añadido para ver si la función tiraba
-        if(this.input.keyboard.addKey('P').isDown) {
-            tienda.openShop(this);
-        }
-    }
+        {
+            player1.movement(this);
+            player2.movement(this);
+            
+            //esto será provisional, lo he añadido para ver si la función tiraba
+            if(this.input.keyboard.addKey('P').isDown) {
+                tienda.openShop(this);
+            }
 
+            this.input.on('pointerDown', function(event) {
+                //start shooting
+                this.shootLaser();
+                console.log('aaa');
+            })
+    }
+    
 }
