@@ -8,12 +8,6 @@ class MainMenu extends Phaser.Scene
        
     }
     
-    preload()
-    {  
-        this.load.image("background", "assets/sky.png");
-        this.load.image("Logo", "assets/interface/logoCM.png");
-        this.load.image("sugarIcon", "assets/interface/sugarCube.png");
-    }
     create()
     {
         addEventListener('mouseover', () => {});
