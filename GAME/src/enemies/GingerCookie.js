@@ -1,16 +1,18 @@
 /** @type { import ("../../typings/phaser") } */
-class GingerCookie extends Enemy{
+class gingerCookie extends Phaser.GameObjects.Sprite{
 
-    constructor(id,hp,movementSpeed,dmg,tipoCombate){
-
-        super(id,hp,movementSpeed,dmg,tipoCombate);
-        this.sprite = "GINGERCOOKIE";
-        this.value = 50;
-        this.foe;
+    constructor(scene, x, y) {
+        super(scene, x, y);
+    
+        this.hp = 100;
+        this.movementSpeed = 50;
+        this.dmg = 10;
+        this.tipoCombate = true;
+        this.setTexture("GINGERCOOKIE");
+        this.value = 100;
+        scene.physics.world.enable(this);
+        scene.add.existing(this);
+      }
+    
     }
-
-    spawnEnemy(positionX,positionY,that){
-        this.foe = super.spawnEnemy(positionX,positionY,this.sprite,that,this);
-        this.foe.setScale(2);
-    }
-}
+    

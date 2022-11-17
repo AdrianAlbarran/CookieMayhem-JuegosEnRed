@@ -3,7 +3,6 @@ class Enemy{
 
     constructor(id,hp,movementSpeed,dmg,tipoCombate){
         this.id =id;
-        this.player;
         this.hp =hp;
         this.movementSpeed=movementSpeed;
         this.dmg = dmg;

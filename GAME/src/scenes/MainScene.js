@@ -7,31 +7,32 @@ class MainScene extends Phaser.Scene
         super('mainScene'); 
        
     }
-    
     preload()
     {
         
     }
     create()
     {
-        
+
+        var enemies = this.physics.add.group();
         //varaibles
         this.background = this.add.image(400, 300, "BACKGROUND");
         this.background.setScale(0.37);
-        galleta.spawnEnemy(200,200,this);
-        oreo.spawnEnemy(300,300,this);  
-        fruitc.spawnEnemy(400,200,this);
-        dinoc.spawnEnemy(400,300,this);
-        gingerc.spawnEnemy(600,300,this);
-        var star2 = this.add.image(400, 400, "ID2").setOrigin(0,0);
-        var star3 = this.add.image(400, 400, "ID3").setOrigin(0,0);
 
-        //playerIntialize(this.player1, 'PLAYER1', 100, 400);
-        console.log(this);
         
-        //Initialize Player1
-        player1.playerIntialize(200, 400, 'DUDE', this)
+         enemies.add(new chipCookie(this, 100, 100));
+         enemies.add(new oreoCookie(this,200,200));
+         enemies.add(new fruitCookie(this,100,200));
+         enemies.add(new dinoCookie(this,200,100));
+         enemies.add(new gingerCookie(this,300,200));
 
+        console.log(this);  
+
+        //Initialize Player1
+        player1.playerIntialize(200, 400, 'DUDE', this);
+
+        this.physics.add.collider(enemies,player1.player)
+        this.physics.add.collider(enemies,enemies);
     }
 
     update()

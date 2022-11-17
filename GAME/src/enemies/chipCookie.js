@@ -1,16 +1,16 @@
 /** @type { import ("../../typings/phaser") } */
-class ChipCookie extends Enemy{
+class chipCookie extends Phaser.GameObjects.Sprite {
+  constructor(scene, x, y) {
+    super(scene, x, y);
 
-    constructor(id,hp,movementSpeed,dmg,tipoCombate){
+    this.hp = 100;
+    this.movementSpeed = 50;
+    this.dmg = 10;
+    this.tipoCombate = true;
+    this.setTexture("CHIPCOOKIE");
+    this.value = 100;
+    scene.physics.world.enable(this);
+    scene.add.existing(this);
+  }
 
-        super(id,hp,movementSpeed,dmg,tipoCombate);
-        this.sprite = "CHIPCOOKIE";
-        this.value = 100;
-        this.foe;
-    }
-
-    spawnEnemy(positionX,positionY,that){
-        this.foe = super.spawnEnemy(positionX,positionY,this.sprite,that,this);
-        this.foe.setScale(2);
-    }
 }
