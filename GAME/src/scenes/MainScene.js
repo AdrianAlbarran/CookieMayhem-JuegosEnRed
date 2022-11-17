@@ -7,10 +7,7 @@ class MainScene extends Phaser.Scene
         super('mainScene'); 
        
     }
-    preload()
-    {
-        
-    }
+    
     create()
     {
 
@@ -45,6 +42,37 @@ class MainScene extends Phaser.Scene
 
         this.physics.add.collider(enemies,player1.player)
         this.physics.add.collider(enemies,enemies);
+
+        //TIENDA HUD
+        let backgroundShop = this.add.image(400, 300, "PMENU");
+        let item1 = this.add.image(400, 200, "PTIENDA");
+        let item2 = this.add.image(600, 225, "PTIENDA");
+        let item3 = this.add.image(200, 225, "PTIENDA");
+        var exit = this.add.text(400, 400, "EXIT", { 
+            fontSize: '26px', fill: '#e0000', fontFamily: 'Pixel'
+        }).setOrigin(0.5).setInteractive();
+
+        backgroundShop.setVisible(false);
+        item1.setVisible(false);
+        item2.setVisible(false);
+        item3.setVisible(false);
+        exit.setVisible(false);
+        
+        this.input.keyboard.on('keydown-P', function (event) {
+            backgroundShop.setVisible(true);
+            item1.setVisible(true);
+            item2.setVisible(true);
+            item3.setVisible(true);
+            exit.setVisible(true);
+        }); 
+
+        exit.on('pointerdown', () => {
+            backgroundShop.setVisible(false);
+            item1.setVisible(false);
+            item2.setVisible(false);
+            item3.setVisible(false);
+            exit.setVisible(false);
+        });
     }
 
     update()
