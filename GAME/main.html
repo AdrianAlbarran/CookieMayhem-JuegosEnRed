@@ -3,8 +3,10 @@
 <head> 
     <meta charset="UTF-8" />
     <title>COOKIE MAYHEM</title>
+    <link rel="preload" href="assets/interface/interfaceFont.ttf" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="fonts.css" type="text/css"/>
     <script src="./libs/phaser.min.js"></script>
-    <!-- LOAD NEEDED CLASSES-->
+
 
     <script src="./src/enemies/Enemy.js"></script>
     <script src="./src/enemies/chipCookie.js"></script>
@@ -13,12 +15,20 @@
     <script src="./src/enemies/dinoCookie.js"></script>
     <script src="./src/enemies/gingerCookie.js"></script>
 
+    <!-- LOAD NEEDED CLASSES-->
+    <script src="./src/economía/Economy.js"> </script>
+    <script src="./src/economía/Tienda.js"> </script>
+    <script src="./src/player/Player.js"> </script>
+
+
     
     <!-- LOAD SCENES -->
-    <script src="./src/scenes/GameScene.js"> </script>
+    <script src="./src/scenes/LoadingMenu.js"> </script>
     <script src="./src/scenes/LoadingScene.js"> </script>
+    <script src="./src/scenes/MainMenu.js"> </script>
     <script src="./src/scenes/MainScene.js"> </script>
-    <script src="./src/player/Player.js"> </script>
+
+
     <!-- LOAD GAME -->
     <script src="./src/config/config.js">       </script>
     <script src="./src/phaser3BaseGame.js"> </script>

@@ -19,6 +19,8 @@ class MainScene extends Phaser.Scene
         this.background = this.add.image(400, 300, "BACKGROUND");
         this.background.setScale(0.37);
 
+
+
         
          enemies.add(new chipCookie(this, 100, 100));
          enemies.add(new oreoCookie(this,200,200));
@@ -31,6 +33,16 @@ class MainScene extends Phaser.Scene
         //Initialize Player1
         player1.playerIntialize(200, 400, 'DUDE', this);
 
+        player2.playerIntialize(400, 400, 'DUDE', this);
+
+        economy.economyIntialize(this);
+
+        tienda = new Tienda(this, 400, 300);
+
+        this.physics.add.collider(tienda, player1.player);
+        this.physics.add.collider(tienda, player2.player);
+
+
         this.physics.add.collider(enemies,player1.player)
         this.physics.add.collider(enemies,enemies);
     }
@@ -38,5 +50,12 @@ class MainScene extends Phaser.Scene
     update()
     {
         player1.movement(this);
+        player2.movement(this);
+        
+        //esto será provisional, lo he añadido para ver si la función tiraba
+        if(this.input.keyboard.addKey('P').isDown) {
+            tienda.openShop(player1, player2);
+        }
     }
+
 }

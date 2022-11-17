@@ -57,7 +57,7 @@ Para la coordinación del equipo se usará Trello, usando <a href = "https://tre
       <td> Gloria Turati Domínguez </td>
       <td> g.turati.2020@alumnos.urjc.es </td>
       <td> <a href = "https://github.com/glorimm"> Glorimm </a> </td>
-      <td> Músico </td>
+      <td> Arte </td>
     </tr>
     <tr> 
       <td> Marco Ozaeta Velasco </td>
@@ -75,7 +75,7 @@ Para la coordinación del equipo se usará Trello, usando <a href = "https://tre
       <td> Daniel Salguero Fernández </td>
       <td> d.salguero.2020@alumnos.urjc.es </td>
       <td> <a href = "https://github.com/DaniSF1"> DaniSF1 </a> </td>
-      <td> Arte </td>
+      <td> Música </td>
     </tr>
    </tbody>
   </table>
