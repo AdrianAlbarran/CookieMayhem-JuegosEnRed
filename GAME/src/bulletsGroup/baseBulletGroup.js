@@ -8,7 +8,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite
         super(scene, x, y, 'laser');
     }
 
-    fire (x, y)
+    fire (x, y, player)
     {
         this.body.reset(x, y);
 
@@ -16,17 +16,47 @@ class Bullet extends Phaser.Physics.Arcade.Sprite
         this.setVisible(true);
 
         this.setVelocityY(-300);
+        
+        var direction = player.body.facing;
+        /*
+        * 11: UP
+        * 12: DOWN
+        * 13: LEFT
+        * 14: RIGHT 
+        */
+
+        console.log(direction);
+        switch(direction)
+        {
+            case 11:
+                this.setVelocity(0, -300);
+                this.angle = 0;
+                break;
+            case 12:
+                this.setVelocity(0, 300);
+                this.angle = 0;
+                break;
+            case 13:
+                this.setVelocity(-300, 0);
+                this.angle = 90;
+                break;
+            case 14:
+                this.setVelocity(300, 0);
+                this.angle = 90;
+                break;
+        }
+        
     }
 
     preUpdate (time, delta)
     {
         super.preUpdate(time, delta);
 
-        if(this.y <= -32)
+        if(this.y <= -32 || this.y >= 632 || this.x >= 832 ||this.x <= -32)
         {
             this.setActive(false);
             this.setVisible(false);
-        }
+        } //else if ( this.x >= )
     }
 
 }
@@ -44,13 +74,14 @@ class Bullets extends Phaser.Physics.Arcade.Group
         })
     }
 
-    fireBullet(x, y)
+    fireBullet(x, y, player)
     {
+        console.log(this);
         let bullet = this.getFirstDead(false);
 
         if(bullet)
         {
-            bullet.fire(x, y);
+            bullet.fire(x, y, player);
         }
     }
 }

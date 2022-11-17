@@ -33,25 +33,26 @@ class MainScene extends Phaser.Scene
        this.bullets = new Bullets(this);
 
        this.input.on('pointerdown', (pointer) => {
-        this.bullets.fireBullet(player1.player.x, player1.player.y, )
+        this.bullets.fireBullet(player1.player.x, player1.player.y, player1.player)
        })
     }
 
     update()
-        {
-            player1.movement(this);
-            player2.movement(this);
+    {
+        player1.movement(this);
+        player2.movement(this);
             
-            //esto será provisional, lo he añadido para ver si la función tiraba
-            if(this.input.keyboard.addKey('P').isDown) {
-                tienda.openShop(this);
-            }
+        //esto será provisional, lo he añadido para ver si la función tiraba
+        if(this.input.keyboard.addKey('P').isDown) {
+            tienda.openShop(this);
+        }
 
-            this.input.on('pointerDown', function(event) {
-                //start shooting
-                this.shootLaser();
-                console.log('aaa');
-            })
+        this.input.on('pointerDown', function(event) {
+            //start shooting
+            this.shootLaser();
+            console.log('aaa');
+        })
+
     }
     
 }
