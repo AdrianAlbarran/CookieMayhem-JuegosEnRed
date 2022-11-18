@@ -12,7 +12,7 @@ class Player
     playerIntialize (positionX, positionY, spriteID, that)
     {
         
-        this.player = that.physics.add.sprite(positionX, positionY, spriteID, this); 
+        this.player = that.physics.add.sprite(positionX, positionY, spriteID, this);
         this.player.setCollideWorldBounds(true);
         this.player.body.setGravity(0);
         this.player.onWorldBounds = true;
@@ -54,22 +54,23 @@ class Player
         var cursors = that.input.keyboard.createCursorKeys();
         if(this.id == 'PLAYER1')
         {
-            if (cursors.left.isDown)
+
+            if (cursors.left.isDown && cursors.right.isUp)
             {
                 this.player.setVelocityX(-160);
                 this.player.anims.play('left', true);
             }
-            else if (cursors.right.isDown)
+            else if (cursors.right.isDown && cursors.left.isUp)
             {
                 this.player.setVelocityX(160);
-
                 this.player.anims.play('right', true);
             }
-            else if (cursors.up.isDown)
+            
+            else if (cursors.up.isDown && cursors.down.isUp)
             {
                 this.player.setVelocityY(-160);
             } 
-            else if (cursors.down.isDown)
+            else if (cursors.down.isDown && cursors.up.isUp)
             {
                 this.player.setVelocityY(160);
             }
@@ -81,75 +82,37 @@ class Player
             } 
         }
 
-        if(this.id == 'PLAYER2')
+        else if(this.id == 'PLAYER2')
         {
             var keydown_W = that.input.keyboard.addKey('W');
             var keydown_D = that.input.keyboard.addKey('D');
             var keydown_S = that.input.keyboard.addKey('S');
             var keydown_A = that.input.keyboard.addKey('A');
-            /*
-            keydown_W.on('down', function (event) 
-            {  
-                
-            });
 
-            keydown_D.on('down', function (event) 
-            {  
-                those.player.setVelocityX(150);
-            });
-
-            keydown_S.on('down', function (event) 
-            {  
-                those.player.setVelocityY(150);
-            });
-
-            keydown_A.on('down', function (event) 
-            {  
-                those.player.setVelocityX(-150);
-            });
-            ! BUG. DIAGONALES DAN PROBLEMAS 
-            */
-
-            if(keydown_W.isDown)
+            if (keydown_W.isDown && keydown_S.isUp)
             {
                 those.player.setVelocityY(-150);
             } 
-            else if (keydown_D.isDown)
-            {
-                those.player.setVelocityX(150);
-            }
-            else if (keydown_S.isDown)
+            else if (keydown_S.isDown && keydown_W.isUp)
             {
                 those.player.setVelocityY(150);
             }
-            else if (keydown_A.isDown)
+
+            else if (keydown_D.isDown && keydown_A.isUp)
+            {
+                those.player.setVelocityX(150);
+                those.player.anims.play('right', true);  
+            }
+            else if (keydown_A.isDown && keydown_D.isUp)
             {
                 those.player.setVelocityX(-150);
-            } else {
+                those.player.anims.play('left', true);
+            } 
+            else 
+            {
                 those.player.setVelocity(0, 0);
+                those.player.anims.play('turn');
             }
-            /*
-            that.input.keyboard.on('keydown_W', 
-            function (event) 
-            {
-                this.player.setVelocityX(160);
-            }, that);
-            that.input.keyboard.on("keydown_D", 
-            function (event) 
-            {
-                this.player.setVelocityX(160);
-            }, that);
-            that.input.keyboard.on("keydown_S", 
-            function () 
-            {
-                this.player.setVelocityY(160);
-            }, that);
-            that.input.keyboard.on("keydown_A", 
-            function () 
-            {
-                this.player.setVelocityX(-160);
-            }, that);
-            */
         }
     }
 
