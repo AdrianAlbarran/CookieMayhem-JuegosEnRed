@@ -29,9 +29,13 @@ class MainScene extends Phaser.Scene
         console.log(this);  
 
         //Initialize Player1
-        player1.playerIntialize(200, 400, 'DUDE', this);
+        player1 = new Player(this, 300, 300, 'DUDE', 'PLAYER1', economy);
 
-        player2.playerIntialize(400, 400, 'DUDE', this);
+        player2 = new Player(this, 400, 400, 'DUDE', 'PLAYER2', economy);
+        
+        player1.playerIntialize(this);
+        player2.playerIntialize(this);
+       
 
         economy.economyIntialize(this);
 
@@ -40,16 +44,16 @@ class MainScene extends Phaser.Scene
         this.bullets = new Bullets(this);
 
         this.input.on('pointerdown', (pointer) => {
-          this.bullets.fireBullet(player1.player.x, player1.player.y, player1.player)
+          this.bullets.fireBullet(player1.x, player1.y, player1)
         })
        
         tienda = new Tienda(this, 400, 300);
 
-        this.physics.add.collider(tienda, player1.player);
-        this.physics.add.collider(tienda, player2.player);
+        this.physics.add.collider(tienda, player1);
+        this.physics.add.collider(tienda, player2);
 
 
-        this.physics.add.collider(enemies,player1.player)
+        this.physics.add.collider(enemies,player1)
         this.physics.add.collider(enemies,enemies);
 
         //TIENDA HUD
@@ -98,7 +102,6 @@ class MainScene extends Phaser.Scene
         this.input.on('pointerDown', function(event) {
             //start shooting
             this.shootLaser();
-            console.log('aaa');
         })
 
     }
