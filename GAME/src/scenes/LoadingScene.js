@@ -18,6 +18,10 @@ class LoadingScene extends Phaser.Scene
         this.load.image("BACKGROUND", "assets/fondo.png");
         this.load.spritesheet('DUDE', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
 
+        // TEST
+        this.load.image('laser', 'assets/test/laserBlue02.png');
+        
+        //...
         this.load.image("CHIPCOOKIE",'../../../art/galletas/cookie_idle.png');
         this.load.image("OREOCOOKIE",'../../../art/galletas/oreo_idle.png')
         this.load.image("FRUITCOOKIE",'../../../art/galletas/cookie_runL2.png')
@@ -26,7 +30,6 @@ class LoadingScene extends Phaser.Scene
 
         this.load.image("PTIENDA","assets/PlaceHolder.png");
         this.load.image("PMENU","assets/PlaceHolderMenu.png");
-
 
     }
     create()

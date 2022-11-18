@@ -4,13 +4,14 @@ class MainScene extends Phaser.Scene
 {
     constructor()
     {
-        super('mainScene'); 
-       
+        super('mainScene');
+
+        // ? poner en otro lado
+        var bullets;
     }
     
     create()
     {
-
         var enemies = this.physics.add.group();
         //varaibles
         this.background = this.add.image(400, 300, "BACKGROUND");
@@ -34,6 +35,14 @@ class MainScene extends Phaser.Scene
 
         economy.economyIntialize(this);
 
+
+        // This should be a function 
+        this.bullets = new Bullets(this);
+
+        this.input.on('pointerdown', (pointer) => {
+          this.bullets.fireBullet(player1.player.x, player1.player.y, player1.player)
+        })
+       
         tienda = new Tienda(this, 400, 300);
 
         this.physics.add.collider(tienda, player1.player);
@@ -73,17 +82,25 @@ class MainScene extends Phaser.Scene
             item3.setVisible(false);
             exit.setVisible(false);
         });
+
     }
 
     update()
     {
         player1.movement(this);
         player2.movement(this);
-        
+            
         //esto será provisional, lo he añadido para ver si la función tiraba
         if(this.input.keyboard.addKey('P').isDown) {
             tienda.openShop(player1, player2);
         }
-    }
 
+        this.input.on('pointerDown', function(event) {
+            //start shooting
+            this.shootLaser();
+            console.log('aaa');
+        })
+
+    }
+    
 }
