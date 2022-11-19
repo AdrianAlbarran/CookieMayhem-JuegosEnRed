@@ -3,18 +3,16 @@
 class Bullet extends Phaser.Physics.Arcade.Sprite {
 
     constructor(scene, x, y) {
-        super(scene, x, y, 'laser');
+        super(scene, x, y, 'cafe');
+        var _hitShop = scene.physics.add.collider(this, tienda, this.hitShop);
     }
 
     fireConfig(x, y, player, type) {
         this.body.reset(x, y);
 
-        this.setActive(true);
-        this.setVisible(true);
-
-        //this.setVelocityY(-300);
-
         var direction = player.body.facing;
+        if(direction==10)
+            direction=12;
         /*
         * 11: UP
         * 12: DOWN
@@ -39,7 +37,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
                 this.fireSubMachine(direction, 700, 133);
                 break;
         }
-        console.log(this.body.velocity);
+
     }
 
     preUpdate(time, delta) {
@@ -73,6 +71,8 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
                 this.angle = 90 + rotation;
                 break;
         }
+        this.setActive(true);
+        this.setVisible(true);
     }
 
     fireRevolver(direction, speed, maxDispersion) {
@@ -97,6 +97,8 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
                 this.angle = 90 + rotation;
                 break;
         }
+        this.setActive(true);
+        this.setVisible(true);
 
     }
 
@@ -109,6 +111,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
 
         var aux = shotgunDisplacement * speed;
 
+  
         switch (direction) {
             case 11:
                 this.setVelocity(randomDispersion + aux, -speed);
@@ -127,9 +130,15 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
                 this.angle = 90 + rotation;
                 break;
         }
-        console.log(aux);
-        console.log(this.body.velocity);
+        this.setActive(true);
+        this.setVisible(true);
     }
+
+    hitShop(bullet, tienda) {
+        bullet.setVisible(false);
+        bullet.setActive(false);
+    }
+
 }
 class Bullets extends Phaser.Physics.Arcade.Group {
     constructor(scene) {

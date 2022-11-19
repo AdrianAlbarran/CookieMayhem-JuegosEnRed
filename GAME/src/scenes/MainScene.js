@@ -17,8 +17,6 @@ class MainScene extends Phaser.Scene {
         enemies.add(new dinoCookie(this, 200, 100));
         enemies.add(new gingerCookie(this, 300, 200));
 
-        console.log(this);
-
         //Initialize Players
         player1 = new Player(this, 300, 300, 'DUDE', 'PLAYER1', economy);
         player2 = new Player(this, 400, 400, 'DUDE', 'PLAYER2', economy);
@@ -115,7 +113,7 @@ class MainScene extends Phaser.Scene {
 
         var keyShoot2 = this.input.keyboard.addKey('SPACE');
         var stillDown2 = this.input.keyboard.checkDown(keyShoot2, 200);
-        
+
         if (stillDown2) {
             bulletsPlayer2.fireBullet(player2.x, player2.y, player2, typeShootingPlayer2);
         }
