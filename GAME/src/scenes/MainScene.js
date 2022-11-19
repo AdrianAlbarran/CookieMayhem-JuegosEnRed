@@ -3,7 +3,6 @@
 class MainScene extends Phaser.Scene {
     constructor() {
         super('mainScene');
-
     }
 
     create() {
@@ -20,7 +19,7 @@ class MainScene extends Phaser.Scene {
 
         console.log(this);
 
-        //Initialize Player1
+        //Initialize Players
         player1 = new Player(this, 300, 300, 'DUDE', 'PLAYER1', economy);
         player2 = new Player(this, 400, 400, 'DUDE', 'PLAYER2', economy);
 
@@ -72,7 +71,6 @@ class MainScene extends Phaser.Scene {
 
 
         //BALAS
-        this.eventHandler();
         this.initializeBullets();
 
     }
@@ -86,10 +84,7 @@ class MainScene extends Phaser.Scene {
             tienda.openShop(player1, player2);
         }
 
-        this.input.on('pointerDown', function (event) {
-            //start shooting
-            this.shootLaser();
-        })
+        this.eventHandler();
 
     }
 
@@ -99,7 +94,8 @@ class MainScene extends Phaser.Scene {
         bulletsPlayer2 = new Bullets(this);
     }
 
-    eventHandler() {
+    eventHandler() 
+    {
 
         /*
         * TYPE OF GUN
@@ -111,30 +107,19 @@ class MainScene extends Phaser.Scene {
         var typeShootingPlayer2 = 2;
 
         var keyShoot1 = this.input.keyboard.addKey('ENTER');
-        keyShoot1.on('down', function (event) {
+        var stillDown1 = this.input.keyboard.checkDown(keyShoot1, 500);
+
+        if (stillDown1) {
             bulletsPlayer1.fireBullet(player1.x, player1.y, player1, typeShootingPlayer1);
-        });
+        }
 
         var keyShoot2 = this.input.keyboard.addKey('SPACE');
-        keyShoot2.on('down', function (event) {
-            bulletsPlayer2.fireBullet(player2.x, player2.y, player2, typeShootingPlayer2);
-        });
-
-        // ! LA ESCOPETA NO TENGO NI IDEA DE COMO HACERLA MALDITO SEAS JS
-        /*
-        if(type == 0)
-        {
-            var displacement = -1/3;
-            for (let i = 0; i < 3; i++) {
-                console.log(displacement);
-                bullets.fireBullet(player1.x, player1.y, player1, type, displacement);
-                displacement += 1/3
-            }
-        }   
-        else
-        { 
+        var stillDown2 = this.input.keyboard.checkDown(keyShoot2, 200);
         
+        if (stillDown2) {
+            bulletsPlayer2.fireBullet(player2.x, player2.y, player2, typeShootingPlayer2);
         }
-        */
+
+
     }
 }   

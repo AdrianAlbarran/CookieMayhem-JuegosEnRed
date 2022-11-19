@@ -15,7 +15,7 @@ class Player extends Phaser.GameObjects.Sprite
     playerIntialize (scene)
     {
         this.body.setGravity(0);
-        this.onWorldBounds = true;
+        this.body.collideWorldBounds = true;
 
         
         //CREATING MOVEMENT ANIMATIONS

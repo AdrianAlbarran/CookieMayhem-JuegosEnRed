@@ -12,7 +12,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         this.setActive(true);
         this.setVisible(true);
 
-        this.setVelocityY(-300);
+        //this.setVelocityY(-300);
 
         var direction = player.body.facing;
         /*
