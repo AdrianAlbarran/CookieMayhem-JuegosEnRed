@@ -6,7 +6,7 @@ class MainScene extends Phaser.Scene {
     }
 
     create() {
-        var enemies = this.physics.add.group();
+        enemies = this.physics.add.group();
         //varaibles
         this.background = this.add.image(400, 300, "BACKGROUND");
         this.background.setScale(0.37);
@@ -33,7 +33,7 @@ class MainScene extends Phaser.Scene {
         this.physics.add.collider(tienda, player2);
 
 
-        this.physics.add.collider(enemies, player1)
+        
         this.physics.add.collider(enemies, enemies);
 
         //TIENDA HUD

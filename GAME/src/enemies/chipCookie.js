@@ -11,6 +11,7 @@ class chipCookie extends Phaser.GameObjects.Sprite {
     this.value = 100;
     scene.physics.world.enable(this);
     scene.add.existing(this);
+    this.setScale(0.7);
   }
 
 }
