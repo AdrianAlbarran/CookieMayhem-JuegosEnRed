@@ -71,6 +71,13 @@ class MainScene extends Phaser.Scene {
         //BALAS
         this.initializeBullets();
 
+        // * SONIDOS
+        // DISPAROS
+        soundShoot =  this.sound.add('SHOOT', 
+        {
+            mute: false,
+            volume: 0.15,
+        });
     }
 
     update() {
@@ -108,6 +115,7 @@ class MainScene extends Phaser.Scene {
         var stillDown1 = this.input.keyboard.checkDown(keyShoot1, 500);
 
         if (stillDown1) {
+            soundShoot.play();
             bulletsPlayer1.fireBullet(player1.x, player1.y, player1, typeShootingPlayer1);
         }
 
@@ -115,6 +123,7 @@ class MainScene extends Phaser.Scene {
         var stillDown2 = this.input.keyboard.checkDown(keyShoot2, 200);
 
         if (stillDown2) {
+            soundShoot.play();
             bulletsPlayer2.fireBullet(player2.x, player2.y, player2, typeShootingPlayer2);
         }
 

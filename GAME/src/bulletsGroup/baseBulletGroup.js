@@ -60,11 +60,11 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
                 break;
             case 12:
                 this.setVelocity(randomDispersion, speed);
-                this.angle = 0 - rotation;
+                this.angle = 180 - rotation;
                 break;
             case 13:
                 this.setVelocity(-speed, randomDispersion);
-                this.angle = 90 - rotation;
+                this.angle = 270 - rotation;
                 break;
             case 14:
                 this.setVelocity(speed, randomDispersion);
@@ -86,11 +86,11 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
                 break;
             case 12:
                 this.setVelocity(randomDispersion, speed);
-                this.angle = 0 - rotation;
+                this.angle = 180 - rotation;
                 break;
             case 13:
                 this.setVelocity(-speed, randomDispersion);
-                this.angle = 90 - rotation;
+                this.angle = 270 - rotation;
                 break;
             case 14:
                 this.setVelocity(speed, randomDispersion);
@@ -119,11 +119,11 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
                 break;
             case 12:
                 this.setVelocity(randomDispersion + aux, speed);
-                this.angle = 0 - rotation;
+                this.angle = 180 - rotation;
                 break;
             case 13:
                 this.setVelocity(-speed, randomDispersion + aux);
-                this.angle = 90 - rotation;
+                this.angle = 270 - rotation;
                 break;
             case 14:
                 this.setVelocity(speed, randomDispersion + aux);
@@ -159,7 +159,6 @@ class Bullets extends Phaser.Physics.Arcade.Group {
         if (bullet) {
 
             bullet.fireConfig(x, y, player, type);
-
         }
     }
 }
