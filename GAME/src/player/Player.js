@@ -86,20 +86,22 @@ class Player extends Phaser.GameObjects.Sprite {
   enemyHit(player, enemy) {
     enemy.body.immovable = true;
     enemy.body.setVelocity(0);
+
     if (player.invulnerability == false) {
       player.hp = player.hp - enemy.dmg;
-      player.setInvulnerability();
+      player.setInvulnerability(player);
     }
     console.log(player.hp);
     enemy.body.immovable = false;
   }
 
-  setInvulnerability() {
-    if (this.invulnerability == false) {
-      this.invulnerability = true;
-      this.scene.time.delayedCall(1000, this.setInvulnerability);
-    } else {
-      this.invulnerability = false;
-    }
+  setInvulnerability(aux) {
+    
+      aux.invulnerability = true;
+      aux.scene.time.delayedCall(1000, function()
+      {
+        aux.invulnerability = false;
+      });
+      
   }
 }
