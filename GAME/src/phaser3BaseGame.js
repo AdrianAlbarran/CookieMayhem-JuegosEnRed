@@ -9,6 +9,7 @@
 // !GLOBALES
 var economy = new Economy();
 var tienda;
+var enemies;
 
 var player1;
 var player2;
