@@ -4,6 +4,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
 
     constructor(scene, x, y) {
         super(scene, x, y, 'laser');
+        var _hitShop = scene.physics.add.collider(this, tienda, this.hitShop);
     }
 
     fireConfig(x, y, player, type) {
@@ -39,7 +40,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
                 this.fireSubMachine(direction, 700, 133);
                 break;
         }
-        console.log(this.body.velocity);
+
     }
 
     preUpdate(time, delta) {
@@ -130,6 +131,12 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         console.log(aux);
         console.log(this.body.velocity);
     }
+
+    hitShop(bullet, tienda) {
+        bullet.setVisible(false);
+        bullet.setActive(false);
+    }
+
 }
 class Bullets extends Phaser.Physics.Arcade.Group {
     constructor(scene) {
