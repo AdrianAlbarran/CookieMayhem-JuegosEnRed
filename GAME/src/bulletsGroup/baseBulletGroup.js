@@ -6,7 +6,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, 'cafe');
         var _hitShop = scene.physics.add.collider(this, tienda, this.hitShop);
         var _hitEnemy = scene.physics.add.overlap(this, enemies, this.hitEnemy);
-        var lastEnemyHitted;
+        var lastEnemyHitted = undefined;
         var damage = 10;
         var maxTraverse = 1;
 
@@ -16,8 +16,8 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         this.body.reset(x, y);
 
         var direction = player.body.facing;
-        if(direction==10)
-            direction=12;
+        if (direction == 10)
+            direction = 12;
         /*
         * 11: UP
         * 12: DOWN
@@ -52,7 +52,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         super.preUpdate(time, delta);
 
         if (this.y <= -32 || this.y >= 632 || this.x >= 832 || this.x <= -32) {
-            this.setVelocity(0,0);
+            this.setVelocity(0, 0);
             this.setActive(false);
             this.setVisible(false);
         }
@@ -120,7 +120,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
 
         var aux = shotgunDisplacement * speed;
 
-  
+
         switch (direction) {
             case 11:
                 this.setVelocity(randomDispersion + aux, -speed);
@@ -145,25 +145,23 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
 
     hitShop(bullet, tienda) {
         //Pre update se encarga de que la bala desaparezca
-        bullet.setPosition(999,999);
-        
+        bullet.setPosition(999, 999);
+
     }
 
     hitEnemy(bullet, enemy) {
         console.log("Last enemy hitted:" + bullet.lastEnemyHitted);
-        if(bullet.lastEnemyHitted != enemy)
-        {
+        if (bullet.lastEnemyHitted != enemy) {
             enemy.hp = enemy.hp - bullet.damage;
             //Pre update se encarga de que la bala desaparezca
-            bullet.maxTraverse = bullet.maxTraverse -1 ;
+            bullet.maxTraverse = bullet.maxTraverse - 1;
             console.log(bullet.maxTraverse);
-            if(bullet.maxTraverse <= 0)
-            {
-                bullet.setPosition(999,999);
+            if (bullet.maxTraverse <= 0) {
+                bullet.setPosition(999, 999);
             }
         }
         bullet.lastEnemyHitted = enemy;
-            
+
     }
 
 }
@@ -186,6 +184,7 @@ class Bullets extends Phaser.Physics.Arcade.Group {
         if (bullet) {
 
             bullet.fireConfig(x, y, player, type);
+            bullet.lastEnemyHitted = undefined;
         }
     }
 }
