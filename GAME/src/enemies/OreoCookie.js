@@ -6,7 +6,7 @@ class oreoCookie extends Phaser.GameObjects.Sprite{
     
         this.hp = 100;
         this.movementSpeed = 50;
-        this.dmg = 10;
+        this.dmg = 20;
         this.tipoCombate = true;
         this.setTexture("OREOCOOKIE");
         this.value = 100;
