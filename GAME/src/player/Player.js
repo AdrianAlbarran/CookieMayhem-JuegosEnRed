@@ -93,6 +93,7 @@ class Player extends Phaser.GameObjects.Sprite {
     }
     console.log(player.hp);
     enemy.body.immovable = false;
+
   }
 
   setInvulnerability(aux) {
