@@ -21,17 +21,20 @@ class LoadingScene extends Phaser.Scene
         
         //...
         this.load.image("CHIPCOOKIE",'assets/enemigos/cookie/cookie.png');
-        this.load.image("OREOCOOKIE",'assets/enemigos/oreo/oreo.png')
-        this.load.image("FRUITCOOKIE",'../../../art/galletas/cookie_runL2.png')
-        this.load.image("DINOCOOKIE",'assets/enemigos/dino.png')
-        this.load.image("GINGERCOOKIE",'assets/enemigos/ginger.png')
+        this.load.image("OREOCOOKIE",'assets/enemigos/oreo/oreo.png');
+        this.load.image("FRUITCOOKIE",'../../../art/galletas/cookie_runL2.png');
+        this.load.image("DINOCOOKIE",'assets/enemigos/dino.png');
+        this.load.image("GINGERCOOKIE",'assets/enemigos/ginger.png');
 
         this.load.image("PTIENDA","assets/PlaceHolder.png");
         this.load.image("PMENU","assets/PlaceHolderMenu.png");
 
         // * JUGADOR
-        //this.load.spritesheet("PLAYER1", "./assets/jugadores/Jugador_1/SpritesDeCorrerP1.png", {frameWidth: 64, frameHeight: 64 });
+        this.load.spritesheet("PLAYER1", "./assets/jugadores/Jugador_1/spriteP1Corriendo.png", {frameWidth: 64, frameHeight: 64 });
+        this.load.spritesheet("PLAYER2", "./assets/jugadores/Jugador_2/spriteSCorriendoP2.png", {frameWidth: 64, frameHeight: 64 });
         
+        // * TIENDA
+        this.load.image("TIENDA", "./assets/tetera.png");
         // * SONIDOS
         // ? Disparar
         this.load.audio("SHOOT", "./assets/sonidos/Pasos.mp3");
