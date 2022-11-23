@@ -29,7 +29,6 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         * 1 - REVOLVER
         * 2 - SUBMACHINE GUN
         */
-        // ! BUG: Si no te has movido y disparas, la velocidad del proyectil es 0, 300 por alguna razon de dios
         switch (type) {
             case 0:
                 // !FIX: this.fireShotgun(direction, 700, 50, shotgunDisplacement);
@@ -47,6 +46,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         }
 
     }
+    
 
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
