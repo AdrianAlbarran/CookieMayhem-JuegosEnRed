@@ -164,12 +164,14 @@ class MainScene extends Phaser.Scene {
 
         for (let i = 0; i < enemiesArray.length; i++) {
             if (enemiesArray[i].hp <= 0) {
+                enemiesArray[i].setPosition(9000, 9000);
                 enemiesArray[i].setActive(false);
                 enemiesArray[i].setVisible(false);
-                enemiesArray[i].setPosition(9000, 9000);
                 enemiesArray[i].hp = -100;
+                enemiesArray.splice(i, 1);
             }
         }
+        console.log(enemiesArray);
     }
 
     wavesManager() {
