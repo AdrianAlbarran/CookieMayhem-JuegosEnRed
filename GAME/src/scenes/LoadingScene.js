@@ -31,10 +31,10 @@ class LoadingScene extends Phaser.Scene
 
         // * ENEMIGOS
         this.load.spritesheet("CCANIM", "./assets/enemigos/cookie/cookie_spritesheet.png", {frameWidth: 64, frameHeight: 64 });
-        this.load.spritesheet("OCANIM", "./assets/enemigos/cookie/cookie_spritesheet.png", {frameWidth: 64, frameHeight: 64 });
-        this.load.spritesheet("FCANIM", "./assets/enemigos/cookie/cookie_spritesheet.png", {frameWidth: 64, frameHeight: 64 });
-        this.load.spritesheet("DCANIM", "./assets/enemigos/cookie/cookie_spritesheet.png", {frameWidth: 64, frameHeight: 64 });
-        this.load.spritesheet("GCANIM", "./assets/enemigos/cookie/cookie_spritesheet.png", {frameWidth: 64, frameHeight: 64 });
+        this.load.spritesheet("OCANIM", "./assets/enemigos/oreo/oreo_sprittesheet.png", {frameWidth: 64, frameHeight: 64 });
+        this.load.spritesheet("FCANIM", "./assets/enemigos/fruta/fruta_sprittesheet.png", {frameWidth: 64, frameHeight: 64 });
+        this.load.spritesheet("DCANIM", "./assets/enemigos/dino/dinoSprite.png", {frameWidth: 64, frameHeight: 64 });
+        this.load.spritesheet("GCANIM", "./assets/enemigos/ginger/GingerSprite.png", {frameWidth: 64, frameHeight: 64 });
         
         // * TIENDA
         this.load.image("TIENDA", "./assets/tetera.png");

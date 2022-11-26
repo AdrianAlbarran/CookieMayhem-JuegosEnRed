@@ -15,18 +15,31 @@ class fruitCookie extends Phaser.GameObjects.Sprite{
         scene.physics.world.enable(this);
         scene.add.existing(this);
         scene.physics.add.collider(this, tienda, this.atacar);
-        
+        //this.initializeAnimation(scene);
       }
+    
+      /*initializeAnimation(scene)
+      {
+        scene.anims.create({
+          key: "FCMOVE",
+          frames: scene.anims.generateFrameNumbers("FCANIM", { start: 0, end: 4 }),
+          frameRate: 5,
+          repeat: -1,
+        });
+      }
+      */
+    
+      animate()
+      {
+        //this.anims.play("FCMOVE", true);
+      }
+
       atacar(that, tienda) {
         if (that.lastAttacked == false) {
           tienda.hp = tienda.hp - that.dmg;
           that.setAttack(that);
           console.log(tienda.hp);
         }
-      }
-
-      animate()
-      {
       }
 
       setAttack(aux) {

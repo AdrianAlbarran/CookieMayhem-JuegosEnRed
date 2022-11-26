@@ -16,18 +16,31 @@ class oreoCookie extends Phaser.GameObjects.Sprite{
         scene.add.existing(this);
         this.setScale(0.7);
         scene.physics.add.collider(this, tienda, this.atacar);
-
+        //this.initializeAnimation(scene);
       }
+    
+      /*initializeAnimation(scene)
+      {
+        scene.anims.create({
+          key: "OCMOVE",
+          frames: scene.anims.generateFrameNumbers("OCANIM", { start: 0, end: 4 }),
+          frameRate: 10,
+          repeat: -1,
+        });
+      }
+      */
+    
+      animate()
+      {
+        //this.anims.play("OCMOVE", true);
+      }
+
       atacar(that, tienda) {
         if (that.lastAttacked == false) {
           tienda.hp = tienda.hp - that.dmg;
           that.setAttack(that);
           console.log(tienda.hp);
         }
-      }
-
-      animate()
-      {
       }
 
       setAttack(aux) {

@@ -22,7 +22,7 @@ class chipCookie extends Phaser.GameObjects.Sprite {
   {
     scene.anims.create({
       key: "CCMOVE",
-      frames: scene.anims.generateFrameNumbers("CCANIM", { start: 0, end: 7 }),
+      frames: scene.anims.generateFrameNumbers("CCANIM", { start: 0, end: 4 }),
       frameRate: 20,
       repeat: -1,
     });
