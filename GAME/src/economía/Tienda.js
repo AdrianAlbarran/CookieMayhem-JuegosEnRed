@@ -5,7 +5,7 @@ class Tienda extends Phaser.GameObjects.Sprite
     constructor(scene, x, y)
     {
         super(scene,x,y);
-        this.setTexture("PTIENDA");
+        this.setTexture("TIENDA");
         scene.physics.world.enable(this);
         scene.add.existing(this);
         this.body.immovable = true;

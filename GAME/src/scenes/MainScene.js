@@ -18,8 +18,8 @@ class MainScene extends Phaser.Scene {
         enemies.add(new gingerCookie(this, 300, 200));
 
         //Initialize Players
-        player1 = new Player(this, 300, 300, 'DUDE', 'PLAYER1', economy);
-        player2 = new Player(this, 400, 400, 'DUDE', 'PLAYER2', economy);
+        player1 = new Player(this, 300, 300, 'PLAYER1', 'PLAYER1', economy);
+        player2 = new Player(this, 400, 400, 'PLAYER2', 'PLAYER2', economy);
 
         player1.playerIntialize(this);
         player2.playerIntialize(this);
@@ -90,7 +90,7 @@ class MainScene extends Phaser.Scene {
         }
 
         this.eventHandler();
-
+        this.checkEnemiesHP();
     }
 
     initializeBullets() {
@@ -128,5 +128,23 @@ class MainScene extends Phaser.Scene {
         }
 
 
+    }
+
+    checkEnemiesHP()
+    {
+        var enemiesArray =  new Array();
+        enemiesArray = enemies.getChildren();
+        
+        for(let i = 0; i < enemiesArray.length; i++)
+        {
+            //console.log(enemiesArray[i].hp);
+            if(enemiesArray[i].hp <= 0)
+            {
+                enemiesArray[i].setActive(false);
+                enemiesArray[i].setVisible(false);
+                enemiesArray[i].setPosition(9000,9000);
+                enemiesArray[i].hp = 100;
+            }
+        }
     }
 }   

@@ -5,14 +5,19 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
         super(scene, x, y, 'cafe');
         var _hitShop = scene.physics.add.collider(this, tienda, this.hitShop);
+        var _hitEnemy = scene.physics.add.overlap(this, enemies, this.hitEnemy);
+        var lastEnemyHitted = undefined;
+        var damage = 10;
+        var maxTraverse = 1;
+
     }
 
     fireConfig(x, y, player, type) {
         this.body.reset(x, y);
 
         var direction = player.body.facing;
-        if(direction==10)
-            direction=12;
+        if (direction == 10)
+            direction = 12;
         /*
         * 11: UP
         * 12: DOWN
@@ -24,26 +29,30 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         * 1 - REVOLVER
         * 2 - SUBMACHINE GUN
         */
-        // ! BUG: Si no te has movido y disparas, la velocidad del proyectil es 0, 300 por alguna razon de dios
         switch (type) {
             case 0:
                 // !FIX: this.fireShotgun(direction, 700, 50, shotgunDisplacement);
                 break;
             case 1:
+                this.damage = 80;
+                this.maxTraverse = 2;
                 this.fireRevolver(direction, 1800, 50);
                 break;
             case 2:
                 //CONFIG BULLETS FOR SUBMACHINE GUN
+                this.damage = 20;
                 this.fireSubMachine(direction, 700, 133);
                 break;
         }
 
     }
+    
 
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
 
         if (this.y <= -32 || this.y >= 632 || this.x >= 832 || this.x <= -32) {
+            this.setVelocity(0, 0);
             this.setActive(false);
             this.setVisible(false);
         }
@@ -111,7 +120,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
 
         var aux = shotgunDisplacement * speed;
 
-  
+
         switch (direction) {
             case 11:
                 this.setVelocity(randomDispersion + aux, -speed);
@@ -135,8 +144,24 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
     }
 
     hitShop(bullet, tienda) {
-        bullet.setVisible(false);
-        bullet.setActive(false);
+        //Pre update se encarga de que la bala desaparezca
+        bullet.setPosition(999, 999);
+
+    }
+
+    hitEnemy(bullet, enemy) {
+        console.log("Last enemy hitted:" + bullet.lastEnemyHitted);
+        if (bullet.lastEnemyHitted != enemy) {
+            enemy.hp = enemy.hp - bullet.damage;
+            //Pre update se encarga de que la bala desaparezca
+            bullet.maxTraverse = bullet.maxTraverse - 1;
+            console.log(bullet.maxTraverse);
+            if (bullet.maxTraverse <= 0) {
+                bullet.setPosition(999, 999);
+            }
+        }
+        bullet.lastEnemyHitted = enemy;
+
     }
 
 }
@@ -159,6 +184,7 @@ class Bullets extends Phaser.Physics.Arcade.Group {
         if (bullet) {
 
             bullet.fireConfig(x, y, player, type);
+            bullet.lastEnemyHitted = undefined;
         }
     }
 }

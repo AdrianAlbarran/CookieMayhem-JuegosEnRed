@@ -16,23 +16,47 @@ class Player extends Phaser.GameObjects.Sprite {
     this.body.setGravity(0);
     this.body.collideWorldBounds = true;
 
-    //CREATING MOVEMENT ANIMATIONS
+    // * CREATING MOVEMENT ANIMATIONS
+    // * JUGADOR 1
     scene.anims.create({
-      key: "left",
-      frames: scene.anims.generateFrameNumbers("DUDE", { start: 0, end: 3 }),
+      key: "left1",
+      frames: scene.anims.generateFrameNumbers("PLAYER1", { start: 0, end: 3 }),
       frameRate: 10,
       repeat: -1,
     });
 
     scene.anims.create({
-      key: "turn",
-      frames: [{ key: "DUDE", frame: 4 }],
+      key: "turn1",
+      frames: [{ key: "PLAYER1", frame: 4 }],
       frameRate: 20,
     });
 
     scene.anims.create({
-      key: "right",
-      frames: scene.anims.generateFrameNumbers("DUDE", { start: 5, end: 8 }),
+      key: "right1",
+      frames: scene.anims.generateFrameNumbers("PLAYER1", { start: 5, end: 8 }),
+      frameRate: 10,
+      repeat: -1,
+    });
+    
+    // Añadir animacion de arriba (derecha) y abajo (izquierda)
+
+    // * JUGADOR 2
+    scene.anims.create({
+      key: "left2",
+      frames: scene.anims.generateFrameNumbers("PLAYER2", { start: 0, end: 3 }),
+      frameRate: 10,
+      repeat: -1,
+    });
+
+    scene.anims.create({
+      key: "turn2",
+      frames: [{ key: "PLAYER2", frame: 4 }],
+      frameRate: 20,
+    });
+
+    scene.anims.create({
+      key: "right2",
+      frames: scene.anims.generateFrameNumbers("PLAYER2", { start: 5, end: 8 }),
       frameRate: 10,
       repeat: -1,
     });
@@ -47,10 +71,10 @@ class Player extends Phaser.GameObjects.Sprite {
     if (this.id == "PLAYER1") {
       if (cursors.left.isDown && cursors.right.isUp) {
         this.body.setVelocityX(-160);
-        this.anims.play("left", true);
+        this.anims.play("left1", true);
       } else if (cursors.right.isDown && cursors.left.isUp) {
         this.body.setVelocityX(160);
-        this.anims.play("right", true);
+        this.anims.play("right1", true);
       } else if (cursors.up.isDown && cursors.down.isUp) {
         this.body.setVelocityY(-160);
       } else if (cursors.down.isDown && cursors.up.isUp) {
@@ -58,7 +82,7 @@ class Player extends Phaser.GameObjects.Sprite {
       } else {
         this.body.setVelocityX(0);
         this.body.setVelocityY(0);
-        this.anims.play("turn");
+        this.anims.play("turn1");
       }
     } else if (this.id == "PLAYER2") {
       var keydown_W = scene.input.keyboard.addKey("W");
@@ -72,13 +96,13 @@ class Player extends Phaser.GameObjects.Sprite {
         those.body.setVelocityY(150);
       } else if (keydown_D.isDown && keydown_A.isUp) {
         those.body.setVelocityX(150);
-        those.anims.play("right", true);
+        those.anims.play("right2", true);
       } else if (keydown_A.isDown && keydown_D.isUp) {
         those.body.setVelocityX(-150);
-        those.anims.play("left", true);
+        those.anims.play("left2", true);
       } else {
         those.body.setVelocity(0, 0);
-        those.anims.play("turn");
+        those.anims.play("turn2");
       }
     }
   }
@@ -93,6 +117,7 @@ class Player extends Phaser.GameObjects.Sprite {
     }
     console.log(player.hp);
     enemy.body.immovable = false;
+
   }
 
   setInvulnerability(aux) {
