@@ -24,3 +24,6 @@ var bulletsPlayer2;
 // SONIDOS
 
 var soundShoot;
+let soundCookieDamaged;
+let bcMusicMenu;
+let bcMusicGame;
