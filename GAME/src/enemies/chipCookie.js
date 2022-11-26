@@ -3,7 +3,7 @@ class chipCookie extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y) {
     super(scene, x, y);
 
-    this.hp = 100;
+    this.hp = 30 * (1+(wave/5));
     this.movementSpeed = 5;
     this.dmg = 10;
     this.tipoCombate = true;

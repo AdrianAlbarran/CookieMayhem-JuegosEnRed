@@ -30,3 +30,10 @@ let bcMusicGame;
 
 // OLEADAS
 let wave = 1;
+let somethingAlive = false;
+var enemiesArray = new Array();
+
+// TEXTOS DE MAINSCENE
+var scoreText;
+var score;
+let helpWavesText;

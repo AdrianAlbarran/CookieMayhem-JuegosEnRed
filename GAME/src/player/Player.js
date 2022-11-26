@@ -5,6 +5,7 @@ class Player extends Phaser.GameObjects.Sprite {
     super(scene, x, y, sprite);
     this.id = id;
     this.hp = 100;
+    this.setDepth(2);
     this.economy = economy;
     scene.add.existing(this);
     this.scene.physics.world.enableBody(this, 0);

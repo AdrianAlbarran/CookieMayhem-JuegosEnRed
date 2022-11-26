@@ -1,13 +1,10 @@
 /** @type { import ("../../typings/phaser") } */
 
-var scoreText;
-var score;
 
 class MainScene extends Phaser.Scene {
     constructor() {
         super('mainScene');
         var scene = this;
-
     }
 
     preupdate() {
@@ -42,8 +39,17 @@ class MainScene extends Phaser.Scene {
 
         this.physics.add.collider(enemies, enemies);
 
+        // * TEXTOS
         score = 0;
-        scoreText = this.add.text(400, 16, '$0', { fontSize: '24px', fill: '#000', fontFamily: 'Pixel' });
+        scoreText = this.add.text(375, 16, '$0', { fontSize: '24px', fill: '#000', fontFamily: 'Pixel' });
+
+        // * 
+        helpWavesText = this.add.text(400-185, 500, '        PRESS Y \nTO SUMMON THE NEXT WAVE', 
+        { 
+            fontSize: '16px', 
+            fill: '#000', 
+            fontFamily: 'Pixel' 
+        })
 
         //TIENDA HUD
         let backgroundShop = this.add.image(400, 300, "PMENU");
@@ -122,13 +128,14 @@ class MainScene extends Phaser.Scene {
         if (this.input.keyboard.addKey('P').isDown) {
             tienda.openShop(player1, player2);
         }
-        
+
+        enemiesArray = enemies.getChildren();
         this.eventHandler();
         this.checkEnemiesHP();
-
+        
+        this.checkSomethingAlive()
         this.wavesManager();
         this.enemiesAttack();
-
     }
 
     initializeBullets() {
@@ -171,17 +178,15 @@ class MainScene extends Phaser.Scene {
         enemiesArray = enemies.getChildren();
 
         for (let i = 0; i < enemiesArray.length; i++) {
-            if (enemiesArray[i].hp <= 0) {
+            if (enemiesArray[i].hp <= 0 || isNaN(enemiesArray[i].hp)) {
                 enemiesArray[i].setPosition(9000, 9000);
                 enemiesArray[i].setActive(false);
                 enemiesArray[i].setVisible(false);
                 enemiesArray[i].hp = -100;
-                enemiesArray[i].setPosition(9000, 9000);
                 enemiesArray.splice(i, 1);
                 this.addScore();
             }
         }
-        console.log(enemiesArray);
     }
 
     addScore() {
@@ -189,22 +194,27 @@ class MainScene extends Phaser.Scene {
         scoreText.setText("$" + score);
     }
 
-    wavesManager() {
-        var enemiesArray = new Array();
-        enemiesArray = enemies.getChildren();
+    checkSomethingAlive()
+    {
+        for (let i = 0; i < enemiesArray.length; i++) {
+            if (enemiesArray[i].hp > 0 && enemiesArray.length > 0) {
+                somethingAlive = true;
+                break;
+            }
+        }
+        if(enemiesArray.length == 0)
+        {
+            somethingAlive = false;
+            helpWavesText.setVisible(true);
+        } else {
+            helpWavesText.setVisible(false);
+        }
+    }
 
+    wavesManager() {
         var newWaveKey = this.input.keyboard.addKey('Y');
 
         if (newWaveKey.isDown) {
-            console.log(enemies);
-            var somethingAlive = false;
-            for (let i = 0; i < enemiesArray.length; i++) {
-                if (enemiesArray[i].hp > 0) {
-                    somethingAlive = true;
-                    break;
-                }
-            }
-
             if (!somethingAlive) {
                 enemies.clear(true, true);
                 this.fillEnemiesGroup();

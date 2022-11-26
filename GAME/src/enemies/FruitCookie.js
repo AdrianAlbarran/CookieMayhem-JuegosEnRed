@@ -4,9 +4,9 @@ class fruitCookie extends Phaser.GameObjects.Sprite{
     constructor(scene, x, y) {
         super(scene, x, y);
     
-        this.hp = 100;
-        this.movementSpeed = 50;
-        this.dmg = 10;
+        this.hp =  60 * (1+(wave/5));;
+        this.movementSpeed = 40;
+        this.dmg = 15;
         this.tipoCombate = true;
         this.setTexture("FRUITCOOKIE");
         this.value = 100;

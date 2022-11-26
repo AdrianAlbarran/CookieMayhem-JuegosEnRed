@@ -3,14 +3,15 @@ class dinoCookie extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y) {
     super(scene, x, y);
 
-    this.hp = 100;
-    this.movementSpeed = 50;
-    this.dmg = 10;
+    this.hp =  80 * (1+(wave/5));;
+    this.movementSpeed = 30;
+    this.dmg = 15;
     this.tipoCombate = true;
-    this.attackSpeed = 5;
+    this.attackSpeed = 6;
     this.lastAttacked = false;
     this.setTexture("DINOCOOKIE");
     this.value = 100;
+    this.setScale(1.5);
     scene.physics.world.enable(this);
     scene.add.existing(this);
     scene.physics.add.collider(this, tienda, this.atacar);
