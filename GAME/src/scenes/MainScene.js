@@ -17,6 +17,8 @@ class MainScene extends Phaser.Scene {
         this.background = this.add.image(400, 300, "BACKGROUND");
         this.background.setScale(0.37);
 
+        tienda = new Tienda(this, 400, 300);
+
         enemies.add(new chipCookie(this, 100, 100));
         enemies.add(new oreoCookie(this, 200, 200));
         enemies.add(new fruitCookie(this, 100, 200));
@@ -33,14 +35,13 @@ class MainScene extends Phaser.Scene {
 
         economy.economyIntialize(this);
 
-        tienda = new Tienda(this, 400, 300);
+ 
 
         this.physics.add.collider(tienda, player1);
         this.physics.add.collider(tienda, player2);
-
-
-        
         this.physics.add.collider(enemies, enemies);
+        
+    
 
         //TIENDA HUD
         let backgroundShop = this.add.image(400, 300, "PMENU");
@@ -92,6 +93,10 @@ class MainScene extends Phaser.Scene {
             volume: 0.15,
         });
 
+
+        
+        
+
         // * MUSIC BACKGROUND
         bcMusicGame = this.sound.add("GAMEMUSIC", 
         { 
@@ -110,9 +115,10 @@ class MainScene extends Phaser.Scene {
         if (this.input.keyboard.addKey('P').isDown) {
             tienda.openShop(player1, player2);
         }
-
+        
         this.eventHandler();
         this.checkEnemiesHP();
+        this.enemiesAttack();
     }
 
     initializeBullets() {
@@ -170,5 +176,12 @@ class MainScene extends Phaser.Scene {
         }
     }
 
-    
+    enemiesAttack(){
+        var enemiesArray =  new Array();
+        enemiesArray = enemies.getChildren();
+        for(let i = 0; i<enemiesArray.length;i++){
+            this.physics.moveToObject(enemiesArray[i],tienda,30);
+        }
+    }
+
 }   
