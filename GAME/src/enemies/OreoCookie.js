@@ -25,6 +25,11 @@ class oreoCookie extends Phaser.GameObjects.Sprite{
           console.log(tienda.hp);
         }
       }
+
+      animate()
+      {
+      }
+
       setAttack(aux) {
         aux.lastAttacked = true;
         aux.scene.time.delayedCall(aux.attackSpeed * 1000, function () {
