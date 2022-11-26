@@ -27,3 +27,6 @@ var soundShoot;
 let soundCookieDamaged;
 let bcMusicMenu;
 let bcMusicGame;
+
+// OLEADAS
+let wave = 1;
