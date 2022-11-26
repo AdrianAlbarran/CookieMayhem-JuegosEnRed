@@ -167,7 +167,7 @@ class MainScene extends Phaser.Scene {
                 enemiesArray[i].setActive(false);
                 enemiesArray[i].setVisible(false);
                 enemiesArray[i].setPosition(9000, 9000);
-                enemiesArray[i].hp = 100;
+                enemiesArray[i].hp = -100;
             }
         }
     }
