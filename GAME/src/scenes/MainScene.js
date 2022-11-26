@@ -23,6 +23,7 @@ class MainScene extends Phaser.Scene {
         // enemies.add(new fruitCookie(this, 100, 200));
         // enemies.add(new dinoCookie(this, 200, 100));
         // enemies.add(new gingerCookie(this, 300, 200));
+        tienda = new Tienda(this, 400, 300);
 
         //Initialize Players
         player1 = new Player(this, 300, 300, 'PLAYER1', 'PLAYER1', economy);
@@ -34,14 +35,14 @@ class MainScene extends Phaser.Scene {
 
         economy.economyIntialize(this);
 
-        tienda = new Tienda(this, 400, 300);
+ 
 
         this.physics.add.collider(tienda, player1);
         this.physics.add.collider(tienda, player2);
 
-
-
         this.physics.add.collider(enemies, enemies);
+        
+    
 
         //TIENDA HUD
         let backgroundShop = this.add.image(400, 300, "PMENU");
@@ -93,6 +94,10 @@ class MainScene extends Phaser.Scene {
                 volume: 0.15,
             });
 
+
+        
+        
+
         // * MUSIC BACKGROUND
         bcMusicGame = this.sound.add("GAMEMUSIC",
             {
@@ -111,10 +116,12 @@ class MainScene extends Phaser.Scene {
         if (this.input.keyboard.addKey('P').isDown) {
             tienda.openShop(player1, player2);
         }
-
+        
         this.eventHandler();
         this.checkEnemiesHP();
+
         this.wavesManager();
+        this.enemiesAttack();
 
     }
 
@@ -281,6 +288,14 @@ class MainScene extends Phaser.Scene {
             }
 
 
+        }
+
+
+    enemiesAttack(){
+        var enemiesArray =  new Array();
+        enemiesArray = enemies.getChildren();
+        for(let i = 0; i<enemiesArray.length;i++){
+            this.physics.moveToObject(enemiesArray[i],tienda,30);
         }
 
     }
