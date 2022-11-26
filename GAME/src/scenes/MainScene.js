@@ -104,6 +104,8 @@ class MainScene extends Phaser.Scene {
                 volume: 0.10
             });
         bcMusicGame.play();
+
+    
     }
 
     update() {

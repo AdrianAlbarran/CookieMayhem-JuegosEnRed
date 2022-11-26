@@ -39,6 +39,7 @@ class oreoCookie extends Phaser.GameObjects.Sprite{
         if (that.lastAttacked == false) {
           tienda.hp = tienda.hp - that.dmg;
           that.setAttack(that);
+          tienda.setMeterPercentageAnimated(tienda.hp/500,100)
           console.log(tienda.hp);
         }
       }
