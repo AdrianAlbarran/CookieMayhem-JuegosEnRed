@@ -5,7 +5,13 @@ class MainScene extends Phaser.Scene {
         super('mainScene');
     }
 
+    preupdate()
+    {
+       
+    }
+
     create() {
+        bcMusicMenu.pause();
         enemies = this.physics.add.group();
         //varaibles
         this.background = this.add.image(400, 300, "BACKGROUND");
@@ -73,11 +79,27 @@ class MainScene extends Phaser.Scene {
 
         // * SONIDOS
         // DISPAROS
-        soundShoot =  this.sound.add('SHOOT', 
+        soundShoot = this.sound.add('SHOOT', 
         {
             mute: false,
             volume: 0.15,
         });
+
+        // Daños
+        soundCookieDamaged =  this.sound.add('COOKIEDAMAGED', 
+        {
+            mute: false,
+            volume: 0.15,
+        });
+
+        // * MUSIC BACKGROUND
+        bcMusicGame = this.sound.add("GAMEMUSIC", 
+        { 
+            loop: true,
+            mute: false,
+            volume: 0.10
+        });
+        bcMusicGame.play();
     }
 
     update() {
@@ -147,4 +169,6 @@ class MainScene extends Phaser.Scene {
             }
         }
     }
+
+    
 }   

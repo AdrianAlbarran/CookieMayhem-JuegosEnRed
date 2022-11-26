@@ -152,6 +152,8 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
     hitEnemy(bullet, enemy) {
         console.log("Last enemy hitted:" + bullet.lastEnemyHitted);
         if (bullet.lastEnemyHitted != enemy) {
+            //sonido de golpe
+            soundCookieDamaged.play();
             enemy.hp = enemy.hp - bullet.damage;
             //Pre update se encarga de que la bala desaparezca
             bullet.maxTraverse = bullet.maxTraverse - 1;

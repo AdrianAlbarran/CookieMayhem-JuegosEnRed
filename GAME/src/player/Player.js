@@ -10,6 +10,7 @@ class Player extends Phaser.GameObjects.Sprite {
     this.scene.physics.world.enableBody(this, 0);
     scene.physics.add.collider(this, enemies, this.enemyHit);
     this.invulnerability = false;
+    this.lastDirection = 0;
   }
 
   playerIntialize(scene) {
@@ -72,17 +73,37 @@ class Player extends Phaser.GameObjects.Sprite {
       if (cursors.left.isDown && cursors.right.isUp) {
         this.body.setVelocityX(-160);
         this.anims.play("left1", true);
+        this.lastDirection = 0;
       } else if (cursors.right.isDown && cursors.left.isUp) {
         this.body.setVelocityX(160);
         this.anims.play("right1", true);
+        this.lastDirection = 1;
+        
       } else if (cursors.up.isDown && cursors.down.isUp) {
         this.body.setVelocityY(-160);
+        if(this.lastDirection == 1)
+        {
+          this.anims.play("right1", true);
+          
+        } else {
+          this.anims.play("left1", true);
+        }
+        
       } else if (cursors.down.isDown && cursors.up.isUp) {
         this.body.setVelocityY(160);
+        if(this.lastDirection == 1)
+        {
+          this.anims.play("right1", true);
+          
+        } else {
+          this.anims.play("left1", true);
+        }
+
       } else {
         this.body.setVelocityX(0);
         this.body.setVelocityY(0);
         this.anims.play("turn1");
+        
       }
     } else if (this.id == "PLAYER2") {
       var keydown_W = scene.input.keyboard.addKey("W");
@@ -92,14 +113,30 @@ class Player extends Phaser.GameObjects.Sprite {
 
       if (keydown_W.isDown && keydown_S.isUp) {
         those.body.setVelocityY(-150);
+        if(this.lastDirection == 1)
+        {
+          this.anims.play("right2", true);
+          
+        } else {
+          this.anims.play("left2", true);
+        }
       } else if (keydown_S.isDown && keydown_W.isUp) {
         those.body.setVelocityY(150);
+        if(this.lastDirection == 1)
+        {
+          this.anims.play("right2", true);
+          
+        } else {
+          this.anims.play("left2", true);
+        }
       } else if (keydown_D.isDown && keydown_A.isUp) {
         those.body.setVelocityX(150);
         those.anims.play("right2", true);
+        those.lastDirection = 1;
       } else if (keydown_A.isDown && keydown_D.isUp) {
         those.body.setVelocityX(-150);
         those.anims.play("left2", true);
+        those.lastDirection = 2;
       } else {
         those.body.setVelocity(0, 0);
         those.anims.play("turn2");

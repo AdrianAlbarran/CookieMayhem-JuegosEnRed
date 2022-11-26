@@ -12,10 +12,7 @@ class LoadingScene extends Phaser.Scene
         // TODO: PRELOAD ALL THE NECCESARY BASE ASSETS HERE
         //Waiting to  
         
-        this.load.image("ID1", "assets/sky.png");
         this.load.image("BACKGROUND", "assets/fondo.png");
-        this.load.spritesheet('DUDE', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
-
         // * BALAS
         this.load.image('cafe', 'assets/balas/cafe.png');
         
@@ -26,7 +23,6 @@ class LoadingScene extends Phaser.Scene
         this.load.image("DINOCOOKIE",'assets/enemigos/dino.png');
         this.load.image("GINGERCOOKIE",'assets/enemigos/ginger.png');
 
-        this.load.image("PTIENDA","assets/PlaceHolder.png");
         this.load.image("PMENU","assets/PlaceHolderMenu.png");
 
         // * JUGADOR
@@ -38,7 +34,13 @@ class LoadingScene extends Phaser.Scene
         // * SONIDOS
         // ? Disparar
         this.load.audio("SHOOT", "./assets/sonidos/Pasos.mp3");
+        // * Daño a enemigos
+        this.load.audio("COOKIEDAMAGED", "./assets/sonidos/Daño_Galletas.mp3");
 
+        // * Background music
+        this.load.audio("GAMEMUSIC", "./assets/musica/Cancion_JeR_1.mp3");
+
+        
     }
     create()
     {
