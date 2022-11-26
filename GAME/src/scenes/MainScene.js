@@ -32,16 +32,11 @@ class MainScene extends Phaser.Scene {
         player1.playerIntialize(this);
         player2.playerIntialize(this);
 
-
         economy.economyIntialize(this);
-
- 
 
         this.physics.add.collider(tienda, player1);
         this.physics.add.collider(tienda, player2);
         this.physics.add.collider(enemies, enemies);
-        
-    
 
         //TIENDA HUD
         let backgroundShop = this.add.image(400, 300, "PMENU");
@@ -92,11 +87,7 @@ class MainScene extends Phaser.Scene {
             mute: false,
             volume: 0.15,
         });
-
-
-        
-        
-
+                
         // * MUSIC BACKGROUND
         bcMusicGame = this.sound.add("GAMEMUSIC", 
         { 
@@ -179,8 +170,9 @@ class MainScene extends Phaser.Scene {
     enemiesAttack(){
         var enemiesArray =  new Array();
         enemiesArray = enemies.getChildren();
-        for(let i = 0; i<enemiesArray.length;i++){
+        for(let i = 0; i < enemiesArray.length;i++){
             this.physics.moveToObject(enemiesArray[i],tienda,30);
+            enemiesArray[i].animate();
         }
     }
 

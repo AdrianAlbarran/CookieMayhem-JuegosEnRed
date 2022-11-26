@@ -15,6 +15,22 @@ class chipCookie extends Phaser.GameObjects.Sprite {
     scene.add.existing(this);
     this.setScale(0.7);
     scene.physics.add.collider(this, tienda, this.atacar);
+    this.initializeAnimation(scene);
+  }
+
+  initializeAnimation(scene)
+  {
+    scene.anims.create({
+      key: "CCMOVE",
+      frames: scene.anims.generateFrameNumbers("CCANIM", { start: 0, end: 7 }),
+      frameRate: 20,
+      repeat: -1,
+    });
+  }
+
+  animate()
+  {
+    this.anims.play("CCMOVE", true);
   }
 
   atacar(that, tienda) {
