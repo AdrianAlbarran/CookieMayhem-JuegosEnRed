@@ -168,6 +168,7 @@ class MainScene extends Phaser.Scene {
                 enemiesArray[i].setActive(false);
                 enemiesArray[i].setVisible(false);
                 enemiesArray[i].hp = -100;
+                enemiesArray[i].setPosition(9000, 9000);
                 enemiesArray.splice(i, 1);
             }
         }
@@ -286,11 +287,9 @@ class MainScene extends Phaser.Scene {
                     enemies.add(new gingerCookie(this, xPosEnemy, yPosEnemy));
                     break;
             }
-
-
         }
-
     }
+
     enemiesAttack(){
         var enemiesArray =  new Array();
         enemiesArray = enemies.getChildren();

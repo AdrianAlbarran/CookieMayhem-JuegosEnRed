@@ -15,7 +15,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
     fireConfig(x, y, player, type) {
         this.body.reset(x, y);
 
-        var direction = player.body.facing;
+        var direction = player.lastDirectionInput;
         if (direction == 10)
             direction = 12;
         /*

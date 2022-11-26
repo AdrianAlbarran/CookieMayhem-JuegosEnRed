@@ -19,9 +19,9 @@ class LoadingScene extends Phaser.Scene
         //...
         this.load.image("CHIPCOOKIE",'assets/enemigos/cookie/cookie.png');
         this.load.image("OREOCOOKIE",'assets/enemigos/oreo/oreo.png');
-        this.load.image("FRUITCOOKIE",'../../../art/galletas/cookie_runL2.png');
-        this.load.image("DINOCOOKIE",'assets/enemigos/dino.png');
-        this.load.image("GINGERCOOKIE",'assets/enemigos/ginger.png');
+        this.load.image("FRUITCOOKIE",'./assets/enemigos/fruta/fruta.png');
+        this.load.image("DINOCOOKIE",'assets/enemigos/dino/dino.png');
+        this.load.image("GINGERCOOKIE",'assets/enemigos/ginger/ginger.png');
 
         this.load.image("PMENU","assets/PlaceHolderMenu.png");
 
