@@ -1,5 +1,8 @@
 /** @type { import ("../../typings/phaser") } */
 
+var scoreText;
+var score;
+
 class MainScene extends Phaser.Scene {
     constructor() {
         super('mainScene');
@@ -38,6 +41,9 @@ class MainScene extends Phaser.Scene {
         this.physics.add.collider(tienda, player2);
 
         this.physics.add.collider(enemies, enemies);
+
+        score = 0;
+        scoreText = this.add.text(400, 16, '$0', { fontSize: '24px', fill: '#000', fontFamily: 'Pixel' });
 
         //TIENDA HUD
         let backgroundShop = this.add.image(400, 300, "PMENU");
@@ -170,9 +176,15 @@ class MainScene extends Phaser.Scene {
                 enemiesArray[i].hp = -100;
                 enemiesArray[i].setPosition(9000, 9000);
                 enemiesArray.splice(i, 1);
+                this.addScore();
             }
         }
         console.log(enemiesArray);
+    }
+
+    addScore() {
+        score += 10;
+        scoreText.setText("$" + score);
     }
 
     wavesManager() {
