@@ -15,10 +15,10 @@ class fruitCookie extends Phaser.GameObjects.Sprite{
         scene.physics.world.enable(this);
         scene.add.existing(this);
         scene.physics.add.collider(this, tienda, this.atacar);
-        //this.initializeAnimation(scene);
+        this.initializeAnimation(scene);
       }
     
-      /*initializeAnimation(scene)
+      initializeAnimation(scene)
       {
         scene.anims.create({
           key: "FCMOVE",
@@ -27,11 +27,10 @@ class fruitCookie extends Phaser.GameObjects.Sprite{
           repeat: -1,
         });
       }
-      */
     
       animate()
       {
-        //this.anims.play("FCMOVE", true);
+        this.anims.play("FCMOVE", true);
       }
 
       atacar(that, tienda) {

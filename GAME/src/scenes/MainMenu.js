@@ -15,6 +15,7 @@ class MainMenu extends Phaser.Scene {
 
         let mouseSpritePlay = this.add.image(500, 370, "sugarIcon");
         let mouseSpriteSettings = this.add.image(520, 430, "sugarIcon");
+        let sound = 0;
 
         mouseSpritePlay.setVisible(false);
         mouseSpriteSettings.setVisible(false);
@@ -45,7 +46,6 @@ class MainMenu extends Phaser.Scene {
             settingsBackground.setVisible(true);
             textSalir.setVisible(true);
             textSonido.setVisible(true);
-            textSonido1.setVisible(true);
         });
 
         textoAjustes.on('pointerover', () => {
@@ -67,7 +67,6 @@ class MainMenu extends Phaser.Scene {
             settingsBackground.setVisible(false);
             textSalir.setVisible(false);
             textSonido.setVisible(false);
-            textSonido1.setVisible(false);
         });
 
         var textSonido = this.add.text(400, 200, 'MUTE SOUND', {
@@ -75,15 +74,17 @@ class MainMenu extends Phaser.Scene {
         }).setOrigin(0.5).setInteractive();
         textSonido.setVisible(false);
         textSonido.on('pointerdown', () => {
-            game.sound.mute = true;
-        });
-
-        var textSonido1 = this.add.text(400, 300, 'HEAR SOUND', {
-            fontSize: '26px', fill: '#000', fontFamily: 'Pixel'
-        }).setOrigin(0.5).setInteractive();
-        textSonido1.setVisible(false);
-        textSonido1.on('pointerdown', () => {
-            game.sound.mute = false;
+            switch (sound)
+            {
+                case 0:
+                    game.sound.mute = true;
+                    sound = 1;
+                    break;
+                case 1:
+                    game.sound.mute = false;
+                    sound = 0;
+                    break;
+            }
         });
 
         // * MUSICA

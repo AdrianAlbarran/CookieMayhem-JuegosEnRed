@@ -16,10 +16,10 @@ class oreoCookie extends Phaser.GameObjects.Sprite{
         scene.add.existing(this);
         this.setScale(0.7);
         scene.physics.add.collider(this, tienda, this.atacar);
-        //this.initializeAnimation(scene);
+        this.initializeAnimation(scene);
       }
     
-      /*initializeAnimation(scene)
+      initializeAnimation(scene)
       {
         scene.anims.create({
           key: "OCMOVE",
@@ -28,11 +28,11 @@ class oreoCookie extends Phaser.GameObjects.Sprite{
           repeat: -1,
         });
       }
-      */
+      
     
       animate()
       {
-        //this.anims.play("OCMOVE", true);
+        this.anims.play("OCMOVE", true);
       }
 
       atacar(that, tienda) {
