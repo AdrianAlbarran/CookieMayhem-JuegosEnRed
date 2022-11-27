@@ -33,6 +33,7 @@ class MainScene extends Phaser.Scene {
         player2.playerIntialize(this);
 
         economy.economyIntialize(this);
+        tienda.openShop();
 
         this.physics.add.collider(tienda, player1);
         this.physics.add.collider(tienda, player2);
@@ -51,36 +52,12 @@ class MainScene extends Phaser.Scene {
                 fontFamily: 'Pixel'
             })
 
-        //TIENDA HUD
-        let backgroundShop = this.add.image(400, 300, "PMENU");
-        let item1 = this.add.image(400, 200, "PTIENDA");
-        let item2 = this.add.image(600, 225, "PTIENDA");
-        let item3 = this.add.image(200, 225, "PTIENDA");
-        var exit = this.add.text(400, 400, "EXIT", {
-            fontSize: '26px', fill: '#e0000', fontFamily: 'Pixel'
-        }).setOrigin(0.5).setInteractive();
 
-        backgroundShop.setVisible(false);
-        item1.setVisible(false);
-        item2.setVisible(false);
-        item3.setVisible(false);
-        exit.setVisible(false);
 
-        this.input.keyboard.on('keydown-P', function (event) {
-            backgroundShop.setVisible(true);
-            item1.setVisible(true);
-            item2.setVisible(true);
-            item3.setVisible(true);
-            exit.setVisible(true);
-        });
+        this.input.keyboard.on('keydown-P', function(event){
+            tienda.interfaceManager();
+        })
 
-        exit.on('pointerdown', () => {
-            backgroundShop.setVisible(false);
-            item1.setVisible(false);
-            item2.setVisible(false);
-            item3.setVisible(false);
-            exit.setVisible(false);
-        });
 
 
         //BALAS
@@ -125,9 +102,9 @@ class MainScene extends Phaser.Scene {
         player2.movement(this);
 
         //esto será provisional, lo he añadido para ver si la función tiraba
-        if (this.input.keyboard.addKey('P').isDown) {
-            tienda.openShop(player1, player2);
-        }
+        //if (this.input.keyboard.addKey('P').isDown) {
+         //   tienda.openShop(player1, player2);
+        //}
 
         enemiesArray = enemies.getChildren();
         this.eventHandler();
