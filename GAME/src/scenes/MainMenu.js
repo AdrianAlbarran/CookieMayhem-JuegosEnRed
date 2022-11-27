@@ -13,6 +13,7 @@ class MainMenu extends Phaser.Scene {
         this.logo = this.add.image(400, 200, "Logo");
         this.logo.setScale(0.5);
 
+        let fullscreen = this.add.image(50, 550, "fullscreen").setScale(0.25).setInteractive();
         let mouseSpritePlay = this.add.image(500, 370, "sugarIcon");
         let mouseSpriteSettings = this.add.image(520, 430, "sugarIcon");
         let sound = 0;
@@ -20,10 +21,23 @@ class MainMenu extends Phaser.Scene {
         mouseSpritePlay.setVisible(false);
         mouseSpriteSettings.setVisible(false);
 
+        fullscreen.on('pointerup', () => {
+            bcSelect.play();
+            if (this.scale.isFullscreen)
+            {
+                this.scale.stopFullscreen();
+            }
+            else
+            {
+                window['game']['canvas'][game.device.fullscreen.request]();
+            }
+        });
+
         var textoJugar = this.add.text(400, 370, 'JUGAR', {
             fontSize: '26px', fill: '#e78999', fontFamily: 'Pixel'
         }).setOrigin(0.5).setInteractive();
         textoJugar.on('pointerdown', () => {
+            bcSelect.play();
             this.cameras.main.fadeOut(400, 0, 0, 0);
         });
 
@@ -46,6 +60,7 @@ class MainMenu extends Phaser.Scene {
             settingsBackground.setVisible(true);
             textSalir.setVisible(true);
             textSonido.setVisible(true);
+            bcSelect.play();
         });
 
         textoAjustes.on('pointerover', () => {
@@ -67,6 +82,7 @@ class MainMenu extends Phaser.Scene {
             settingsBackground.setVisible(false);
             textSalir.setVisible(false);
             textSonido.setVisible(false);
+            bcSelect.play();
         });
 
         var textSonido = this.add.text(400, 200, 'MUTE SOUND', {
@@ -85,6 +101,14 @@ class MainMenu extends Phaser.Scene {
                     sound = 0;
                     break;
             }
+            bcSelect.play();
+        });
+
+        const bcSelect = this.sound.add("MENUSELECT", 
+        { 
+            loop: false,
+            mute: false,
+            volume: 0.20
         });
 
         // * MUSICA
