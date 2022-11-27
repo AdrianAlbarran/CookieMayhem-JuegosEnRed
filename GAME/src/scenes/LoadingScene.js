@@ -48,9 +48,9 @@ class LoadingScene extends Phaser.Scene
         this.load.audio("GAMEMUSIC", "./assets/musica/Cancion_JeR_1.mp3");
 
         // * UI Health Bar
-        this.load.image('left-cap', 'assets/uipack/PNG/barHorizontal_green_left.png');
-        this.load.image('middle', 'assets/uipack/PNG/barHorizontal_green_mid.png');
-        this.load.image('right-cap', 'assets/uipack/PNG/barHorizontal_green_right.png');
+        this.load.image('left-cap', 'assets/interface/Barra Izquierda.png');
+        this.load.image('middle', 'assets/interface/Barra Medio.png');
+        this.load.image('right-cap', 'assets/interface/Barra Derecha.png');
     
         this.load.image('left-cap-shadow', 'assets/uipack/PNG/barHorizontal_shadow_left.png');
         this.load.image('middle-shadow', 'assets/uipack/PNG/barHorizontal_shadow_mid.png');
