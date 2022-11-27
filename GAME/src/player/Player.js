@@ -161,6 +161,7 @@ class Player extends Phaser.GameObjects.Sprite {
     if (player.invulnerability == false) {
       player.hp = player.hp - enemy.dmg;
       player.setInvulnerability(player);
+      soundPlayerDamage.play();
     }
     
     enemy.body.immovable = false;
