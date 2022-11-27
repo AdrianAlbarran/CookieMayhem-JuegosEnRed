@@ -5,7 +5,7 @@ var gameConfig = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    scene: [LoadingMenu, MainMenu, LoadingScene, MainScene ],
+    scene: [LoadingMenu, MainMenu, LoadingScene, MainScene, GameOver ],
     resolution: 1, //<- resolution
     pixelArt: true,
     antialias: false,

@@ -25,6 +25,9 @@ class LoadingScene extends Phaser.Scene
 
         this.load.image("PMENU","assets/PlaceHolderMenu.png");
 
+        //GAMEOVER
+        this.load.image("gameOver", "assets/gameover.png")
+
         // * JUGADOR
         this.load.spritesheet("PLAYER1", "./assets/jugadores/Jugador_1/spriteP1Corriendo.png", {frameWidth: 64, frameHeight: 64 });
         this.load.spritesheet("PLAYER2", "./assets/jugadores/Jugador_2/spriteSCorriendoP2.png", {frameWidth: 64, frameHeight: 64 });

@@ -223,10 +223,11 @@ class MainScene extends Phaser.Scene {
             player2.setVisible(false);
         }
 
-        if(player1.hp <= 0 && player2.hp <= 0){
+        if(player1.hp <= 0 && player2.hp <= d0){
             this.scene.pause();
             bcMusicGame.pause();
             endGameMusic.play();
+            this.scene.start("gameOver");
         }
     }
 
@@ -236,6 +237,7 @@ class MainScene extends Phaser.Scene {
             this.scene.pause();
             bcMusicGame.pause();
             endGameMusic.play();
+            this.scene.start("gameOver");
         }
     }
 
