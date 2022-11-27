@@ -181,13 +181,15 @@ class Bullets extends Phaser.Physics.Arcade.Group {
 
     fireBullet(x, y, player, type) {
 
-        let bullet = this.getFirstDead(false);
+        if(player.hp > 0){
+            let bullet = this.getFirstDead(false);
 
-        if (bullet) {
-
-            bullet.fireConfig(x, y, player, type);
-            bullet.lastEnemyHitted = undefined;
+            if (bullet) {
+                bullet.fireConfig(x, y, player, type);
+                bullet.lastEnemyHitted = undefined;
+            }
         }
+        
     }
 }
 
