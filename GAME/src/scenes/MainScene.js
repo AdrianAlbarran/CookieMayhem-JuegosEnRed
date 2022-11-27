@@ -136,6 +136,7 @@ class MainScene extends Phaser.Scene {
         this.checkSomethingAlive()
         this.wavesManager();
         this.enemiesAttack();
+        this.checkShopHp();
     }
 
     initializeBullets() {
@@ -188,12 +189,20 @@ class MainScene extends Phaser.Scene {
             }
         }
     }
-
+    
     addScore() {
         score += 10;
         scoreText.setText("$" + score);
     }
 
+    checkShopHp(){
+        if(tienda.hp <= 0)
+        {
+            //! DO SOMETHING HERE (PAUSE THIS SCENE AND START A GAME OVER ONE)
+            this.scene.pause();
+            
+        }
+    }
     checkSomethingAlive()
     {
         for (let i = 0; i < enemiesArray.length; i++) {
