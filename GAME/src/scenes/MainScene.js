@@ -137,6 +137,7 @@ class MainScene extends Phaser.Scene {
         this.wavesManager();
         this.enemiesAttack();
         this.checkShopHp();
+        this.playersAlive();
     }
 
     initializeBullets() {
@@ -193,6 +194,23 @@ class MainScene extends Phaser.Scene {
     addScore() {
         score += 10;
         scoreText.setText("$" + score);
+    }
+
+    playersAlive() {
+        if(player1.hp <= 0){
+            player1.setPosition(9000,9000);
+            player1.setActive(false);
+            player1.setVisible(false);
+        }
+        if(player2.hp <= 0){
+            player2.setPosition(9000,9000);
+            player2.setActive(false);
+            player2.setVisible(false);
+        }
+
+        if(player1.hp <= 0 && player2.hp <= 0){
+            this.scene.pause();
+        }
     }
 
     checkShopHp() {
