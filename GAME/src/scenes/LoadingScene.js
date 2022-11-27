@@ -23,7 +23,7 @@ class LoadingScene extends Phaser.Scene
         this.load.image("DINOCOOKIE",'assets/enemigos/dino/dino.png');
         this.load.image("GINGERCOOKIE",'assets/enemigos/ginger/ginger.png');
 
-        this.load.image("PMENU","assets/PlaceHolderMenu.png");
+        this.load.image("PMENU","assets/menu.png");
 
         //GAMEOVER
         this.load.image("gameOver", "assets/gameover.png")

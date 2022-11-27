@@ -14,7 +14,7 @@ class LoadingMenu extends Phaser.Scene
         this.load.image("Logo", "assets/interface/logoCM.png");
         this.load.image("sugarIcon", "assets/interface/sugarCube.png");
         this.load.image("fullscreen", "assets/interface/fullscreen.png");
-        this.load.image("settingsBackground", "assets/PlaceHolderMenu.png");
+        this.load.image("settingsBackground", "assets/menu.png");
 
         // * MUSIC SOUNDS
         this.load.audio("MENUMUSIC", "assets/musica/Menu_JeR.mp3");
