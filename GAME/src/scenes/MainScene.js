@@ -108,6 +108,12 @@ class MainScene extends Phaser.Scene {
                 volume: 0.15,
             });
 
+        soundPlayerDamage = this.sound.add('PLAYERDAMAGE',
+            {
+                mute: false,
+                volume: 0.15,
+            });
+
         // * MUSIC BACKGROUND
         bcMusicGame = this.sound.add("GAMEMUSIC",
             {
@@ -124,6 +130,7 @@ class MainScene extends Phaser.Scene {
             mute: false,
             volume: 0.10
         });
+        
 
 
     }

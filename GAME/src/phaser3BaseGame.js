@@ -11,6 +11,15 @@ var economy = new Economy();
 var tienda;
 var enemies;
 
+// SONIDOS
+var soundShoot;
+let soundCookieDamaged;
+let soundPlayerDamage;
+let bcMusicMenu;
+let bcMusicGame;
+let endGameMusic;
+
+// JUGADORES
 var player1;
 var player2;
 
@@ -20,14 +29,6 @@ var game = new Phaser.Game(gameConfig);
 //DISPAROS
 var bulletsPlayer1;
 var bulletsPlayer2;
-
-// SONIDOS
-
-var soundShoot;
-let soundCookieDamaged;
-let bcMusicMenu;
-let bcMusicGame;
-let endGameMusic;
 
 // OLEADAS
 let wave = 1;
