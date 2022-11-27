@@ -117,6 +117,14 @@ class MainScene extends Phaser.Scene {
             });
         bcMusicGame.play();
 
+        
+        endGameMusic = this.sound.add("GAMEOVERMUSIC",
+        {
+            loop: true,
+            mute: false,
+            volume: 0.10
+        });
+
 
     }
 
@@ -210,6 +218,8 @@ class MainScene extends Phaser.Scene {
 
         if(player1.hp <= 0 && player2.hp <= 0){
             this.scene.pause();
+            bcMusicGame.pause();
+            endGameMusic.play();
         }
     }
 
@@ -217,7 +227,8 @@ class MainScene extends Phaser.Scene {
         if (tienda.hp <= 0) {
             //! DO SOMETHING HERE (PAUSE THIS SCENE AND START A GAME OVER ONE)
             this.scene.pause();
-
+            bcMusicGame.pause();
+            endGameMusic.play();
         }
     }
 

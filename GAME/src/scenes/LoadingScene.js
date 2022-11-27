@@ -46,6 +46,7 @@ class LoadingScene extends Phaser.Scene
 
         // * Background music
         this.load.audio("GAMEMUSIC", "./assets/musica/Cancion_JeR_1.mp3");
+        this.load.audio("GAMEOVERMUSIC", "assets/musica/Cancion_Derrota.mp3");
 
         // * UI Health Bar
         this.load.image('left-cap', 'assets/interface/Barra Izquierda.png');
