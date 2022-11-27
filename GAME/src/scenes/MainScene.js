@@ -44,12 +44,12 @@ class MainScene extends Phaser.Scene {
         scoreText = this.add.text(375, 16, '$0', { fontSize: '24px', fill: '#000', fontFamily: 'Pixel' });
 
         // * 
-        helpWavesText = this.add.text(400-185, 500, '        PRESS Y \nTO SUMMON THE NEXT WAVE', 
-        { 
-            fontSize: '16px', 
-            fill: '#000', 
-            fontFamily: 'Pixel' 
-        })
+        helpWavesText = this.add.text(400 - 185, 500, '        PRESS Y \nTO SUMMON THE NEXT WAVE',
+            {
+                fontSize: '16px',
+                fill: '#000',
+                fontFamily: 'Pixel'
+            })
 
         //TIENDA HUD
         let backgroundShop = this.add.image(400, 300, "PMENU");
@@ -96,12 +96,12 @@ class MainScene extends Phaser.Scene {
 
         // Daños
 
-        soundCookieDamaged =  this.sound.add('COOKIEDAMAGED', 
-        {
-            mute: false,
-            volume: 0.15,
-        });
-                
+        soundCookieDamaged = this.sound.add('COOKIEDAMAGED',
+            {
+                mute: false,
+                volume: 0.15,
+            });
+
         soundCookieDamaged = this.sound.add('COOKIEDAMAGED',
             {
                 mute: false,
@@ -117,7 +117,7 @@ class MainScene extends Phaser.Scene {
             });
         bcMusicGame.play();
 
-    
+
     }
 
     update() {
@@ -132,7 +132,7 @@ class MainScene extends Phaser.Scene {
         enemiesArray = enemies.getChildren();
         this.eventHandler();
         this.checkEnemiesHP();
-        
+
         this.checkSomethingAlive()
         this.wavesManager();
         this.enemiesAttack();
@@ -189,30 +189,28 @@ class MainScene extends Phaser.Scene {
             }
         }
     }
-    
+
     addScore() {
         score += 10;
         scoreText.setText("$" + score);
     }
 
-    checkShopHp(){
-        if(tienda.hp <= 0)
-        {
+    checkShopHp() {
+        if (tienda.hp <= 0) {
             //! DO SOMETHING HERE (PAUSE THIS SCENE AND START A GAME OVER ONE)
             this.scene.pause();
-            
+
         }
     }
-    checkSomethingAlive()
-    {
+
+    checkSomethingAlive() {
         for (let i = 0; i < enemiesArray.length; i++) {
             if (enemiesArray[i].hp > 0 && enemiesArray.length > 0) {
                 somethingAlive = true;
                 break;
             }
         }
-        if(enemiesArray.length == 0)
-        {
+        if (enemiesArray.length == 0) {
             somethingAlive = false;
             helpWavesText.setVisible(true);
         } else {
@@ -279,8 +277,7 @@ class MainScene extends Phaser.Scene {
             let xPosEnemy;
             let yPosEnemy;
 
-            switch (enemyDirection)
-            {
+            switch (enemyDirection) {
                 case 0:
                     xPosEnemy = (Math.random() * 1200) - 200;
                     yPosEnemy = (Math.random() * 100) - 200;
@@ -289,7 +286,7 @@ class MainScene extends Phaser.Scene {
                     xPosEnemy = (Math.random() * 200) + 800;
                     yPosEnemy = (Math.random() * 1000) - 200;
                     break;
-                case 2: 
+                case 2:
                     xPosEnemy = (Math.random() * 1200) - 200;
                     yPosEnemy = (Math.random() * 100) + 700;
                     break;
@@ -323,11 +320,11 @@ class MainScene extends Phaser.Scene {
         }
     }
 
-    enemiesAttack(){
-        var enemiesArray =  new Array();
+    enemiesAttack() {
+        var enemiesArray = new Array();
         enemiesArray = enemies.getChildren();
-        for(let i = 0; i < enemiesArray.length;i++){
-            this.physics.moveToObject(enemiesArray[i],tienda,30);
+        for (let i = 0; i < enemiesArray.length; i++) {
+            this.physics.moveToObject(enemiesArray[i], tienda, 30);
             enemiesArray[i].animate();
         }
 
