@@ -189,15 +189,15 @@ class MainScene extends Phaser.Scene {
                 enemiesArray[i].setActive(false);
                 enemiesArray[i].setVisible(false);
                 enemiesArray[i].hp = -100;
+                this.addScore(enemiesArray[i].value);
                 enemiesArray.splice(i, 1);
-                this.addScore();
                 soundMoney.play();
             }
         }
     }
 
-    addScore() {
-        score += 10;
+    addScore(enemyValue) {
+        score += enemyValue;
         scoreText.setText("$" + score);
     }
 

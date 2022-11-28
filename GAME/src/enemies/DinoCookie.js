@@ -10,7 +10,7 @@ class dinoCookie extends Phaser.GameObjects.Sprite {
     this.attackSpeed = 6;
     this.lastAttacked = false;
     this.setTexture("DINOCOOKIE");
-    this.value = 100;
+    this.value = 50;
     this.setScale(1.5);
     scene.physics.world.enable(this);
     scene.add.existing(this);

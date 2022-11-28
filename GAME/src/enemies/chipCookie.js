@@ -10,7 +10,7 @@ class chipCookie extends Phaser.GameObjects.Sprite {
     this.attackSpeed = 5;
     this.lastAttacked = false;
     this.setTexture("CHIPCOOKIE");
-    this.value = 100;
+    this.value = 10;
     scene.physics.world.enable(this);
     scene.add.existing(this);
     this.setScale(0.7);
