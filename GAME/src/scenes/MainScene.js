@@ -223,7 +223,7 @@ class MainScene extends Phaser.Scene {
             player2.setVisible(false);
         }
 
-        if(player1.hp <= 0 && player2.hp <= d0){
+        if(player1.hp <= 0 && player2.hp <= 0){
             this.scene.pause();
             bcMusicGame.pause();
             endGameMusic.play();
