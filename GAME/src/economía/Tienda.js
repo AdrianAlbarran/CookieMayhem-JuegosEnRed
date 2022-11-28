@@ -63,10 +63,13 @@ class Tienda extends Phaser.GameObjects.Sprite {
       switch (i) {
         case 0:
           this.shop1 = buffos[value];
+          break;
         case 1:
           this.shop2 = buffos[value];
+          break;
         case 2:
           this.shop3 = buffos[value];
+          break;
       }
     }
     console.log(buffos);
@@ -79,17 +82,17 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.backgroundShop = this.scene.add.image(400, 300, "PMENU");
     this.item1 = this.scene.add.image(400, 200, "PTIENDA").setInteractive();
     this.item1.on('pointerdown', () => {
-      console.log(this.shop1)
+      this.buffManager(this.shop1);
   });
     this.text1 = this.scene.add.text(400, 200, tienda.shop1.name);
     this.item2 = this.scene.add.image(600, 225, "PTIENDA").setInteractive();
     this.item2.on('pointerdown', () => {
-      console.log(this.shop2)
+      this.buffManager(this.shop2);
   });
     this.text2 = this.scene.add.text(600, 225, tienda.shop2.name);
     this.item3 = this.scene.add.image(200, 225, "PTIENDA").setInteractive();
     this.item3.on('pointerdown', () => {
-      console.log(this.shop3)
+      this.buffManager(this.shop3);
   });
     this.text3 = this.scene.add.text(200, 225, tienda.shop3.name);
     this.exit = this.scene.add
@@ -135,6 +138,18 @@ class Tienda extends Phaser.GameObjects.Sprite {
     }
   }
 
+  buffManager(aux){
+    switch(aux.id){
+      case 0:console.log("dmg");
+      break;
+      case 1:console.log("as");
+      break;
+      case 2:console.log("ap");
+      break;
+      case 3:console.log("ms");
+      break;
+    }
+  }
   createHPbar() {
     const leftShadowCap = this.scene.add
       .image(this.xBar, this.yBar, "left-cap-shadow")
