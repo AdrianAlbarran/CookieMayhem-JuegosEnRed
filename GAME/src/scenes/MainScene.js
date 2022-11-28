@@ -313,9 +313,10 @@ class MainScene extends Phaser.Scene {
 
     wavesManager() {
         var newWaveKey = this.input.keyboard.addKey('Y');
-
+       
         if (newWaveKey.isDown) {
             if (!somethingAlive) {
+                tienda.openShop();
                 enemies.clear(true, true);
                 this.fillEnemiesGroup();
                 wave++;

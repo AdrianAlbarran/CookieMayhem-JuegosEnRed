@@ -16,6 +16,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.shop3;
     this.open = true ;
     this.scene = scene;
+    this.first = false;
     //HP Bar
     this.fullWidth = 120;
     this.xBar = this.x - 67;
@@ -30,18 +31,23 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.text2;
     this.text3;
     this.exit;
+ 
 
     this.createHPbar(scene);
   }
 
   openShop() {
+
     if ((wave % 3) == 0) {
       this.openShopNormal();
     } else {
       this.openShopNormal();
       console.log("help");
     }
-    this.createInterface();
+    if(!this.first){
+      this.createInterface();
+      this.first = true;
+    }
   }
 
   //Esta función está por hacer
