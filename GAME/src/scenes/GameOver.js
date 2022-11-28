@@ -13,6 +13,7 @@ class GameOver extends Phaser.Scene {
         }).setOrigin(0.5).setInteractive();
 
         mainMenu.on('pointerdown', () => {
+            wave = 1;
             this.scene.start("mainMenu");
             endGameMusic.pause();
         });
