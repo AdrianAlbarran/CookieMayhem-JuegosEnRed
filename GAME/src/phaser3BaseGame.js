@@ -16,6 +16,7 @@ var soundShoot;
 let soundCookieDamaged;
 let soundPlayerDamage;
 let soundPlayerSteps;
+let soundMoney;
 let bcMusicMenu;
 let bcMusicGame;
 let endGameMusic;

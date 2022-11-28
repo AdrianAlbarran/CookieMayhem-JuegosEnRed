@@ -49,7 +49,9 @@ class LoadingScene extends Phaser.Scene
         // * Daño a Jugador
         this.load.audio("PLAYERDAMAGE", "./assets/sonidos/Daño_Tazas.mp3");
         // * Pasos Jugador
-        this.load.audio("PLAYERSTEPS", "./assets/sonidos/Pasos.mp3");
+        this.load.audio("PLAYERSTEPS", "assets/sonidos/Pasos.mp3");
+        // * Dinero
+        this.load.audio("MONEYSOUND", "./assets/sonidos/CogerDinero.mp3");
 
         // * Background music
         this.load.audio("GAMEMUSIC", "./assets/musica/Cancion_JeR_1.mp3");

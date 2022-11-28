@@ -97,6 +97,12 @@ class MainScene extends Phaser.Scene {
                 volume: 0.15,
             });
 
+        soundMoney = this.sound.add('MONEYSOUND',
+            {
+                mute: false,
+                volume: 0.075,
+            });
+
         // * MUSIC BACKGROUND
         bcMusicGame = this.sound.add("GAMEMUSIC",
             {
@@ -185,6 +191,7 @@ class MainScene extends Phaser.Scene {
                 enemiesArray[i].hp = -100;
                 enemiesArray.splice(i, 1);
                 this.addScore();
+                soundMoney.play();
             }
         }
     }
