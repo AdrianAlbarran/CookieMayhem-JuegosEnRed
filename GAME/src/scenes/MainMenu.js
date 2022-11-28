@@ -9,7 +9,7 @@ class MainMenu extends Phaser.Scene {
     create() {
         addEventListener('mouseover', () => { });
 
-        this.background = this.add.image(400, 300, "background");
+        this.background = this.add.image(400, 300, "background").setScale(1.01);
         this.logo = this.add.image(400, 200, "Logo");
         this.logo.setScale(0.5);
 

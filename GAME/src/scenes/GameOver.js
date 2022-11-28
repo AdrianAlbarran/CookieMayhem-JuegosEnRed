@@ -15,7 +15,7 @@ class GameOver extends Phaser.Scene {
 
        this.add.image(400, 300, "gameOver");
        let mouseSpriteMain = this.add.image(495, 200, "sugarIcon");
-       let mouseSpriteRestart = this.add.image(555, 250, "sugarIcon");
+       let mouseSpriteRestart = this.add.image(535, 250, "sugarIcon");
 
        mouseSpriteMain.setVisible(false);
        mouseSpriteRestart.setVisible(false);
@@ -24,7 +24,7 @@ class GameOver extends Phaser.Scene {
             fontSize: '26px', fill: '#j78999', fontFamily: 'Pixel'
         }).setOrigin(0.5).setInteractive();
 
-        let restart = this.add.text(440, 250, "RESTART", {
+        let restart = this.add.text(420, 250, "RESTART", {
             fontSize: '26px', fill: '#j78999', fontFamily: 'Pixel'
         }).setOrigin(0.5).setInteractive();
 
