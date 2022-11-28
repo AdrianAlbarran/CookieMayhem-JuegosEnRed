@@ -34,19 +34,21 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
                 // !FIX: this.fireShotgun(direction, 700, 50, shotgunDisplacement);
                 break;
             case 1:
-                this.damage = 80;
+                this.damage = 80 * player.extraDmg;
                 this.maxTraverse = 2;
                 this.fireRevolver(direction, 1800, 50);
                 break;
             case 2:
                 //CONFIG BULLETS FOR SUBMACHINE GUN
-                this.damage = 20;
+
+                this.damage = 20 * player.extraDmg;
                 this.fireSubMachine(direction, 700, 133);
+                console.log(player.extraBullets);
                 break;
         }
 
     }
-    
+
 
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
@@ -180,15 +182,17 @@ class Bullets extends Phaser.Physics.Arcade.Group {
 
     fireBullet(x, y, player, type) {
 
-        if(player.hp > 0){
-            let bullet = this.getFirstDead(false);
+        for (let aux = 0; aux <= player.extraBullets; aux++) {
+            if (player.hp > 0) {
+                let bullet = this.getFirstDead(false);
 
-            if (bullet) {
-                bullet.fireConfig(x, y, player, type);
-                bullet.lastEnemyHitted = undefined;
+                if (bullet) {
+                    bullet.fireConfig(x, y, player, type);
+                    bullet.lastEnemyHitted = undefined;
+                }
             }
         }
-        
+
     }
 }
 
