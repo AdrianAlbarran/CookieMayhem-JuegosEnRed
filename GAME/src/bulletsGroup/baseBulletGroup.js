@@ -163,7 +163,6 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
             }
         }
         bullet.lastEnemyHitted = enemy;
-
     }
 
 }

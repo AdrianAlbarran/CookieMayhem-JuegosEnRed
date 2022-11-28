@@ -17,19 +17,25 @@ class MainMenu extends Phaser.Scene {
         let mouseSpritePlay = this.add.image(500, 370, "sugarIcon");
         let mouseSpriteSettings = this.add.image(520, 430, "sugarIcon");
         let sound = 0;
+        let active  = 0;
 
         mouseSpritePlay.setVisible(false);
         mouseSpriteSettings.setVisible(false);
+        var bool = false
 
         fullscreen.on('pointerup', () => {
             bcSelect.play();
-            if (this.scale.isFullscreen)
+            if (bool)
             {
-                this.scale.stopFullscreen();
+                window['game']['canvas'][this.sys.game.device.fullscreen.cancel];
+                bool = false;
+                console.log(bool);
             }
             else
             {
-                window['game']['canvas'][game.device.fullscreen.request]();
+                window['game']['canvas'][this.sys.game.device.fullscreen.request]();
+                bool = true;
+                console.log(bool);
             }
         });
 
@@ -61,6 +67,11 @@ class MainMenu extends Phaser.Scene {
             textSalir.setVisible(true);
             textSonido.setVisible(true);
             bcSelect.play();
+            if (active == 1) {
+                mouseSpriteSound.setVisible(true);
+            } else {
+                mouseSpriteSound.setVisible(false);
+            }
         });
 
         textoAjustes.on('pointerover', () => {
@@ -82,10 +93,11 @@ class MainMenu extends Phaser.Scene {
             settingsBackground.setVisible(false);
             textSalir.setVisible(false);
             textSonido.setVisible(false);
+            mouseSpriteSound.setVisible(false);
             bcSelect.play();
         });
 
-        var textSonido = this.add.text(400, 200, 'MUTE SOUND', {
+        var textSonido = this.add.text(350, 200, 'MUTE SOUND', {
             fontSize: '26px', fill: '#000', fontFamily: 'Pixel'
         }).setOrigin(0.5).setInteractive();
         textSonido.setVisible(false);
@@ -94,11 +106,15 @@ class MainMenu extends Phaser.Scene {
             {
                 case 0:
                     game.sound.mute = true;
+                    mouseSpriteSound.setVisible(true);
                     sound = 1;
+                    active = 1;
                     break;
                 case 1:
                     game.sound.mute = false;
+                    mouseSpriteSound.setVisible(false);
                     sound = 0;
+                    active = 0;
                     break;
             }
             bcSelect.play();
@@ -119,6 +135,8 @@ class MainMenu extends Phaser.Scene {
             volume: 0.10
         });
 
+        let mouseSpriteSound = this.add.image(530, 200, "sugarIcon").setScale(2);
+        mouseSpriteSound.setVisible(false);
         bcMusicMenu.play();
     }
 }
