@@ -62,9 +62,9 @@ class LoadingScene extends Phaser.Scene
         this.load.image('middle', 'assets/interface/Barra Medio.png');
         this.load.image('right-cap', 'assets/interface/Barra Derecha.png');
     
-        this.load.image('left-cap-shadow', 'assets/uipack/PNG/barHorizontal_shadow_left.png');
-        this.load.image('middle-shadow', 'assets/uipack/PNG/barHorizontal_shadow_mid.png');
-        this.load.image('right-cap-shadow', 'assets/uipack/PNG/barHorizontal_shadow_right.png');;
+        this.load.image('left-cap-shadow', 'assets/interface/barHorizontal_shadow_left.png');
+        this.load.image('middle-shadow', 'assets/interface/barHorizontal_shadow_mid.png');
+        this.load.image('right-cap-shadow', 'assets/interface/barHorizontal_shadow_right.png');;
 
         
     }
