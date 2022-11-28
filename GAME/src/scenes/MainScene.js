@@ -130,6 +130,8 @@ class MainScene extends Phaser.Scene {
         this.enemiesAttack();
         this.checkShopHp();
         this.playersAlive();
+        console.log(player1);
+        console.log(player2);
     }
 
     initializeBullets() {
@@ -142,27 +144,32 @@ class MainScene extends Phaser.Scene {
 
         /*
         * TYPE OF GUN
-        * 0 - SHOTGUN
-        * 1 - REVOLVER
-        * 2 - SUBMACHINE GUN
+        * 0 - SHOTGUN         - Fire Rate: 800
+        * 1 - REVOLVER        - Fire Rate: 500
+        * 2 - SUBMACHINE GUN  - Fire Rate: 200
         */
-        var typeShootingPlayer1 = 1;
-        var typeShootingPlayer2 = 2;
+        player1.weaponType = 1;
+        player1.baseFireRate = 500;
+        player1.actualFireRate = player1.baseFireRate * player1.extraFireRate;
+
+        player2.weaponType = 2;
+        player2.baseFireRate = 200;
+        player2.actualFireRate = player2.baseFireRate * player2.extraFireRate;
 
         var keyShoot1 = this.input.keyboard.addKey('ENTER');
-        var stillDown1 = this.input.keyboard.checkDown(keyShoot1, 500);
+        var stillDown1 = this.input.keyboard.checkDown(keyShoot1, player1.actualFireRate);
 
         if (stillDown1) {
             soundShoot.play();
-            bulletsPlayer1.fireBullet(player1.x, player1.y, player1, typeShootingPlayer1);
+            bulletsPlayer1.fireBullet(player1.x, player1.y, player1, player1.weaponType);
         }
 
         var keyShoot2 = this.input.keyboard.addKey('SPACE');
-        var stillDown2 = this.input.keyboard.checkDown(keyShoot2, 200);
+        var stillDown2 = this.input.keyboard.checkDown(keyShoot2, player2.actualFireRate);
 
         if (stillDown2) {
             soundShoot.play();
-            bulletsPlayer2.fireBullet(player2.x, player2.y, player2, typeShootingPlayer2);
+            bulletsPlayer2.fireBullet(player2.x, player2.y, player2, player2.weaponType);
         }
 
     }

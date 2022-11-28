@@ -13,6 +13,20 @@ class Player extends Phaser.GameObjects.Sprite {
     this.invulnerability = false;
     this.lastDirection = 0;
     this.lastDirectionInput = 11;
+
+    //VARIABLES BUFFOS
+    this.extraDmg = 1;
+    this.extraFireRate = 1;
+    this.extraBullets = 0;
+    this.extraMS = 1;
+
+    //PLAYER FIRE RATE, WEAPON AND MS
+    this.weaponType;
+    this.baseFireRate;
+    this.actualFireRate = this.baseFireRate * this.extraFireRate;
+    this.baseMS = 160;
+    this.actualMS = this.baseMS * this.extraMS;
+
   }
 
   playerIntialize(scene) {
@@ -73,18 +87,18 @@ class Player extends Phaser.GameObjects.Sprite {
 
     if (this.id == "PLAYER1") {
       if (cursors.left.isDown && cursors.right.isUp) {
-        this.body.setVelocityX(-160);
+        this.body.setVelocityX(-this.actualMS);
         this.anims.play("left1", true);
         this.lastDirection = 0;
         this.lastDirectionInput = 13;
       } else if (cursors.right.isDown && cursors.left.isUp) {
-        this.body.setVelocityX(160);
+        this.body.setVelocityX(this.actualMS);
         this.anims.play("right1", true);
         this.lastDirection = 1;
         this.lastDirectionInput = 14;
         
       } else if (cursors.up.isDown && cursors.down.isUp) {
-        this.body.setVelocityY(-160);
+        this.body.setVelocityY(-this.actualMS);
         if(this.lastDirection == 1)
         {
           this.anims.play("right1", true);
@@ -95,7 +109,7 @@ class Player extends Phaser.GameObjects.Sprite {
         this.lastDirectionInput = 11;
 
       } else if (cursors.down.isDown && cursors.up.isUp) {
-        this.body.setVelocityY(160);
+        this.body.setVelocityY(this.actualMS);
         if(this.lastDirection == 1)
         {
           this.anims.play("right1", true);
@@ -118,7 +132,7 @@ class Player extends Phaser.GameObjects.Sprite {
       var keydown_A = scene.input.keyboard.addKey("A");
 
       if (keydown_W.isDown && keydown_S.isUp) {
-        those.body.setVelocityY(-150);
+        those.body.setVelocityY(-this.actualMS);
         if(this.lastDirection == 1)
         {
           this.anims.play("right2", true);
@@ -128,7 +142,7 @@ class Player extends Phaser.GameObjects.Sprite {
         }
         those.lastDirectionInput = 11;
       } else if (keydown_S.isDown && keydown_W.isUp) {
-        those.body.setVelocityY(150);
+        those.body.setVelocityY(this.actualMS);
         if(this.lastDirection == 1)
         {
           this.anims.play("right2", true);
@@ -138,12 +152,12 @@ class Player extends Phaser.GameObjects.Sprite {
         }
         those.lastDirectionInput = 12;
       } else if (keydown_D.isDown && keydown_A.isUp) {
-        those.body.setVelocityX(150);
+        those.body.setVelocityX(this.actualMS);
         those.anims.play("right2", true);
         those.lastDirection = 1;
         those.lastDirectionInput = 14;
       } else if (keydown_A.isDown && keydown_D.isUp) {
-        those.body.setVelocityX(-150);
+        those.body.setVelocityX(-this.actualMS);
         those.anims.play("left2", true);
         those.lastDirection = 2;
         those.lastDirectionInput = 13;
@@ -176,6 +190,27 @@ class Player extends Phaser.GameObjects.Sprite {
         aux.invulnerability = false;
       });
       
+  }
+
+  // Establecer buffos al jugador, mejora de estadisticas
+  setBuffs(amount, id) {
+    switch(id)
+    {
+      case 0:
+        this.extraDmg += amount;
+        break;
+      case 1:
+        this.extraFireRate -= amount;
+        this.actualFireRate = this.baseFireRate *  this.extraFireRate;
+        break;
+      case 2:
+        this.extraBullets += amount;
+        break;
+      case 3:
+        this.extraMS += amount;
+        this.actualMS = this.baseMS * this.extraMS;
+        break;
+    }
   }
   
 }
