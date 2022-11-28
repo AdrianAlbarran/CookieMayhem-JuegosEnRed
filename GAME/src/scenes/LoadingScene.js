@@ -32,6 +32,12 @@ class LoadingScene extends Phaser.Scene
         this.load.spritesheet("PLAYER1", "./assets/jugadores/Jugador_1/spriteP1Corriendo.png", {frameWidth: 64, frameHeight: 64 });
         this.load.spritesheet("PLAYER2", "./assets/jugadores/Jugador_2/spriteSCorriendoP2.png", {frameWidth: 64, frameHeight: 64 });
 
+        //CORAZON PLAYER
+        this.load.image("HP", "assets/interface/CorazonNuevoP1.png");
+        this.load.image("HPH", "assets/interface/CorazonPartidoNuevoP1.png");
+        this.load.image("HP1", "assets/interface/CorazonNuevoP2.png");
+        this.load.image("HPH1", "assets/interface/CorazonPartidoNuevoP2.png");
+
         // * ENEMIGOS
         this.load.spritesheet("CCANIM", "./assets/enemigos/cookie/cookie_spritesheet.png", {frameWidth: 64, frameHeight: 64 });
         this.load.spritesheet("OCANIM", "./assets/enemigos/oreo/oreo_sprittesheet.png", {frameWidth: 64, frameHeight: 64 });
