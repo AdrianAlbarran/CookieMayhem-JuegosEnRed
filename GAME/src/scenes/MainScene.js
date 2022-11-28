@@ -33,20 +33,20 @@ class MainScene extends Phaser.Scene {
         player2.playerIntialize(this);
 
         //Interface health player 1
-        this.healthPlayer1Low = this.add.image(30, 30, "HP").setDepth(4);
-        this.healthPlayer1Medium = this.add.image(60, 30, "HP").setDepth(4);
-        this.healthPlayer1Full = this.add.image(90, 30, "HP").setDepth(4);
-        this.healthPlayer1LowHalf = this.add.image(30, 30, "HPH").setDepth(4);
-        this.healthPlayer1MediumHalf = this.add.image(60, 30, "HPH").setDepth(4);
-        this.healthPlayer1FullHalf = this.add.image(90, 30, "HPH").setDepth(4);
+        this.healthPlayer1Low = this.add.image(40, 40, "HP").setDepth(4).setScale(2);
+        this.healthPlayer1Medium = this.add.image(90, 40, "HP").setDepth(4).setScale(2);
+        this.healthPlayer1Full = this.add.image(140, 40, "HP").setDepth(4).setScale(2);
+        this.healthPlayer1LowHalf = this.add.image(40, 40, "HPH").setDepth(4).setScale(2);
+        this.healthPlayer1MediumHalf = this.add.image(90, 40, "HPH").setDepth(4).setScale(2);
+        this.healthPlayer1FullHalf = this.add.image(140, 40, "HPH").setDepth(4).setScale(2);
 
         //Interface health player 2
-        this.healthPlayer2Low = this.add.image(30, 60, "HP1").setDepth(4);
-        this.healthPlayer2Medium = this.add.image(60, 60, "HP1").setDepth(4);
-        this.healthPlayer2Full = this.add.image(90, 60, "HP1").setDepth(4);
-        this.healthPlayer2LowHalf = this.add.image(30, 60, "HPH1").setDepth(4);
-        this.healthPlayer2MediumHalf = this.add.image(60, 60, "HPH1").setDepth(4);
-        this.healthPlayer2FullHalf = this.add.image(90, 60, "HPH1").setDepth(4); 
+        this.healthPlayer2Low = this.add.image(660, 40, "HP1").setDepth(4).setScale(2);
+        this.healthPlayer2Medium = this.add.image(710, 40, "HP1").setDepth(4).setScale(2);
+        this.healthPlayer2Full = this.add.image(760, 40, "HP1").setDepth(4).setScale(2);
+        this.healthPlayer2LowHalf = this.add.image(660, 40, "HPH1").setDepth(4).setScale(2);
+        this.healthPlayer2MediumHalf = this.add.image(710, 40, "HPH1").setDepth(4).setScale(2);
+        this.healthPlayer2FullHalf = this.add.image(760, 40, "HPH1").setDepth(4).setScale(2); 
 
         economy.economyIntialize(this);
         tienda.openShop();
@@ -257,14 +257,19 @@ class MainScene extends Phaser.Scene {
         if(player1.hp <= 85 && player1.hp > 70) {
             this.healthPlayer1Full.setVisible(false);
         } else if(player1.hp <= 70 && player1.hp > 55) {
+            this.healthPlayer1Full.setVisible(false);
             this.healthPlayer1FullHalf.setVisible(false);
         } else if(player1.hp <= 60 && player1.hp > 45) {
+            this.healthPlayer1FullHalf.setVisible(false);
             this.healthPlayer1Medium.setVisible(false);
         } else if(player1.hp <= 45 && player1.hp > 30) {
+            this.healthPlayer1Medium.setVisible(false);
             this.healthPlayer1MediumHalf.setVisible(false);
         } else if(player1.hp <= 30 && player1.hp > 15) {
+            this.healthPlayer1MediumHalf.setVisible(false);
             this.healthPlayer1Low.setVisible(false);
         } else if(player1.hp <= 15) {
+            this.healthPlayer1Low.setVisible(false);
             this.healthPlayer1LowHalf.setVisible(false);
         }
 
@@ -272,14 +277,19 @@ class MainScene extends Phaser.Scene {
         if(player2.hp <= 85 && player2.hp > 70) {
             this.healthPlayer2Full.setVisible(false);
         } else if(player2.hp <= 70 && player2.hp > 55) {
+            this.healthPlayer2Full.setVisible(false);
             this.healthPlayer2FullHalf.setVisible(false);
         } else if(player2.hp <= 60 && player2.hp > 45) {
+            this.healthPlayer2FullHalf.setVisible(false);
             this.healthPlayer2Medium.setVisible(false);
         } else if(player2.hp <= 45 && player2.hp > 30) {
+            this.healthPlayer2Medium.setVisible(false);
             this.healthPlayer2MediumHalf.setVisible(false);
         } else if(player2.hp <= 30 && player2.hp > 15) {
+            this.healthPlayer2MediumHalf.setVisible(false);
             this.healthPlayer2Low.setVisible(false);
         } else if(player2.hp <= 15) {
+            this.healthPlayer2Low.setVisible(false);
             this.healthPlayer2LowHalf.setVisible(false);
         }
     }
