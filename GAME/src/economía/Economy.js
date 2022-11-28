@@ -6,11 +6,15 @@ class Economy
     {
         this.money;
         this.text;
-        this.item1;
     }
 
     economyIntialize(that)
     {
         this.money = 0;
+    }
+
+    setMoney(value){
+        this.money -= value;
+        this.text.setText("$" + this.money);
     }
 }

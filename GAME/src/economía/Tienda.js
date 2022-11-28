@@ -44,9 +44,13 @@ class Tienda extends Phaser.GameObjects.Sprite {
       this.openShopNormal();
       console.log("help");
     }
+    
     if(!this.first){
       this.createInterface();
+
       this.first = true;
+    }else{
+      this.updateInterface();
     }
   }
 
@@ -91,17 +95,17 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.item1.on('pointerdown', () => {
       this.buffManager(this.shop1);
   });
-    this.text1 = this.scene.add.text(400, 200, tienda.shop1.name).setDepth(3);
+    this.text1 = this.scene.add.text(400, 200, this.shop1.name).setDepth(3);
     this.item2 = this.scene.add.image(600, 225, "PTIENDA").setInteractive().setDepth(3);
     this.item2.on('pointerdown', () => {
       this.buffManager(this.shop2);
   });
-    this.text2 = this.scene.add.text(600, 225, tienda.shop2.name).setDepth(3);
+    this.text2 = this.scene.add.text(600, 225, this.shop2.name).setDepth(3);
     this.item3 = this.scene.add.image(200, 225, "PTIENDA").setInteractive().setDepth(3);
     this.item3.on('pointerdown', () => {
       this.buffManager(this.shop3);
   });
-    this.text3 = this.scene.add.text(200, 225, tienda.shop3.name).setDepth(3);
+    this.text3 = this.scene.add.text(200, 225, this.shop3.name).setDepth(3);
 
     this.backgroundShop.setVisible(false);
     this.text1.setVisible(false);
@@ -110,6 +114,15 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.item1.setVisible(false);
     this.item2.setVisible(false);
     this.item3.setVisible(false);
+  }
+
+  updateInterface(){
+    // ! Falta añadir los iconos de items para que se actualicen
+
+    this.text1.setText(this.shop1.name);
+    this.text2.setText(this.shop2.name);
+    this.text3.setText(this.shop3.name);
+    
   }
 
   interfaceManager() {
@@ -127,26 +140,33 @@ class Tienda extends Phaser.GameObjects.Sprite {
   buffManager(buff){
     switch(buff.id){
       case 0:
-        console.log("dmg");
-        // ! Esto deberia ser con una funcion que modifique x jugador dependiendo del boton que pulsas 
-        // ! (mirar GDD)
+        if(player1.economy.money>= buff.value){
         player1.setBuffs(buff.percentage, buff.id);
         player2.setBuffs(buff.percentage, buff.id);
+        player1.economy.setMoney(buff.value)
+        }
       break;
       case 1:
-        console.log("as");
+        if(player1.economy.money>= buff.value){
         player1.setBuffs(buff.percentage, buff.id);
         player2.setBuffs(buff.percentage, buff.id);
+        player1.economy.setMoney(buff.value)
+        }
       break;
       case 2:
-        console.log("ap");
+        if(player1.economy.money>= buff.value){
         player1.setBuffs(buff.percentage, buff.id);
         player2.setBuffs(buff.percentage, buff.id);
+        player1.economy.setMoney(buff.value)
+        }
       break;
       case 3:
-        console.log("ms");
+        if(player1.economy.money>= buff.value){
         player1.setBuffs(buff.percentage, buff.id);
         player2.setBuffs(buff.percentage, buff.id);
+        player1.economy.setMoney(buff.value)
+
+        }
       break;
     }
   }

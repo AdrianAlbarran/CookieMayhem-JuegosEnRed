@@ -57,8 +57,8 @@ class MainScene extends Phaser.Scene {
         this.physics.add.collider(enemies, enemies);
 
         // * TEXTOS
-        score = 0;
-        scoreText = this.add.text(375, 16, '$0', { fontSize: '24px', fill: '#000', fontFamily: 'Pixel' });
+        economy.money = 0;
+        economy.text = this.add.text(375, 16, '$0', { fontSize: '24px', fill: '#000', fontFamily: 'Pixel' });
 
         // * 
         helpWavesText = this.add.text(400 - 185, 500, '        PRESS Y \nTO SUMMON THE NEXT WAVE',
@@ -228,8 +228,8 @@ class MainScene extends Phaser.Scene {
     }
 
     addScore(enemyValue) {
-        score += enemyValue;
-        scoreText.setText("$" + score);
+        economy.money +=enemyValue;
+        economy.text.setText("$" + economy.money);
     }
 
     playersAlive() {
@@ -318,8 +318,8 @@ class MainScene extends Phaser.Scene {
             if (!somethingAlive) {
                 tienda.openShop();
                 enemies.clear(true, true);
-                this.fillEnemiesGroup();
                 wave++;
+                this.fillEnemiesGroup();
             }
         }
 
