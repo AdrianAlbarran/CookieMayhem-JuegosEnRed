@@ -32,6 +32,22 @@ class MainScene extends Phaser.Scene {
         player1.playerIntialize(this);
         player2.playerIntialize(this);
 
+        //Interface health player 1
+        this.healthPlayer1Low = this.add.image(30, 30, "HP");
+        this.healthPlayer1Medium = this.add.image(60, 30, "HP");
+        this.healthPlayer1Full = this.add.image(90, 30, "HP");
+        this.healthPlayer1LowHalf = this.add.image(30, 30, "HPH");
+        this.healthPlayer1MediumHalf = this.add.image(60, 30, "HPH");
+        this.healthPlayer1FullHalf = this.add.image(90, 30, "HPH");
+
+        //Interface health player 2
+        this.healthPlayer2Low = this.add.image(30, 60, "HP1");
+        this.healthPlayer2Medium = this.add.image(60, 60, "HP1");
+        this.healthPlayer2Full = this.add.image(90, 60, "HP1");
+        this.healthPlayer2LowHalf = this.add.image(30, 60, "HPH1");
+        this.healthPlayer2MediumHalf = this.add.image(60, 60, "HPH1");
+        this.healthPlayer2FullHalf = this.add.image(90, 60, "HPH1"); 
+
         economy.economyIntialize(this);
         tienda.openShop();
 
@@ -149,6 +165,9 @@ class MainScene extends Phaser.Scene {
         this.enemiesAttack();
         this.checkShopHp();
         this.playersAlive();
+        this.playersHealth();
+        console.log(player1);
+        console.log(player2);
     }
 
     initializeBullets() {
@@ -161,27 +180,32 @@ class MainScene extends Phaser.Scene {
 
         /*
         * TYPE OF GUN
-        * 0 - SHOTGUN
-        * 1 - REVOLVER
-        * 2 - SUBMACHINE GUN
+        * 0 - SHOTGUN         - Fire Rate: 800
+        * 1 - REVOLVER        - Fire Rate: 500
+        * 2 - SUBMACHINE GUN  - Fire Rate: 200
         */
-        var typeShootingPlayer1 = 1;
-        var typeShootingPlayer2 = 2;
+        player1.weaponType = 1;
+        player1.baseFireRate = 500;
+        player1.actualFireRate = player1.baseFireRate * player1.extraFireRate;
+
+        player2.weaponType = 2;
+        player2.baseFireRate = 200;
+        player2.actualFireRate = player2.baseFireRate * player2.extraFireRate;
 
         var keyShoot1 = this.input.keyboard.addKey('ENTER');
-        var stillDown1 = this.input.keyboard.checkDown(keyShoot1, 500);
+        var stillDown1 = this.input.keyboard.checkDown(keyShoot1, player1.actualFireRate);
 
         if (stillDown1) {
             soundShoot.play();
-            bulletsPlayer1.fireBullet(player1.x, player1.y, player1, typeShootingPlayer1);
+            bulletsPlayer1.fireBullet(player1.x, player1.y, player1, player1.weaponType);
         }
 
         var keyShoot2 = this.input.keyboard.addKey('SPACE');
-        var stillDown2 = this.input.keyboard.checkDown(keyShoot2, 200);
+        var stillDown2 = this.input.keyboard.checkDown(keyShoot2, player2.actualFireRate);
 
         if (stillDown2) {
             soundShoot.play();
-            bulletsPlayer2.fireBullet(player2.x, player2.y, player2, typeShootingPlayer2);
+            bulletsPlayer2.fireBullet(player2.x, player2.y, player2, player2.weaponType);
         }
 
     }
@@ -225,6 +249,38 @@ class MainScene extends Phaser.Scene {
             bcMusicGame.pause();
             endGameMusic.play();
             this.scene.start("gameOver");
+        }
+    }
+
+    playersHealth() {
+        //PLAYER 1
+        if(player1.hp <= 85 && player1.hp > 70) {
+            this.healthPlayer1Full.setVisible(false);
+        } else if(player1.hp <= 70 && player1.hp > 55) {
+            this.healthPlayer1FullHalf.setVisible(false);
+        } else if(player1.hp <= 60 && player1.hp > 45) {
+            this.healthPlayer1Medium.setVisible(false);
+        } else if(player1.hp <= 45 && player1.hp > 30) {
+            this.healthPlayer1MediumHalf.setVisible(false);
+        } else if(player1.hp <= 30 && player1.hp > 15) {
+            this.healthPlayer1Low.setVisible(false);
+        } else if(player1.hp <= 15) {
+            this.healthPlayer1LowHalf.setVisible(false);
+        }
+
+        //PLAYER 2
+        if(player2.hp <= 85 && player2.hp > 70) {
+            this.healthPlayer2Full.setVisible(false);
+        } else if(player2.hp <= 70 && player2.hp > 55) {
+            this.healthPlayer2FullHalf.setVisible(false);
+        } else if(player2.hp <= 60 && player2.hp > 45) {
+            this.healthPlayer2Medium.setVisible(false);
+        } else if(player2.hp <= 45 && player2.hp > 30) {
+            this.healthPlayer2MediumHalf.setVisible(false);
+        } else if(player2.hp <= 30 && player2.hp > 15) {
+            this.healthPlayer2Low.setVisible(false);
+        } else if(player2.hp <= 15) {
+            this.healthPlayer2LowHalf.setVisible(false);
         }
     }
 

@@ -34,7 +34,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
   }
 
   openShop() {
-    if (wave == 3 || wave == 6 || wave == 9) {
+    if ((wave % 3) == 0) {
       this.openShopNormal();
     } else {
       this.openShopNormal();
@@ -138,18 +138,33 @@ class Tienda extends Phaser.GameObjects.Sprite {
     }
   }
 
-  buffManager(aux){
-    switch(aux.id){
-      case 0:console.log("dmg");
+  buffManager(buff){
+    switch(buff.id){
+      case 0:
+        console.log("dmg");
+        // ! Esto deberia ser con una funcion que modifique x jugador dependiendo del boton que pulsas 
+        // ! (mirar GDD)
+        player1.setBuffs(buff.percentage, buff.id);
+        player2.setBuffs(buff.percentage, buff.id);
       break;
-      case 1:console.log("as");
+      case 1:
+        console.log("as");
+        player1.setBuffs(buff.percentage, buff.id);
+        player2.setBuffs(buff.percentage, buff.id);
       break;
-      case 2:console.log("ap");
+      case 2:
+        console.log("ap");
+        player1.setBuffs(buff.percentage, buff.id);
+        player2.setBuffs(buff.percentage, buff.id);
       break;
-      case 3:console.log("ms");
+      case 3:
+        console.log("ms");
+        player1.setBuffs(buff.percentage, buff.id);
+        player2.setBuffs(buff.percentage, buff.id);
       break;
     }
   }
+
   createHPbar() {
     const leftShadowCap = this.scene.add
       .image(this.xBar, this.yBar, "left-cap-shadow")
