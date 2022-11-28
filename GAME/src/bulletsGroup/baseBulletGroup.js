@@ -42,6 +42,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
                 //CONFIG BULLETS FOR SUBMACHINE GUN
 
                 this.damage = 20 * player.extraDmg;
+                this.maxTraverse = 0;
                 this.fireSubMachine(direction, 700, 133);
                 console.log(player.extraBullets);
                 break;
