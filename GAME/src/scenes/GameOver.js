@@ -12,9 +12,19 @@ class GameOver extends Phaser.Scene {
             fontSize: '26px', fill: '#j78999', fontFamily: 'Pixel'
         }).setOrigin(0.5).setInteractive();
 
+        let restart = this.add.text(400, 250, "RESTART", {
+            fontSize: '26px', fill: '#j78999', fontFamily: 'Pixel'
+        }).setOrigin(0.5).setInteractive();
+
         mainMenu.on('pointerdown', () => {
             wave = 1;
             this.scene.start("mainMenu");
+            endGameMusic.pause();
+        });
+
+        restart.on('pointerdown', () => {
+            wave = 1;
+            this.scene.start("mainScene");
             endGameMusic.pause();
         });
     }
