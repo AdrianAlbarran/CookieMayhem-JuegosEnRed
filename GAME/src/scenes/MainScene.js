@@ -114,6 +114,12 @@ class MainScene extends Phaser.Scene {
                 volume: 0.15,
             });
 
+        soundPlayerSteps = this.sound.add('PLAYERSTEPS',
+            {
+                mute: false,
+                volume: 0.15,
+            });
+
         // * MUSIC BACKGROUND
         bcMusicGame = this.sound.add("GAMEMUSIC",
             {

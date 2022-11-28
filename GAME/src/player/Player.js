@@ -70,6 +70,7 @@ class Player extends Phaser.GameObjects.Sprite {
   movement(scene) {
     var those = this;
     var cursors = scene.input.keyboard.createCursorKeys();
+    soundPlayerSteps.play();
 
     if (this.id == "PLAYER1") {
       if (cursors.left.isDown && cursors.right.isUp) {

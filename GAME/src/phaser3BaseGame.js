@@ -15,6 +15,7 @@ var enemies;
 var soundShoot;
 let soundCookieDamaged;
 let soundPlayerDamage;
+let soundPlayerSteps;
 let bcMusicMenu;
 let bcMusicGame;
 let endGameMusic;
