@@ -33,20 +33,20 @@ class MainScene extends Phaser.Scene {
         player2.playerIntialize(this);
 
         //Interface health player 1
-        this.healthPlayer1Low = this.add.image(30, 30, "HP");
-        this.healthPlayer1Medium = this.add.image(60, 30, "HP");
-        this.healthPlayer1Full = this.add.image(90, 30, "HP");
-        this.healthPlayer1LowHalf = this.add.image(30, 30, "HPH");
-        this.healthPlayer1MediumHalf = this.add.image(60, 30, "HPH");
-        this.healthPlayer1FullHalf = this.add.image(90, 30, "HPH");
+        this.healthPlayer1Low = this.add.image(30, 30, "HP").setDepth(4);
+        this.healthPlayer1Medium = this.add.image(60, 30, "HP").setDepth(4);
+        this.healthPlayer1Full = this.add.image(90, 30, "HP").setDepth(4);
+        this.healthPlayer1LowHalf = this.add.image(30, 30, "HPH").setDepth(4);
+        this.healthPlayer1MediumHalf = this.add.image(60, 30, "HPH").setDepth(4);
+        this.healthPlayer1FullHalf = this.add.image(90, 30, "HPH").setDepth(4);
 
         //Interface health player 2
-        this.healthPlayer2Low = this.add.image(30, 60, "HP1");
-        this.healthPlayer2Medium = this.add.image(60, 60, "HP1");
-        this.healthPlayer2Full = this.add.image(90, 60, "HP1");
-        this.healthPlayer2LowHalf = this.add.image(30, 60, "HPH1");
-        this.healthPlayer2MediumHalf = this.add.image(60, 60, "HPH1");
-        this.healthPlayer2FullHalf = this.add.image(90, 60, "HPH1"); 
+        this.healthPlayer2Low = this.add.image(30, 60, "HP1").setDepth(4);
+        this.healthPlayer2Medium = this.add.image(60, 60, "HP1").setDepth(4);
+        this.healthPlayer2Full = this.add.image(90, 60, "HP1").setDepth(4);
+        this.healthPlayer2LowHalf = this.add.image(30, 60, "HPH1").setDepth(4);
+        this.healthPlayer2MediumHalf = this.add.image(60, 60, "HPH1").setDepth(4);
+        this.healthPlayer2FullHalf = this.add.image(90, 60, "HPH1").setDepth(4); 
 
         economy.economyIntialize(this);
         tienda.openShop();
