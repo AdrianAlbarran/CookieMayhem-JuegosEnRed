@@ -52,6 +52,13 @@ class MainScene extends Phaser.Scene {
                 fontFamily: 'Pixel'
             })
 
+        openShopText = this.add.text(400 - 185, 550, '        PRESS P \nTO OPEN THE PLAYERS SHOP',
+            {
+                fontSize: '16px',
+                fill: '#000',
+                fontFamily: 'Pixel'
+            })
+
 
 
         this.input.keyboard.on('keydown-P', function(event){
@@ -241,8 +248,10 @@ class MainScene extends Phaser.Scene {
         if (enemiesArray.length == 0) {
             somethingAlive = false;
             helpWavesText.setVisible(true);
+            openShopText.setVisible(true);
         } else {
             helpWavesText.setVisible(false);
+            openShopText.setVisible(false);
         }
     }
 

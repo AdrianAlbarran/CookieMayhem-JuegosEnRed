@@ -41,3 +41,4 @@ var enemiesArray = new Array();
 var scoreText;
 var score;
 let helpWavesText;
+let openShopText;
