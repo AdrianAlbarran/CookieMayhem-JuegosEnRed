@@ -6,6 +6,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.hp = 500;
 
     this.setTexture("TIENDA");
+   
     scene.physics.world.enable(this);
     scene.add.existing(this);
     this.body.immovable = true;
@@ -13,7 +14,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.shop1;
     this.shop2;
     this.shop3;
-    this.open = false ;
+    this.open = true ;
     this.scene = scene;
     //HP Bar
     this.fullWidth = 120;
@@ -79,30 +80,22 @@ class Tienda extends Phaser.GameObjects.Sprite {
   }
 
   createInterface() {
-    this.backgroundShop = this.scene.add.image(400, 300, "PMENU");
-    this.item1 = this.scene.add.image(400, 200, "PTIENDA").setInteractive();
+    this.backgroundShop = this.scene.add.image(400, 300, "PMENU").setDepth(2);
+    this.item1 = this.scene.add.image(400, 200, "PTIENDA").setInteractive().setDepth(3);
     this.item1.on('pointerdown', () => {
       this.buffManager(this.shop1);
   });
-    this.text1 = this.scene.add.text(400, 200, tienda.shop1.name);
-    this.item2 = this.scene.add.image(600, 225, "PTIENDA").setInteractive();
+    this.text1 = this.scene.add.text(400, 200, tienda.shop1.name).setDepth(3);
+    this.item2 = this.scene.add.image(600, 225, "PTIENDA").setInteractive().setDepth(3);
     this.item2.on('pointerdown', () => {
       this.buffManager(this.shop2);
   });
-    this.text2 = this.scene.add.text(600, 225, tienda.shop2.name);
-    this.item3 = this.scene.add.image(200, 225, "PTIENDA").setInteractive();
+    this.text2 = this.scene.add.text(600, 225, tienda.shop2.name).setDepth(3);
+    this.item3 = this.scene.add.image(200, 225, "PTIENDA").setInteractive().setDepth(3);
     this.item3.on('pointerdown', () => {
       this.buffManager(this.shop3);
   });
-    this.text3 = this.scene.add.text(200, 225, tienda.shop3.name);
-    this.exit = this.scene.add
-      .text(400, 400, "EXIT", {
-        fontSize: "26px",
-        fill: "#e0000",
-        fontFamily: "Pixel",
-      })
-      .setOrigin(0.5)
-      .setInteractive();
+    this.text3 = this.scene.add.text(200, 225, tienda.shop3.name).setDepth(3);
 
     this.backgroundShop.setVisible(false);
     this.text1.setVisible(false);
@@ -111,31 +104,18 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.item1.setVisible(false);
     this.item2.setVisible(false);
     this.item3.setVisible(false);
-    this.exit.setVisible(false);
   }
 
   interfaceManager() {
-    if (this.open == false) {
-      this.backgroundShop.setVisible(true);
-      this.item1.setVisible(true);
-      this.item2.setVisible(true);
-      this.item3.setVisible(true);
-      this.text1.setVisible(true);
-      this.text2.setVisible(true);
-      this.text3.setVisible(true);
-      this.exit.setVisible(true);
-      this.open = true;
-    } else {
-      this.backgroundShop.setVisible(false);
-      this.item1.setVisible(false);
-      this.item2.setVisible(false);
-      this.item3.setVisible(false);
-      this.text1.setVisible(false);
-      this.text2.setVisible(false);
-      this.text3.setVisible(false);
-      this.exit.setVisible(false);
-      this.open= false;
-    }
+      this.backgroundShop.setVisible(this.open);
+      this.item1.setVisible(this.open);
+      this.item2.setVisible(this.open);
+      this.item3.setVisible(this.open);
+      this.text1.setVisible(this.open);
+      this.text2.setVisible(this.open);
+      this.text3.setVisible(this.open);
+
+      this.open = !this.open;
   }
 
   buffManager(buff){

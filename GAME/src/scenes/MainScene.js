@@ -142,8 +142,6 @@ class MainScene extends Phaser.Scene {
         this.enemiesAttack();
         this.checkShopHp();
         this.playersAlive();
-        console.log(player1);
-        console.log(player2);
     }
 
     initializeBullets() {
