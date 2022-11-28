@@ -21,16 +21,21 @@ class MainMenu extends Phaser.Scene {
 
         mouseSpritePlay.setVisible(false);
         mouseSpriteSettings.setVisible(false);
+        var bool = false
 
         fullscreen.on('pointerup', () => {
             bcSelect.play();
-            if (this.scale.isFullscreen)
+            if (bool)
             {
-                this.scale.stopFullscreen();
+                window['game']['canvas'][this.sys.game.device.fullscreen.cancel];
+                bool = false;
+                console.log(bool);
             }
             else
             {
-                window['game']['canvas'][game.device.fullscreen.request]();
+                window['game']['canvas'][this.sys.game.device.fullscreen.request]();
+                bool = true;
+                console.log(bool);
             }
         });
 
