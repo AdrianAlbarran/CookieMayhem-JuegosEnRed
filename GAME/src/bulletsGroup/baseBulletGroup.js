@@ -130,8 +130,8 @@ class Bullets extends Phaser.Physics.Arcade.Group {
             for (let aux = 0; aux <= player.extraBullets; aux++) {
                 if (player.hp > 0) {
                     let bullet = this.getFirstDead(false);
-    
                     if (bullet) {
+                        soundShoot.play();
                         bullet.fireConfig(x, y, player, type);
                         bullet.lastEnemyHitted = undefined;
                     }
@@ -143,8 +143,8 @@ class Bullets extends Phaser.Physics.Arcade.Group {
             for (let aux = 0; aux <= 8 + player.extraBullets * 3; aux++) {
                 if (player.hp > 0) {
                     let bullet = this.getFirstDead(false);
-    
                     if (bullet) {
+                        soundShoot.play();
                         bullet.fireConfig(x, y, player, type);
                         bullet.lastEnemyHitted = undefined;
                     }

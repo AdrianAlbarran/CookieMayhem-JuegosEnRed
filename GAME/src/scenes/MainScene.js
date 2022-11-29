@@ -188,7 +188,6 @@ class MainScene extends Phaser.Scene {
         var keyShoot1 = this.input.keyboard.addKey('ENTER');
         var stillDown1 = this.input.keyboard.checkDown(keyShoot1, player1.actualFireRate);
         if (stillDown1) {
-            soundShoot.play();
             bulletsPlayer1.fireBullet(player1.x, player1.y, player1, player1.weaponID);
         }
 
@@ -196,7 +195,6 @@ class MainScene extends Phaser.Scene {
         var stillDown2 = this.input.keyboard.checkDown(keyShoot2, player2.actualFireRate);
 
         if (stillDown2) {
-            soundShoot.play();
             bulletsPlayer2.fireBullet(player2.x, player2.y, player2, player2.weaponID);
         }
 

@@ -22,7 +22,7 @@ class Player extends Phaser.GameObjects.Sprite {
 
     //PLAYER FIRE RATE, WEAPON AND MS
     this.weaponID;
-    this.changeWeapon(Math.ceil(Math.random() * 2));
+    this.changeWeapon(Math.floor(Math.random() * 3 - 0.1));
     this.baseFireRate;
     this.actualFireRate = this.baseFireRate * this.extraFireRate;
     this.baseMS = 160;
