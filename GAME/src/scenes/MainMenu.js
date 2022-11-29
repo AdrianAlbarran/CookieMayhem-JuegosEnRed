@@ -16,6 +16,7 @@ class MainMenu extends Phaser.Scene {
         let fullscreen = this.add.image(50, 550, "fullscreen").setScale(0.25).setInteractive();
         let mouseSpritePlay = this.add.image(485, 370, "sugarIcon");
         let mouseSpriteSettings = this.add.image(535, 430, "sugarIcon");
+        let exitControl = 0;
         let sound = 0;
         let active  = 0;
 
@@ -138,5 +139,25 @@ class MainMenu extends Phaser.Scene {
         let mouseSpriteSound = this.add.image(530, 200, "sugarIcon").setScale(2);
         mouseSpriteSound.setVisible(false);
         bcMusicMenu.play();
+
+        let controls = this.add.image(400, 300, "controls").setScale(0.4).setInteractive();
+        let iconControls = this.add.image(750, 550, "iconControls").setScale(0.1).setInteractive();
+
+        controls.setVisible(false);
+
+        iconControls.on('pointerdown', () => {
+            switch (exitControl)
+            {
+                case 0:
+                    exitControl = 1;
+                    controls.setVisible(true);
+                    break;
+                case 1:
+                    exitControl = 0;
+                    controls.setVisible(false);
+                    break;
+            }
+            bcSelect.play();
+        });
     }
 }
