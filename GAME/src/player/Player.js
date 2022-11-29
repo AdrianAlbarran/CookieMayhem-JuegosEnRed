@@ -86,48 +86,7 @@ class Player extends Phaser.GameObjects.Sprite {
     var cursors = scene.input.keyboard.createCursorKeys();
 
     if (this.id == "PLAYER1") {
-      if (cursors.left.isDown && cursors.right.isUp) {
-        this.body.setVelocityX(-this.actualMS);
-        this.anims.play("left1", true);
-        this.lastDirection = 0;
-        this.lastDirectionInput = 13;
-        soundPlayerSteps.play();
-      } else if (cursors.right.isDown && cursors.left.isUp) {
-        this.body.setVelocityX(this.actualMS);
-        this.anims.play("right1", true);
-        this.lastDirection = 1;
-        this.lastDirectionInput = 14;
-        soundPlayerSteps.play();
-
-      } else if (cursors.up.isDown && cursors.down.isUp) {
-        this.body.setVelocityY(-this.actualMS);
-        if (this.lastDirection == 1) {
-          this.anims.play("right1", true);
-
-        } else {
-          this.anims.play("left1", true);
-        }
-        this.lastDirectionInput = 11;
-        soundPlayerSteps.play();
-
-      } else if (cursors.down.isDown && cursors.up.isUp) {
-        this.body.setVelocityY(this.actualMS);
-        if (this.lastDirection == 1) {
-          this.anims.play("right1", true);
-
-        } else {
-          this.anims.play("left1", true);
-        }
-        this.lastDirectionInput = 12;
-        soundPlayerSteps.play();
-
-      } else {
-        this.body.setVelocityX(0);
-        this.body.setVelocityY(0);
-        this.anims.play("turn1");
-
-      }
-    } else if (this.id == "PLAYER2") {
+      
       var keydown_W = scene.input.keyboard.addKey("W");
       var keydown_D = scene.input.keyboard.addKey("D");
       var keydown_S = scene.input.keyboard.addKey("S");
@@ -136,10 +95,10 @@ class Player extends Phaser.GameObjects.Sprite {
       if (keydown_W.isDown && keydown_S.isUp) {
         those.body.setVelocityY(-this.actualMS);
         if (this.lastDirection == 1) {
-          this.anims.play("right2", true);
+          this.anims.play("right1", true);
 
         } else {
-          this.anims.play("left2", true);
+          this.anims.play("left1", true);
         }
         those.lastDirectionInput = 11;
         soundPlayerSteps.play();
@@ -147,31 +106,74 @@ class Player extends Phaser.GameObjects.Sprite {
       } else if (keydown_S.isDown && keydown_W.isUp) {
         those.body.setVelocityY(this.actualMS);
         if (this.lastDirection == 1) {
-          this.anims.play("right2", true);
+          this.anims.play("right1", true);
 
         } else {
-          this.anims.play("left2", true);
+          this.anims.play("left1", true);
         }
         those.lastDirectionInput = 12;
         soundPlayerSteps.play();
 
       } else if (keydown_D.isDown && keydown_A.isUp) {
         those.body.setVelocityX(this.actualMS);
-        those.anims.play("right2", true);
+        those.anims.play("right1", true);
         those.lastDirection = 1;
         those.lastDirectionInput = 14;
         soundPlayerSteps.play();
 
       } else if (keydown_A.isDown && keydown_D.isUp) {
         those.body.setVelocityX(-this.actualMS);
-        those.anims.play("left2", true);
+        those.anims.play("left1", true);
         those.lastDirection = 2;
         those.lastDirectionInput = 13;
         soundPlayerSteps.play();
 
       } else {
         those.body.setVelocity(0, 0);
-        those.anims.play("turn2");
+        those.anims.play("turn1");
+      }
+
+    } else if (this.id == "PLAYER2") {
+      if (cursors.left.isDown && cursors.right.isUp) {
+        this.body.setVelocityX(-this.actualMS);
+        this.anims.play("left2", true);
+        this.lastDirection = 0;
+        this.lastDirectionInput = 13;
+        soundPlayerSteps.play();
+      } else if (cursors.right.isDown && cursors.left.isUp) {
+        this.body.setVelocityX(this.actualMS);
+        this.anims.play("right2", true);
+        this.lastDirection = 1;
+        this.lastDirectionInput = 14;
+        soundPlayerSteps.play();
+
+      } else if (cursors.up.isDown && cursors.down.isUp) {
+        this.body.setVelocityY(-this.actualMS);
+        if (this.lastDirection == 1) {
+          this.anims.play("right2", true);
+
+        } else {
+          this.anims.play("left2", true);
+        }
+        this.lastDirectionInput = 11;
+        soundPlayerSteps.play();
+
+      } else if (cursors.down.isDown && cursors.up.isUp) {
+        this.body.setVelocityY(this.actualMS);
+        if (this.lastDirection == 1) {
+          this.anims.play("right2", true);
+
+        } else {
+          this.anims.play("left2", true);
+        }
+        this.lastDirectionInput = 12;
+        soundPlayerSteps.play();
+
+      } else {
+        this.body.setVelocityX(0);
+        this.body.setVelocityY(0);
+        this.anims.play("turn2");
+
       }
     }
   }

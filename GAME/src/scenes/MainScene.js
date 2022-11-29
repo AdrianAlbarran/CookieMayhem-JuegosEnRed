@@ -26,8 +26,8 @@ class MainScene extends Phaser.Scene {
         tienda = new Tienda(this, 400, 300);
 
         //Initialize Players
-        player1 = new Player(this, 300, 300, 'PLAYER1', 'PLAYER1', economy);
-        player2 = new Player(this, 400, 400, 'PLAYER2', 'PLAYER2', economy);
+        player1 = new Player(this, 200, 300, 'PLAYER1', 'PLAYER1', economy);
+        player2 = new Player(this, 600, 300, 'PLAYER2', 'PLAYER2', economy);
 
         player1.playerIntialize(this);
         player2.playerIntialize(this);
@@ -185,19 +185,18 @@ class MainScene extends Phaser.Scene {
         * 2 - SUBMACHINE GUN  - Fire Rate: 200
         */
 
-        var keyShoot1 = this.input.keyboard.addKey('ENTER');
+        var keyShoot1 = this.input.keyboard.addKey('SPACE');
         var stillDown1 = this.input.keyboard.checkDown(keyShoot1, player1.actualFireRate);
         if (stillDown1) {
             bulletsPlayer1.fireBullet(player1.x, player1.y, player1, player1.weaponID);
         }
 
-        var keyShoot2 = this.input.keyboard.addKey('SPACE');
+        var keyShoot2 = this.input.keyboard.addKey('ENTER');
         var stillDown2 = this.input.keyboard.checkDown(keyShoot2, player2.actualFireRate);
 
         if (stillDown2) {
             bulletsPlayer2.fireBullet(player2.x, player2.y, player2, player2.weaponID);
         }
-
     }
 
     checkEnemiesHP() {
