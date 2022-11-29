@@ -81,4 +81,6 @@ Para la coordinación del equipo se usará Trello, usando <a href = "https://tre
    </tbody>
   </table>
 
+
+ ## Controles del Juego:
 ![Controles Cookie Mayhem](https://user-images.githubusercontent.com/115086690/204564478-79935e8f-d9c1-4fed-bfc3-10086d00edc6.png)
