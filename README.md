@@ -30,6 +30,9 @@ Usaremos <a href = "https://phaser.io/phaser3"> Phaser3 </a>
 - Coordinación del equipo.
 Para la coordinación del equipo se usará Trello, usando <a href = "https://trello.com/invite/b/JZrPiCv6/ATTI46729dd3a9ab2625894f6d3f58aaac69019100A5/juegos-en-red">este tablero</a> .
 
+![Controles Cookie Mayhem](https://user-images.githubusercontent.com/115086690/204564478-79935e8f-d9c1-4fed-bfc3-10086d00edc6.png)
+
+
  ## Team:
  <table>
   <thead>
