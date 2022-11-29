@@ -21,12 +21,12 @@ class Player extends Phaser.GameObjects.Sprite {
     this.extraMS = 1;
 
     //PLAYER FIRE RATE, WEAPON AND MS
-    this.weaponType;
+    this.weaponID;
+    this.changeWeapon(Math.ceil(Math.random() * 2));
     this.baseFireRate;
     this.actualFireRate = this.baseFireRate * this.extraFireRate;
     this.baseMS = 160;
     this.actualMS = this.baseMS * this.extraMS;
-
   }
 
   playerIntialize(scene) {
@@ -54,7 +54,7 @@ class Player extends Phaser.GameObjects.Sprite {
       frameRate: 10,
       repeat: -1,
     });
-    
+
     // Añadir animacion de arriba (derecha) y abajo (izquierda)
 
     // * JUGADOR 2
@@ -98,13 +98,12 @@ class Player extends Phaser.GameObjects.Sprite {
         this.lastDirection = 1;
         this.lastDirectionInput = 14;
         soundPlayerSteps.play();
-        
+
       } else if (cursors.up.isDown && cursors.down.isUp) {
         this.body.setVelocityY(-this.actualMS);
-        if(this.lastDirection == 1)
-        {
+        if (this.lastDirection == 1) {
           this.anims.play("right1", true);
-          
+
         } else {
           this.anims.play("left1", true);
         }
@@ -113,10 +112,9 @@ class Player extends Phaser.GameObjects.Sprite {
 
       } else if (cursors.down.isDown && cursors.up.isUp) {
         this.body.setVelocityY(this.actualMS);
-        if(this.lastDirection == 1)
-        {
+        if (this.lastDirection == 1) {
           this.anims.play("right1", true);
-          
+
         } else {
           this.anims.play("left1", true);
         }
@@ -127,7 +125,7 @@ class Player extends Phaser.GameObjects.Sprite {
         this.body.setVelocityX(0);
         this.body.setVelocityY(0);
         this.anims.play("turn1");
-        
+
       }
     } else if (this.id == "PLAYER2") {
       var keydown_W = scene.input.keyboard.addKey("W");
@@ -137,10 +135,9 @@ class Player extends Phaser.GameObjects.Sprite {
 
       if (keydown_W.isDown && keydown_S.isUp) {
         those.body.setVelocityY(-this.actualMS);
-        if(this.lastDirection == 1)
-        {
+        if (this.lastDirection == 1) {
           this.anims.play("right2", true);
-          
+
         } else {
           this.anims.play("left2", true);
         }
@@ -149,10 +146,9 @@ class Player extends Phaser.GameObjects.Sprite {
 
       } else if (keydown_S.isDown && keydown_W.isUp) {
         those.body.setVelocityY(this.actualMS);
-        if(this.lastDirection == 1)
-        {
+        if (this.lastDirection == 1) {
           this.anims.play("right2", true);
-          
+
         } else {
           this.anims.play("left2", true);
         }
@@ -189,31 +185,29 @@ class Player extends Phaser.GameObjects.Sprite {
       player.setInvulnerability(player);
       soundPlayerDamage.play();
     }
-    
+
     enemy.body.immovable = false;
 
   }
 
   setInvulnerability(aux) {
-    
-      aux.invulnerability = true;
-      aux.scene.time.delayedCall(1000, function()
-      {
-        aux.invulnerability = false;
-      });
-      
+
+    aux.invulnerability = true;
+    aux.scene.time.delayedCall(1000, function () {
+      aux.invulnerability = false;
+    });
+
   }
 
   // Establecer buffos al jugador, mejora de estadisticas
   setBuffs(amount, id) {
-    switch(id)
-    {
+    switch (id) {
       case 0:
         this.extraDmg += amount;
         break;
       case 1:
         this.extraFireRate -= amount;
-        this.actualFireRate = this.baseFireRate *  this.extraFireRate;
+        this.actualFireRate = this.baseFireRate * this.extraFireRate;
         break;
       case 2:
         this.extraBullets += amount;
@@ -224,5 +218,33 @@ class Player extends Phaser.GameObjects.Sprite {
         break;
     }
   }
-  
+
+  changeWeapon(id) {
+    /*
+    * TYPE OF GUN
+    * 0 - SHOTGUN         - Fire Rate: 800
+    * 1 - REVOLVER        - Fire Rate: 500
+    * 2 - SUBMACHINE GUN  - Fire Rate: 200
+    */
+   var player = this;
+    switch (id) {
+      case 0:
+        // ! UPDATE THIS FOR SHOTGUN (wponID = 0)
+        player.weaponID = 0;
+        player.baseFireRate = 1000;
+        console.log(this);
+        break;
+      case 1:
+        player.weaponID = 1;
+        player.baseFireRate = 500;
+        break;
+      case 2:
+        player.weaponID = 2;
+        player.baseFireRate = 200;
+        break;
+    }
+
+    this.actualFireRate = this.baseFireRate * this.extraFireRate;
+  }
+
 }

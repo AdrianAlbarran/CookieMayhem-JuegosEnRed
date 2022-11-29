@@ -184,20 +184,12 @@ class MainScene extends Phaser.Scene {
         * 1 - REVOLVER        - Fire Rate: 500
         * 2 - SUBMACHINE GUN  - Fire Rate: 200
         */
-        player1.weaponType = 1;
-        player1.baseFireRate = 500;
-        player1.actualFireRate = player1.baseFireRate * player1.extraFireRate;
-
-        player2.weaponType = 2;
-        player2.baseFireRate = 200;
-        player2.actualFireRate = player2.baseFireRate * player2.extraFireRate;
 
         var keyShoot1 = this.input.keyboard.addKey('ENTER');
         var stillDown1 = this.input.keyboard.checkDown(keyShoot1, player1.actualFireRate);
-
         if (stillDown1) {
             soundShoot.play();
-            bulletsPlayer1.fireBullet(player1.x, player1.y, player1, player1.weaponType);
+            bulletsPlayer1.fireBullet(player1.x, player1.y, player1, player1.weaponID);
         }
 
         var keyShoot2 = this.input.keyboard.addKey('SPACE');
@@ -205,7 +197,7 @@ class MainScene extends Phaser.Scene {
 
         if (stillDown2) {
             soundShoot.play();
-            bulletsPlayer2.fireBullet(player2.x, player2.y, player2, player2.weaponType);
+            bulletsPlayer2.fireBullet(player2.x, player2.y, player2, player2.weaponID);
         }
 
     }

@@ -31,20 +31,21 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         */
         switch (type) {
             case 0:
-                // !FIX: this.fireShotgun(direction, 700, 50, shotgunDisplacement);
+                this.damage = 20 * player.extraDmg;
+                this.maxTraverse = 0;
+                this.fire(direction, 700, 300);
                 break;
             case 1:
+                //CONFIG BULLETS FOR REVOLVER
                 this.damage = 80 * player.extraDmg;
                 this.maxTraverse = 2;
-                this.fireRevolver(direction, 1800, 50);
+                this.fire(direction, 1800, 50);
                 break;
             case 2:
                 //CONFIG BULLETS FOR SUBMACHINE GUN
-
                 this.damage = 20 * player.extraDmg;
                 this.maxTraverse = 0;
-                this.fireSubMachine(direction, 700, 133);
-                console.log(player.extraBullets);
+                this.fire(direction, 700, 133);
                 break;
         }
 
@@ -61,7 +62,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    fireSubMachine(direction, speed, maxDispersion) {
+    fire(direction, speed, maxDispersion) {
         var randomDispersion = (Math.random() - 0.5) * maxDispersion;
         var rotation = Math.atan(randomDispersion / speed) * 180 / Math.PI
 
@@ -80,65 +81,6 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
                 break;
             case 14:
                 this.setVelocity(speed, randomDispersion);
-                this.angle = 90 + rotation;
-                break;
-        }
-        this.setActive(true);
-        this.setVisible(true);
-    }
-
-    fireRevolver(direction, speed, maxDispersion) {
-        var randomDispersion = (Math.random() - 0.5) * maxDispersion;
-        var rotation = Math.atan(randomDispersion / speed) * 180 / Math.PI
-
-        switch (direction) {
-            case 11:
-                this.setVelocity(randomDispersion, -speed);
-                this.angle = 0 + rotation;
-                break;
-            case 12:
-                this.setVelocity(randomDispersion, speed);
-                this.angle = 180 - rotation;
-                break;
-            case 13:
-                this.setVelocity(-speed, randomDispersion);
-                this.angle = 270 - rotation;
-                break;
-            case 14:
-                this.setVelocity(speed, randomDispersion);
-                this.angle = 90 + rotation;
-                break;
-        }
-        this.setActive(true);
-        this.setVisible(true);
-
-    }
-
-    fireShotgun(direction, speed, maxDispersion) {
-
-        // ! ARREGLAR ESTO DE ALGUNA MANERA
-
-        var randomDispersion = (Math.random() - 0.5) * maxDispersion;
-        var rotation = Math.atan(randomDispersion / speed) * 180 / Math.PI
-
-        var aux = shotgunDisplacement * speed;
-
-
-        switch (direction) {
-            case 11:
-                this.setVelocity(randomDispersion + aux, -speed);
-                this.angle = 0 + rotation;
-                break;
-            case 12:
-                this.setVelocity(randomDispersion + aux, speed);
-                this.angle = 180 - rotation;
-                break;
-            case 13:
-                this.setVelocity(-speed, randomDispersion + aux);
-                this.angle = 270 - rotation;
-                break;
-            case 14:
-                this.setVelocity(speed, randomDispersion + aux);
                 this.angle = 90 + rotation;
                 break;
         }
@@ -173,7 +115,7 @@ class Bullets extends Phaser.Physics.Arcade.Group {
     constructor(scene) {
         super(scene.physics.world, scene);
         this.createMultiple({
-            frameQuantity: 20,
+            frameQuantity: 40,
             key: 'bullet',
             active: false,
             visible: false,
@@ -183,16 +125,33 @@ class Bullets extends Phaser.Physics.Arcade.Group {
 
     fireBullet(x, y, player, type) {
 
-        for (let aux = 0; aux <= player.extraBullets; aux++) {
-            if (player.hp > 0) {
-                let bullet = this.getFirstDead(false);
-
-                if (bullet) {
-                    bullet.fireConfig(x, y, player, type);
-                    bullet.lastEnemyHitted = undefined;
+        if(type != 0)
+        {
+            for (let aux = 0; aux <= player.extraBullets; aux++) {
+                if (player.hp > 0) {
+                    let bullet = this.getFirstDead(false);
+    
+                    if (bullet) {
+                        bullet.fireConfig(x, y, player, type);
+                        bullet.lastEnemyHitted = undefined;
+                    }
+                }
+            }
+        } else {
+            // ? Se podria cambiar el for de arriba para no tener que duplicarlo, 
+            // ? no se que manera seria mas eficiente
+            for (let aux = 0; aux <= 8 + player.extraBullets * 3; aux++) {
+                if (player.hp > 0) {
+                    let bullet = this.getFirstDead(false);
+    
+                    if (bullet) {
+                        bullet.fireConfig(x, y, player, type);
+                        bullet.lastEnemyHitted = undefined;
+                    }
                 }
             }
         }
+
 
     }
 }
