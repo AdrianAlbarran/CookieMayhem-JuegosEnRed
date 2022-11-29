@@ -16,6 +16,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.shop3;
     this.open = true ;
     this.scene = scene;
+    this.onMenu = false;
     this.first = false;
     //HP Bar
     this.fullWidth = 120;
@@ -27,9 +28,18 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.item1;
     this.item2;
     this.item3;
+    this.price1;
+    this.price2;
+    this.price3;
     this.text1;
     this.text2;
     this.text3;
+    this.priceText1;
+    this.priceText2;
+    this.priceText3;
+    this.icono1;
+    this.icono2;
+    this.icono3;
     this.exit;
  
 
@@ -90,22 +100,34 @@ class Tienda extends Phaser.GameObjects.Sprite {
   }
 
   createInterface() {
+    var style = { fontFamily: "Pixel",fontSize:"14px", fill: "#000", boundsAlignH: "center", boundsAlignV: "middle",align: "center",lineSpacing: 10};
+    var style2 = { fontFamily: "Pixel",fontSize:"13px", fill: "#000", boundsAlignH: "center", boundsAlignV: "middle",align: "center",lineSpacing: 10};
     this.backgroundShop = this.scene.add.image(400, 300, "PMENU").setDepth(2);
-    this.item1 = this.scene.add.image(400, 200, "PTIENDA").setInteractive().setDepth(3);
+
+    this.item1 = this.scene.add.image(400, 300, "BMENU1").setInteractive().setDepth(3).setScale(1.5);
     this.item1.on('pointerdown', () => {
-      this.buffManager(this.shop1);
-  });
-    this.text1 = this.scene.add.text(400, 200, this.shop1.name).setDepth(3);
-    this.item2 = this.scene.add.image(600, 225, "PTIENDA").setInteractive().setDepth(3);
+      this.buffManager(this.shop1);});
+    this.text1 = this.scene.add.text(this.item1.x+7, this.item1.y, this.shop1.name,style).setDepth(3).setOrigin(0.5,0.5);
+    this.price1 = this.scene.add.image(this.item1.x+75, this.item1.y+30, "BMENU2").setInteractive().setDepth(3).setScale(0.5);
+    this.priceText1 = this.scene.add.text(this.price1.x, this.price1.y, "$"+this.shop1.value,style2).setDepth(3).setOrigin(0.5,0.5);
+    this.icono1 = this.scene.add.image(this.item1.x-50,this.item1.y+15,this.shop1.sprite).setDepth(3).setScale(0.75);
+
+    this.item2 = this.scene.add.image(400, 200, "BMENU1").setInteractive().setDepth(3).setScale(1.5);
     this.item2.on('pointerdown', () => {
-      this.buffManager(this.shop2);
-  });
-    this.text2 = this.scene.add.text(600, 225, this.shop2.name).setDepth(3);
-    this.item3 = this.scene.add.image(200, 225, "PTIENDA").setInteractive().setDepth(3);
-    this.item3.on('pointerdown', () => {
-      this.buffManager(this.shop3);
-  });
-    this.text3 = this.scene.add.text(200, 225, this.shop3.name).setDepth(3);
+      this.buffManager(this.shop2);});
+    this.text2 = this.scene.add.text(this.item2.x+7, this.item2.y, this.shop2.name,style).setDepth(3).setOrigin(0.5,0.5);
+    this.price2 =this.scene.add.image(this.item2.x-75, this.item2.y+30, "BMENU2").setInteractive().setDepth(3).setScale(0.5);
+    this.priceText2 = this.scene.add.text(this.price2.x, this.price2.y, "$"+this.shop2.value,style2).setDepth(3).setOrigin(0.5,0.5);
+    this.icono2 = this.scene.add.image(this.item2.x+50,this.item2.y+15,this.shop2.sprite).setDepth(3).setScale(0.75);
+
+    this.item3 = this.scene.add.image(400, 400, "BMENU1").setInteractive().setDepth(3).setScale(1.5);
+    this.item3.on('pointerdown', () => {  
+      this.buffManager(this.shop3);});
+    this.text3 = this.scene.add.text(this.item3.x+7 ,this.item3.y, this.shop3.name,style).setDepth(3).setOrigin(0.5,0.5);
+    this.price3 =this.scene.add.image(this.item3.x-75, this.item3.y+30, "BMENU2").setInteractive().setDepth(3).setScale(0.5);
+    this.priceText3 = this.scene.add.text(this.price3.x, this.price3.y, "$"+this.shop3.value,style2).setDepth(3).setOrigin(0.5,0.5);
+    this.icono3 = this.scene.add.image(this.item3.x+50,this.item3.y+15,this.shop3.sprite).setDepth(3).setScale(0.75);
+
 
     this.backgroundShop.setVisible(false);
     this.text1.setVisible(false);
@@ -114,6 +136,16 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.item1.setVisible(false);
     this.item2.setVisible(false);
     this.item3.setVisible(false);
+    this.price1.setVisible(false);
+    this.price2.setVisible(false);
+    this.price3.setVisible(false);
+    this.priceText1.setVisible(false);
+    this.priceText2.setVisible(false);
+    this.priceText3.setVisible(false);
+    this.icono1.setVisible(false);
+    this.icono2.setVisible(false);
+    this.icono3.setVisible(false);
+
   }
 
   updateInterface(){
@@ -122,6 +154,23 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.text1.setText(this.shop1.name);
     this.text2.setText(this.shop2.name);
     this.text3.setText(this.shop3.name);
+    this.priceText1.setText(this.shop1.value);
+    this.priceText2.setText(this.shop2.value);
+    this.priceText3.setText(this.shop3.value);
+    var aux = false
+    if(this.icono1.visible){
+      aux = true;
+    }
+    this.icono1.setVisible(false);
+    this.icono1 = this.scene.add.image(this.item1.x-50,this.item1.y+15,this.shop1.sprite).setDepth(3).setScale(0.75);
+    this.icono1.setVisible(aux);
+    this.icono2.setVisible(false);
+    this.icono2 = this.scene.add.image(this.item2.x+50,this.item2.y+15,this.shop2.sprite).setDepth(3).setScale(0.75);
+    this.icono2.setVisible(aux);
+    this.icono3.setVisible(false);
+    this.icono3 = this.scene.add.image(this.item3.x+50,this.item3.y+15,this.shop3.sprite).setDepth(3).setScale(0.75);
+    this.icono3.setVisible(aux);
+
     
   }
 
@@ -133,7 +182,17 @@ class Tienda extends Phaser.GameObjects.Sprite {
       this.text1.setVisible(this.open);
       this.text2.setVisible(this.open);
       this.text3.setVisible(this.open);
+      this.price1.setVisible(this.open);
+      this.price2.setVisible(this.open);
+      this.price3.setVisible(this.open);
+      this.priceText1.setVisible(this.open);
+      this.priceText2.setVisible(this.open);
+      this.priceText3.setVisible(this.open);
+      this.icono1.setVisible(this.open);
+      this.icono2.setVisible(this.open);
+      this.icono3.setVisible(this.open);
 
+      this.onMenu = this.open;
       this.open = !this.open;
   }
 
@@ -144,6 +203,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
         player1.setBuffs(buff.percentage, buff.id);
         player2.setBuffs(buff.percentage, buff.id);
         player1.economy.setMoney(buff.value)
+        buyshop.play();
         }
       break;
       case 1:
@@ -151,6 +211,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
         player1.setBuffs(buff.percentage, buff.id);
         player2.setBuffs(buff.percentage, buff.id);
         player1.economy.setMoney(buff.value)
+        buyshop.play();
         }
       break;
       case 2:
@@ -158,6 +219,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
         player1.setBuffs(buff.percentage, buff.id);
         player2.setBuffs(buff.percentage, buff.id);
         player1.economy.setMoney(buff.value)
+        buyshop.play();
         }
       break;
       case 3:
@@ -165,6 +227,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
         player1.setBuffs(buff.percentage, buff.id);
         player2.setBuffs(buff.percentage, buff.id);
         player1.economy.setMoney(buff.value)
+        buyshop.play();
 
         }
       break;

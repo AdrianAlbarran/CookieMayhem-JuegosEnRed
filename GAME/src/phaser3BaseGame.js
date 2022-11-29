@@ -20,6 +20,7 @@ let soundMoney;
 let bcMusicMenu;
 let bcMusicGame;
 let endGameMusic;
+let buyshop;
 
 // JUGADORES
 var player1;
