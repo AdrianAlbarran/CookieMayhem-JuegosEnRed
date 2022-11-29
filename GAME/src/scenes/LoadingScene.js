@@ -72,6 +72,12 @@ class LoadingScene extends Phaser.Scene
         this.load.image('middle-shadow', 'assets/interface/barHorizontal_shadow_mid.png');
         this.load.image('right-cap-shadow', 'assets/interface/barHorizontal_shadow_right.png');;
 
+        // * UI Armas
+        this.load.image('ICONOESCOPETA', './assets/iconos/iconoEscopeta.png');
+        this.load.image('ICONOREVOLVER', './assets/iconos/iconoRevolver.png');
+        this.load.image('ICONOSUBFUSIL', './assets/iconos/iconoSubfusil.png');
+        
+
         
     }
     create()
