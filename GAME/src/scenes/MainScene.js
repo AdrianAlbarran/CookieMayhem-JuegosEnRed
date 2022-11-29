@@ -142,6 +142,12 @@ class MainScene extends Phaser.Scene {
             mute: false,
             volume: 0.10
         });
+        buyshop = this.sound.add("BUYSHOP",
+        {
+            loop: false,
+            mute: false,
+            volume: 0.15
+        });
         
 
 
@@ -197,6 +203,20 @@ class MainScene extends Phaser.Scene {
         if (stillDown2) {
             bulletsPlayer2.fireBullet(player2.x, player2.y, player2, player2.weaponID);
         }
+
+
+        var keyBuy1 = this.input.keyboard.addKey('W');
+        var keyBuy2 = this.input.keyboard.addKey('A');
+        var keyBuy3 = this.input.keyboard.addKey('D');
+
+
+        keyBuy1.on('up', function(event) { if(tienda.onMenu && Phaser.Input.Keyboard.JustUp(keyBuy1)){
+            tienda.buffManager(tienda.shop2)}});
+        keyBuy2.on('up', function(event) { if(tienda.onMenu && Phaser.Input.Keyboard.JustUp(keyBuy2)){
+            tienda.buffManager(tienda.shop1)}});
+        keyBuy3.on('up', function(event) { if(tienda.onMenu && Phaser.Input.Keyboard.JustUp(keyBuy3)){
+            tienda.buffManager(tienda.shop3)}});
+
     }
 
     checkEnemiesHP() {

@@ -47,6 +47,13 @@ class LoadingScene extends Phaser.Scene
         
         // * TIENDA
         this.load.image("TIENDA", "./assets/tetera.png");
+        this.load.image("BMENU","./assets/iconos/botonLuisChiquito.png");
+        this.load.image("BMENU1","./assets/iconos/botonLuisChiquito1.png");
+        this.load.image("BMENU2","./assets/iconos/botonLuisChiquito2.png");
+        this.load.image("IDMG","./assets/iconos/iconoMasDaño.png");
+        this.load.image("IMB","./assets/iconos/iconoMasBalas.png");
+        this.load.image("IVA","./assets/iconos/iconoMasVelDeAtq.png");
+        this.load.image("IVM","./assets/iconos/iconoMasVelDeMovimiento.png");
         // * SONIDOS
         // ? Disparar
         this.load.audio("SHOOT", "./assets/sonidos/Pasos.mp3");
@@ -58,6 +65,8 @@ class LoadingScene extends Phaser.Scene
         this.load.audio("PLAYERSTEPS", "assets/sonidos/Pasos.mp3");
         // * Dinero
         this.load.audio("MONEYSOUND", "./assets/sonidos/CogerDinero.mp3");
+        // * Comprar Tienda
+        this.load.audio("BUYSHOP", "./assets/sonidos/Coger_Tienda.mp3");
 
         // * Background music
         this.load.audio("GAMEMUSIC", "./assets/musica/Cancion_JeR_1.mp3");
