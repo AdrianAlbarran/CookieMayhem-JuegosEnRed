@@ -13,6 +13,7 @@ class Player extends Phaser.GameObjects.Sprite {
     this.invulnerability = false;
     this.lastDirection = 0;
     this.lastDirectionInput = 11;
+    this.sceneOn = scene;
 
     //VARIABLES BUFFOS
     this.extraDmg = 1;
@@ -228,25 +229,40 @@ class Player extends Phaser.GameObjects.Sprite {
     * 1 - REVOLVER        - Fire Rate: 500
     * 2 - SUBMACHINE GUN  - Fire Rate: 200
     */
-   var player = this;
     switch (id) {
       case 0:
-        // ! UPDATE THIS FOR SHOTGUN (wponID = 0)
-        player.weaponID = 0;
-        player.baseFireRate = 1000;
-        console.log(this);
+        this.weaponID = 0;
+        this.baseFireRate = 1000;
+        this.putWeaponIcon("ICONOESCOPETA");
         break;
       case 1:
-        player.weaponID = 1;
-        player.baseFireRate = 500;
+        this.weaponID = 1;
+        this.baseFireRate = 500;
+        this.putWeaponIcon("ICONOREVOLVER");
         break;
       case 2:
-        player.weaponID = 2;
-        player.baseFireRate = 200;
+        this.weaponID = 2;
+        this.baseFireRate = 200;
+        this.putWeaponIcon("ICONOSUBFUSIL");
         break;
     }
 
     this.actualFireRate = this.baseFireRate * this.extraFireRate;
+
   }
 
+
+  //Funcion auxiliar
+  putWeaponIcon(image)
+  {
+    if(this.id == 'PLAYER1')
+    {
+      let icon = this.sceneOn.add.image(25, 575, image).setDepth(1).setScale(1.2);
+    }
+    else
+    {
+      let icon = this.sceneOn.add.image(775, 575, image).setDepth(1).setScale(1.2);
+      icon.flipX = true;
+    }
+  }
 }
