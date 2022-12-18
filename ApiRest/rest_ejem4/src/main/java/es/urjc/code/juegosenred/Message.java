@@ -23,7 +23,7 @@ public class Message {
 	}
 
 	public void setUserName(String _userName) {
-		this.content = _userName;
+		this.userName = _userName;
 	}
 
 	public String getContent() {

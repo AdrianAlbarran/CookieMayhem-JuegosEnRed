@@ -1,21 +1,12 @@
-function loadItems(callback) {
-    $.ajax({
-        url: 'http://localhost:8080/items'
-    }).done(function (items) {
-        console.log('Items loaded: ' + JSON.stringify(items));
-        callback(items);
-    })
-    
-    // ! WE SHOULD ITERATE THROW THE LIST OF MESSAGES IF WE WANT TO SHOW ALL OF THEM IN THE CHAT
-    
-}
+//GLOBALES
+var lastId = 0;
+var uName = '';
+var onChat = false;
 
 function showArrayMessage(message)
 {
-	console.log(message);
 	message.forEach(data =>
 	{
-	console.log(data);
 	if(lastId < data.id)
 	{
 		showMessageInHTML(data);
@@ -32,12 +23,28 @@ function showMessage(message)
 function showMessageInHTML(data)
 {
 	// type
-	// 0 = mis mensajes, a la derecha
-	// 1 = otros mensajes, a la izquierda
-	
-	if(data.type == 0)
+	// 100 = mis mensajes, a la derecha
+	// 101 = otros mensajes, a la izquierda
+	// 200 =
+
+	if (data.type == 200)
 	{
-		console.log('ES UNO ' + data.type);
+		$('.messages').append(
+			'<div class="update">' +
+			data.userName + ' has joined the lobby' +
+			'</div>'
+		);
+	}
+	else if (data.type == 201)
+	{
+		$('.messages').append(
+			'<div class="update">' +
+			data.userName + ' has left the lobby' +
+			'</div>'
+		);
+	}
+	else if(data.type == 100 || data.userName == uName)
+	{
 		$('.messages').append(
 		' <div class="message my-message">' +
 			'<div>' +
@@ -47,7 +54,7 @@ function showMessageInHTML(data)
 			'</div>' + 
 		'</div>'); 
 	} 
-	else if (data.type == 1)
+	else if (data.type == 101)
 	{
 		$('.messages').append(
 		' <div class="message other-message">' +
@@ -57,7 +64,8 @@ function showMessageInHTML(data)
 				'<div class="text">' + data.content + '</div>' +
 			'</div>' + 
 		'</div>'); 
-	}
+	} 
+
 	
 }
 
@@ -73,7 +81,11 @@ function postMessage(message) {
         }
     }).done(function (message) {
         lastId++;
-        message.type = 0;
+		if(message.type == 101)
+		{
+			message.type = 100;
+		}
+		console.log(message);
        	showMessage(message);
     })
 }
@@ -84,39 +96,91 @@ function getMessage()
 		method: "GET",
         url: 'http://localhost:8080/messages',
 		success:function(result){
-			console.log(result);
 			showArrayMessage(result);
 		}
 	})
 }
 
-var lastId = 0;
+
+function enterChat()
+{
+	if(uName.length == 0){
+		return;
+	}
+	var app = document.querySelector(".app");
+	app.querySelector(".join-screen").classList.remove("active");
+	app.querySelector(".chat-screen").classList.add("active");
+	onChat = true;
+	
+	createMessage(200);
+}
+
+function exitChat()
+{
+	var app = document.querySelector(".app");
+	app.querySelector(".join-screen").classList.add("active");
+	app.querySelector(".chat-screen").classList.remove("active");
+	onChat = false;
+	
+	createMessage(201, '');
+	
+}
+function createMessage(_type, messageData)
+{	
+    var message = {
+    	userName: uName,
+    	content: messageData,
+    	type: _type
+    }
+    
+  	postMessage(message);
+}
+function writeOnJSON(data, type)
+{
+	
+}
+
 $(document).ready(function()
 {
-	getMessage();
-	
+
+	/*
 	var intervalId = window.setInterval(function(){
-		getMessage();
-  		
+		if(onChat == true)
+		{
+			getMessage();
+		}
 	}, 1000);
-	
-// call your function here
+	*/
 	    //Handle add button
     $("#send-message").click(function () {
 
 		//input value storing the message data
 		var input = $('#message-input');
         var messageData = input.val();
-        
         input.val('');
-
-        var message = {
-            userName: 'xyz',
-            content: messageData,
-            type: 0
-        }
-		
-        postMessage(message);
+        createMessage(100, messageData);
         
-    })
-})
+    });
+    
+    $(".join-screen #join-user").click(function ()
+    {
+		//input value storing the message data
+		var input = $('#username');
+		var messageData = input.val();
+		
+		input.val('');
+		uName = messageData;
+		enterChat();
+	});
+	
+	$(".header #exit-chat").click(function()
+	{
+		exitChat();
+	});
+	
+	if(onChat == true)
+	{
+		getMessage();
+	}
+	
+});

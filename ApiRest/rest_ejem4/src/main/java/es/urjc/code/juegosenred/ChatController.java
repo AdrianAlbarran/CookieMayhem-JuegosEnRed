@@ -34,11 +34,13 @@ public class ChatController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Message AJAXPOST_newMessage(@RequestBody Message message) {
 
+		System.out.println(message);
 		long id = nextId.incrementAndGet();
 		message.setId(id);
-		if(message.getType() == 0)
+		if(message.getType() != 101 && message.getType() != 200 && message.getType() != 201)
 		{
-			message.setType(1);
+			message.setType(101);
+			System.out.println("entro");
 		}
 		messages.put(id, message);
 		
