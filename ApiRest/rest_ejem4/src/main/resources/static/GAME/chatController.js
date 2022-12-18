@@ -7,13 +7,8 @@ function showArrayMessage(message)
 {
 	message.forEach(data =>
 	{
-		console.log('ey');
-		console.log(lastId);
-		console.log(data.id);
-		console.log(lastId < data.id);
 	if(lastId < data.id)
 	{
-		console.log('entra en el if de id');
 		showMessageInHTML(data);
 		lastId = data.id;
 	} 	// if end
@@ -85,13 +80,13 @@ function postMessage(message) {
             "Content-Type": "application/json"
         }
     }).done(function (message) {
-       
+        lastId++;
 		if(message.type == 101)
 		{
 			message.type = 100;
 		}
-       	getMessage();
-       	//lastId++;
+		console.log(message);
+       	showMessage(message);
     })
 }
 
@@ -103,22 +98,21 @@ function getMessage()
 		success:function(result){
 			showArrayMessage(result);
 		}
-	});
+	})
 }
 
 
 function enterChat()
 {
-	if(uName.length == 0 || /\s/.test(uName)){
-		 alert("You can't enter an space in the username!");
-		 return;
+	if(uName.length == 0){
+		return;
 	}
 	var app = document.querySelector(".app");
 	app.querySelector(".join-screen").classList.remove("active");
 	app.querySelector(".chat-screen").classList.add("active");
 	onChat = true;
 	
-	createMessage(200, '');
+	createMessage(200);
 }
 
 function exitChat()
@@ -149,15 +143,14 @@ function writeOnJSON(data, type)
 $(document).ready(function()
 {
 
-	
+	/*
 	var intervalId = window.setInterval(function(){
 		if(onChat == true)
 		{
 			getMessage();
 		}
 	}, 1000);
-	
-	
+	*/
 	    //Handle add button
     $("#send-message").click(function () {
 
@@ -165,13 +158,8 @@ $(document).ready(function()
 		var input = $('#message-input');
         var messageData = input.val();
         input.val('');
+        createMessage(100, messageData);
         
-        if(!/\S/.test(str)){
-			alert("You can't enter only spaces!");
-		} else {
-			 createMessage(100, messageData);
-		}
-       
     });
     
     $(".join-screen #join-user").click(function ()

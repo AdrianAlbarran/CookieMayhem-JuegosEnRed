@@ -16,7 +16,7 @@ body {
     width: 100%;
     height: 100%;
     max-width: 600px;
-    background: #dde5f1;
+    background: #fff;
     border-left: 1px solid #eee;
     border-right: 1px solid #eee;
 }
@@ -48,8 +48,8 @@ body {
 .screen h2 {
     margin-bottom: 20px;
     font-size: 30px;
-    color: rgb(53, 116, 211);
-    border-bottom: 4px solid #f16785;
+    color: #111;
+    border-bottom: 4px solid #555;
     padding: 5px 0px;
     display: inline-block;
 }
@@ -62,14 +62,14 @@ body {
 .screen .form-input input {
     width: 100%;
     padding: 10px;
-    border: 1px solid rgb(227, 241, 245);
+    border: 1px solid #555;
     font-size: 16px;
 }
 
 .screen .form-input button{
     padding: 10px 20px;
-    background: rgb(144, 182, 240);
-    color: rgb(255, 255, 255);
+    background: #111;
+    color: #eee;
     font-size: 16px;
     cursor: pointer;
     outline: none;
@@ -77,7 +77,7 @@ body {
 }
 
 .chat-screen .header {
-    background: #f16785;
+    background: #111;
     height: 50px;
     display: flex;
     justify-content: space-between;
@@ -94,9 +94,9 @@ body {
 .chat-screen .header button 
 {
     padding: 5px 10px;
-    border: 1px solid rgb(184, 241, 243);
+    border: 1px solid #eee;
     background: transparent;
-    color: rgb(244, 253, 255);
+    color: #eee;
     font-size: 15px;
     cursor: pointer;
     outline: none;
@@ -105,7 +105,7 @@ body {
 .chat-screen .messages {
     width: 100%;
     height: calc(100% - 100px);
-    background: #dde5f1;
+    background: #f5f5f5;
     overflow: auto;
 }
 
@@ -116,8 +116,8 @@ body {
 
 .chat-screen .messages .message > div {
     max-width: 80%;
-    background: rgb(98, 144, 231);
-    box-shadow: 0px 0px 20px 5px rgba(97, 8, 85, 0.219);
+    background: #fff;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.05);
     padding: 10px;
 }
 
@@ -131,7 +131,7 @@ body {
 
 .chat-screen .messages .message .name {
     font-size: 13px;
-    color: hsl(231, 71%, 30%);
+    color: #555;
     margin-bottom: 5px;
 }
 
@@ -160,7 +160,7 @@ body {
 .chat-screen .typebox button {
     width: 80px;
     height: 100%;
-    background-color: rgb(62, 116, 233);
+    background-color: #111;
     color: #eee;
     font-size: 16px;
     outline: none;
