@@ -10,22 +10,59 @@ function loadItems(callback) {
     
 }
 
+function showArrayMessage(message)
+{
+	console.log(message);
+	message.forEach(data =>
+	{
+	console.log(data);
+	if(lastId < data.id)
+	{
+		showMessageInHTML(data);
+		lastId = data.id;
+	} 	// if end
+	}); //foreach end
+}
+
 function showMessage(message)
 {
-	let el = document.createElement("div");
-	el.setAttribute("class", "message my-message");
-	el.innerHTML = '<div> <div class="name">YOU</div> <div class="text">${message.content}</div> </div>';
-	
-	$('.messages').append(
-	' <div class="message my-message">' +
-		'<div>' +
-			'<div class="name">YOU</div>' +
-			'<div class="text">' + message.content + '</div>' +
-		'</div>' +
-	'</div>'); 
+		showMessageInHTML(message);
 }
+
+function showMessageInHTML(data)
+{
+	// type
+	// 0 = mis mensajes, a la derecha
+	// 1 = otros mensajes, a la izquierda
+	
+	if(data.type == 0)
+	{
+		console.log('ES UNO ' + data.type);
+		$('.messages').append(
+		' <div class="message my-message">' +
+			'<div>' +
+				//Implementar message.userName
+				'<div class="name">' + data.userName + '</div>' +
+				'<div class="text">' + data.content + '</div>' +
+			'</div>' + 
+		'</div>'); 
+	} 
+	else if (data.type == 1)
+	{
+		$('.messages').append(
+		' <div class="message other-message">' +
+			'<div>' +
+				//Implementar message.userName
+				'<div class="name">' + data.userName + '</div>' +
+				'<div class="text">' + data.content + '</div>' +
+			'</div>' + 
+		'</div>'); 
+	}
+	
+}
+
 //Create item in server
-function createMessage(message, callback) {
+function postMessage(message) {
     $.ajax({
         method: "POST",
         url: 'http://localhost:8080/messages',
@@ -35,32 +72,51 @@ function createMessage(message, callback) {
             "Content-Type": "application/json"
         }
     }).done(function (message) {
-        console.log("Message created: " + JSON.stringify(message));
-        callback(message);
+        lastId++;
+        message.type = 0;
+       	showMessage(message);
     })
 }
 
+function getMessage()
+{
+	$.ajax({
+		method: "GET",
+        url: 'http://localhost:8080/messages',
+		success:function(result){
+			console.log(result);
+			showArrayMessage(result);
+		}
+	})
+}
+
+var lastId = 0;
 $(document).ready(function()
 {
+	getMessage();
+	
+	var intervalId = window.setInterval(function(){
+		getMessage();
+  		
+	}, 1000);
+	
+// call your function here
 	    //Handle add button
     $("#send-message").click(function () {
 
 		//input value storing the message data
 		var input = $('#message-input');
         var messageData = input.val();
+        
         input.val('');
 
         var message = {
             userName: 'xyz',
             content: messageData,
-            type: ''
+            type: 0
         }
-
-        createMessage(message, function (itemWithId) {
-            //When message with id is returned from server
-            
-            console.log('FUNCIONA ESTAÁ VIVOOO!!!');
-            showMessage(itemWithId);
-        });
+		
+        postMessage(message);
+        
     })
 })

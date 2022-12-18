@@ -5,7 +5,7 @@ public class Message {
 	private long id;
 	private String userName;
 	private String content;
-	private String type;
+	private int type;
 
 	public Message() {
 	}
@@ -34,11 +34,11 @@ public class Message {
 		this.content = _content;
 	}
 
-	public String getType() {
+	public int getType() {
 		return this.type;
 	}
 
-	public void setType(String _type) {
+	public void setType(int _type) {
 		this.type = _type;
 	}
 	

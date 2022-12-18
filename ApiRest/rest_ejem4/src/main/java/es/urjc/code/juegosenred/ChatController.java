@@ -36,7 +36,12 @@ public class ChatController {
 
 		long id = nextId.incrementAndGet();
 		message.setId(id);
+		if(message.getType() == 0)
+		{
+			message.setType(1);
+		}
 		messages.put(id, message);
+		
 
 		return message;
 	}
