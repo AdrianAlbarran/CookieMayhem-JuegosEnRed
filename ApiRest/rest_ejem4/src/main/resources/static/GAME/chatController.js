@@ -166,7 +166,7 @@ $(document).ready(function()
         var messageData = input.val();
         input.val('');
         
-        if(!/\S/.test(str)){
+        if(!/\S/.test(messageData)){
 			alert("You can't enter only spaces!");
 		} else {
 			 createMessage(100, messageData);
