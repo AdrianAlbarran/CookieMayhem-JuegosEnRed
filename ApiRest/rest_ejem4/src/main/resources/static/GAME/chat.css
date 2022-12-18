@@ -69,7 +69,7 @@ body {
 .screen .form-input button{
     padding: 10px 20px;
     background: rgb(144, 182, 240);
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-size: 16px;
     cursor: pointer;
     outline: none;
@@ -79,7 +79,7 @@ body {
 .screen .form-input button:hover{
     padding: 10px 20px;
     background: rgb(124, 162, 220);
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-size: 16px;
     cursor: pointer;
     outline: none;
@@ -89,7 +89,7 @@ body {
 .screen .form-input button:active{
     padding: 10px 20px;
     background: rgb(104, 142, 200);
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-size: 16px;
     cursor: pointer;
     outline: none;
@@ -115,8 +115,8 @@ body {
 {
     padding: 5px 10px;
     border: 1px solid rgb(184, 241, 243);
-    background: transparent;
-    color: rgb(244, 253, 255);
+    background: rgb(184, 241, 243);
+    color: rgb(0, 0, 0);
     font-size: 15px;
     cursor: pointer;
     outline: none;
@@ -126,8 +126,8 @@ body {
 {
     padding: 5px 10px;
     border: 1px solid rgb(164, 221, 223);
-    background: transparent;
-    color: rgb(244, 253, 255);
+    background: rgb(164, 221, 223);
+    color: rgb(0, 0, 0);
     font-size: 15px;
     cursor: pointer;
     outline: none;
@@ -137,8 +137,8 @@ body {
 {
     padding: 5px 10px;
     border: 1px solid rgb(144, 201, 203);
-    background: transparent;
-    color: rgb(244, 253, 255);
+    background:  rgb(144, 201, 203);
+    color: rgb(0, 0, 0);
     font-size: 15px;
     cursor: pointer;
     outline: none;
