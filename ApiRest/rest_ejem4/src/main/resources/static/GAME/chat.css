@@ -76,6 +76,26 @@ body {
     border: none;
 }
 
+.screen .form-input button:hover{
+    padding: 10px 20px;
+    background: rgb(124, 162, 220);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.screen .form-input button:active{
+    padding: 10px 20px;
+    background: rgb(104, 142, 200);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
 .chat-screen .header {
     background: #f16785;
     height: 50px;
@@ -95,6 +115,28 @@ body {
 {
     padding: 5px 10px;
     border: 1px solid rgb(184, 241, 243);
+    background: transparent;
+    color: rgb(244, 253, 255);
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+.chat-screen .header button:hover
+{
+    padding: 5px 10px;
+    border: 1px solid rgb(164, 221, 223);
+    background: transparent;
+    color: rgb(244, 253, 255);
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+.chat-screen .header button:active
+{
+    padding: 5px 10px;
+    border: 1px solid rgb(144, 201, 203);
     background: transparent;
     color: rgb(244, 253, 255);
     font-size: 15px;
@@ -161,6 +203,30 @@ body {
     width: 80px;
     height: 100%;
     background-color: rgb(62, 116, 233);
+    color: #eee;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.chat-screen .typebox button:hover
+ {
+    width: 80px;
+    height: 100%;
+    background-color: rgb(42, 96, 213);
+    color: #eee;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.chat-screen .typebox button:active
+{
+    width: 80px;
+    height: 100%;
+    background-color: rgb(22, 76, 193);
     color: #eee;
     font-size: 16px;
     outline: none;
