@@ -4,7 +4,6 @@
 class MainScene extends Phaser.Scene {
     constructor() {
         super('mainScene');
-        var scene = this;
     }
 
     preupdate() {
@@ -189,6 +188,7 @@ class MainScene extends Phaser.Scene {
         * 2 - SUBMACHINE GUN  - Fire Rate: 200
         */
 
+        var scene = this;
         var keyShoot1 = this.input.keyboard.addKey('SPACE');
         var stillDown1 = this.input.keyboard.checkDown(keyShoot1, player1.actualFireRate);
         if (stillDown1) {
@@ -207,11 +207,20 @@ class MainScene extends Phaser.Scene {
         var keyBuy3 = this.input.keyboard.addKey('D');
 
         keyBuy1.on('up', function(event) { if(tienda.onMenu && Phaser.Input.Keyboard.JustUp(keyBuy1)){
-            tienda.buffManager(tienda.shop2)}});
+            tienda.buffManager(tienda.shop2);
+            tienda.item2.setScale(1.4);
+            scene.time.delayedCall(750, function () {tienda.item2.setScale(1.5);});
+        }});
         keyBuy2.on('up', function(event) { if(tienda.onMenu && Phaser.Input.Keyboard.JustUp(keyBuy2)){
-            tienda.buffManager(tienda.shop1)}});
+            tienda.buffManager(tienda.shop1)
+            tienda.item1.setScale(1.4);
+            scene.time.delayedCall(750, function () {tienda.item1.setScale(1.5);});
+        }});
         keyBuy3.on('up', function(event) { if(tienda.onMenu && Phaser.Input.Keyboard.JustUp(keyBuy3)){
-            tienda.buffManager(tienda.shop3)}});
+            tienda.buffManager(tienda.shop3)
+            tienda.item3.setScale(1.4);
+            scene.time.delayedCall(750, function () {tienda.item3.setScale(1.5);});
+        }});
 
     }
 
