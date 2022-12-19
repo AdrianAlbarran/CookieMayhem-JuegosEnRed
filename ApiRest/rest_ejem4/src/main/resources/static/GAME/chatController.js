@@ -25,7 +25,8 @@ function showMessageInHTML(data)
 	// type
 	// 100 = mis mensajes, a la derecha
 	// 101 = otros mensajes, a la izquierda
-	// 200 =
+	// 200 = mensaje de entrada en el server
+	// 201 = mensaje de salida en el server
 
 	if (data.type == 200)
 	{
@@ -86,7 +87,6 @@ function postMessage(message) {
 			message.type = 100;
 		}
        	getMessage();
-       	//lastId++;
     })
 }
 
