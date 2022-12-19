@@ -12,6 +12,7 @@ class fruitCookie extends Phaser.GameObjects.Sprite{
         this.value = 25;
         this.attackSpeed = 5;
         this.lastAttacked = false;
+        this.getScale = 1;
         scene.physics.world.enable(this);
         scene.add.existing(this);
         scene.physics.add.collider(this, tienda, this.atacar);

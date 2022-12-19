@@ -1,5 +1,5 @@
 /** @type { import ("./typings/phaser") } */
-/*
+
 var gameConfig = {
     mode: Phaser.Scale.FIT,
     type: Phaser.AUTO,
@@ -21,4 +21,3 @@ var gameConfig = {
     },
    
 };
-*/
