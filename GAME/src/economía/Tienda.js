@@ -40,9 +40,18 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.icono1;
     this.icono2;
     this.icono3;
+
+    this.iconoStats1;
+    this.iconoStats2;
+    this.iconoStats3;
+    this.iconoStats4;
+    this.statText1;
+    this.statText2;
+    this.statText3;
+    this.statText4;
+
     this.exit;
  
-
     this.createHPbar(scene);
   }
 
@@ -138,6 +147,16 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.priceText3 = this.scene.add.text(this.price3.x, this.price3.y, "$"+this.shop3.value,style2).setDepth(3).setOrigin(0.5,0.5);
     this.icono3 = this.scene.add.image(this.item3.x+50,this.item3.y+15,this.shop3.sprite).setDepth(3).setScale(0.75);
 
+    this.statText1 = this.scene.add.text(40, 295, cont1, style2).setDepth(3);
+    this.statText2 = this.scene.add.text(40, 345, cont2, style2).setDepth(3);
+    this.statText3 = this.scene.add.text(40, 395, cont3, style2).setDepth(3);
+    this.statText4 = this.scene.add.text(40, 445, cont4, style2).setDepth(3);
+
+    this.iconoStats1 = this.scene.add.image(20, 300, "IDMG");
+    this.iconoStats2 = this.scene.add.image(20, 350, "IMB");
+    this.iconoStats3 = this.scene.add.image(20, 400, "IVA");
+    this.iconoStats4 = this.scene.add.image(20, 450, "IVM");
+
 
     this.backgroundShop.setVisible(false);
     this.text1.setVisible(false);
@@ -155,6 +174,14 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.icono1.setVisible(false);
     this.icono2.setVisible(false);
     this.icono3.setVisible(false);
+    this.iconoStats1.setVisible(false);
+    this.iconoStats2.setVisible(false);
+    this.iconoStats3.setVisible(false);
+    this.iconoStats4.setVisible(false);
+    this.statText1.setVisible(false);
+    this.statText2.setVisible(false);
+    this.statText3.setVisible(false);
+    this.statText4.setVisible(false);
 
   }
 
@@ -201,6 +228,14 @@ class Tienda extends Phaser.GameObjects.Sprite {
       this.icono1.setVisible(this.open);
       this.icono2.setVisible(this.open);
       this.icono3.setVisible(this.open);
+      this.iconoStats1.setVisible(this.open);
+      this.iconoStats2.setVisible(this.open);
+      this.iconoStats3.setVisible(this.open);
+      this.iconoStats4.setVisible(this.open);
+      this.statText1.setVisible(this.open);
+      this.statText2.setVisible(this.open);
+      this.statText3.setVisible(this.open);
+      this.statText4.setVisible(this.open);
 
       this.onMenu = this.open;
       this.open = !this.open;
@@ -212,7 +247,9 @@ class Tienda extends Phaser.GameObjects.Sprite {
         if(player1.economy.money>= buff.value){
         player1.setBuffs(buff.percentage, buff.id);
         player2.setBuffs(buff.percentage, buff.id);
-        player1.economy.setMoney(buff.value)
+        player1.economy.setMoney(buff.value);
+        cont1 +=1;
+        this.statText1.setText(cont1);
         buyshop.play();
         }
       break;
@@ -220,7 +257,9 @@ class Tienda extends Phaser.GameObjects.Sprite {
         if(player1.economy.money>= buff.value){
         player1.setBuffs(buff.percentage, buff.id);
         player2.setBuffs(buff.percentage, buff.id);
-        player1.economy.setMoney(buff.value)
+        player1.economy.setMoney(buff.value);
+        cont2 +=1;
+        this.statText3.setText(cont2);
         buyshop.play();
         }
       break;
@@ -228,7 +267,9 @@ class Tienda extends Phaser.GameObjects.Sprite {
         if(player1.economy.money>= buff.value){
         player1.setBuffs(buff.percentage, buff.id);
         player2.setBuffs(buff.percentage, buff.id);
-        player1.economy.setMoney(buff.value)
+        player1.economy.setMoney(buff.value);
+        cont3 +=1;
+        this.statText2.setText(cont3);
         buyshop.play();
         }
       break;
@@ -236,7 +277,9 @@ class Tienda extends Phaser.GameObjects.Sprite {
         if(player1.economy.money>= buff.value){
         player1.setBuffs(buff.percentage, buff.id);
         player2.setBuffs(buff.percentage, buff.id);
-        player1.economy.setMoney(buff.value)
+        player1.economy.setMoney(buff.value);
+        cont4 +=1;
+        this.statText4.setText(cont4);
         buyshop.play();
 
         }
