@@ -215,6 +215,7 @@ body {
    height: 50px;
    font-family: "Pixel";
    font-size: 18px;
+   padding: 5px;
 }
 
 .chat-screen .typebox button {
