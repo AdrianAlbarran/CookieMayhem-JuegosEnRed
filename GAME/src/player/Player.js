@@ -257,12 +257,14 @@ class Player extends Phaser.GameObjects.Sprite {
   {
     if(this.id == 'PLAYER1')
     {
-      let icon = this.sceneOn.add.image(25, 575, image).setDepth(1).setScale(1.2);
+      let icon = this.sceneOn.add.image(32, 568, image).setDepth(1).setScale(1.2);
+      icon.setScale(2);
     }
     else
     {
-      let icon = this.sceneOn.add.image(775, 575, image).setDepth(1).setScale(1.2);
+      let icon = this.sceneOn.add.image(768, 568, image).setDepth(1).setScale(1.2);
       icon.flipX = true;
+      icon.setScale(2);
     }
   }
 }

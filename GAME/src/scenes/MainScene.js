@@ -95,7 +95,6 @@ class MainScene extends Phaser.Scene {
             });
 
         // Daños
-
         soundCookieDamaged = this.sound.add('COOKIEDAMAGED',
             {
                 mute: false,
@@ -134,8 +133,7 @@ class MainScene extends Phaser.Scene {
                 volume: 0.10
             });
         bcMusicGame.play();
-
-        
+       
         endGameMusic = this.sound.add("GAMEOVERMUSIC",
         {
             loop: true,
@@ -204,11 +202,9 @@ class MainScene extends Phaser.Scene {
             bulletsPlayer2.fireBullet(player2.x, player2.y, player2, player2.weaponID);
         }
 
-
         var keyBuy1 = this.input.keyboard.addKey('W');
         var keyBuy2 = this.input.keyboard.addKey('A');
         var keyBuy3 = this.input.keyboard.addKey('D');
-
 
         keyBuy1.on('up', function(event) { if(tienda.onMenu && Phaser.Input.Keyboard.JustUp(keyBuy1)){
             tienda.buffManager(tienda.shop2)}});
