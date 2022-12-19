@@ -19,7 +19,7 @@ public class CreateJson {
 	
 	public static void main(Message message){
 		
-
+		
 		jsonfile.put("id",message.getId());
 		jsonfile.put("userName",message.getUserName());
 		jsonfile.put("content",message.getContent());
@@ -28,12 +28,14 @@ public class CreateJson {
 		
 		try{
 			file = new FileWriter("messages.json",true);
-			file.write(jsonfile.toJSONString());
+			file.write(jsonfile.toJSONString() + "\n");
+
 			file.flush();
 		}catch(IOException e ) {
 			
 			e.printStackTrace();
 		}
+		
 	}
 	
 }
