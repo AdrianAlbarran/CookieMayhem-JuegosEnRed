@@ -7,13 +7,8 @@ function showArrayMessage(message)
 {
 	message.forEach(data =>
 	{
-		console.log('ey');
-		console.log(lastId);
-		console.log(data.id);
-		console.log(lastId < data.id);
 	if(lastId < data.id)
 	{
-		console.log('entra en el if de id');
 		showMessageInHTML(data);
 		lastId = data.id;
 	} 	// if end
@@ -113,11 +108,11 @@ function enterChat()
 		 alert("You can't enter an space in the username!");
 		 return;
 	}
+	
 	var app = document.querySelector(".app");
 	app.querySelector(".join-screen").classList.remove("active");
 	app.querySelector(".chat-screen").classList.add("active");
 	onChat = true;
-	
 	createMessage(200, '');
 }
 

@@ -63,18 +63,14 @@ body {
 .screen .form-input input {
     width: 100%;
     padding: 10px;
-<<<<<<< Updated upstream:ApiRest/rest_ejem4/src/main/resources/static/GAME/chat.css
     border: 1px solid rgb(227, 241, 245);
-=======
     border: 1px solid #555;
     font-family: "Pixel";
->>>>>>> Stashed changes:GAME/chat.css
     font-size: 16px;
 }
 
 .screen .form-input button{
     padding: 10px 20px;
-<<<<<<< Updated upstream:ApiRest/rest_ejem4/src/main/resources/static/GAME/chat.css
     background: rgb(144, 182, 240);
     color: rgb(0, 0, 0);
     font-size: 16px;
@@ -97,11 +93,9 @@ body {
     padding: 10px 20px;
     background: rgb(104, 142, 200);
     color: rgb(0, 0, 0);
-=======
     background: #111;
     color: #eee;
     font-family: "Pixel";
->>>>>>> Stashed changes:GAME/chat.css
     font-size: 16px;
     cursor: pointer;
     outline: none;
@@ -127,7 +121,6 @@ body {
 .chat-screen .header button 
 {
     padding: 5px 10px;
-<<<<<<< Updated upstream:ApiRest/rest_ejem4/src/main/resources/static/GAME/chat.css
     border: 1px solid rgb(184, 241, 243);
     background: rgb(184, 241, 243);
     color: rgb(0, 0, 0);
@@ -153,12 +146,10 @@ body {
     border: 1px solid rgb(144, 201, 203);
     background:  rgb(144, 201, 203);
     color: rgb(0, 0, 0);
-=======
     border: 1px solid #eee;
     background: transparent;
     color: #eee;
     font-family: "Pixel";
->>>>>>> Stashed changes:GAME/chat.css
     font-size: 15px;
     cursor: pointer;
     outline: none;
