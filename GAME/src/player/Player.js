@@ -93,7 +93,7 @@ class Player extends Phaser.GameObjects.Sprite {
       var keydown_S = scene.input.keyboard.addKey("S");
       var keydown_A = scene.input.keyboard.addKey("A");
 
-      if (keydown_W.isDown && keydown_S.isUp) {
+      if (keydown_W.isDown) {
         those.body.setVelocityY(-this.actualMS);
         if (this.lastDirection == 1) {
           this.anims.play("right1", true);
@@ -104,7 +104,7 @@ class Player extends Phaser.GameObjects.Sprite {
         those.lastDirectionInput = 11;
         soundPlayerSteps.play();
 
-      } else if (keydown_S.isDown && keydown_W.isUp) {
+      } else if (keydown_S.isDown) {
         those.body.setVelocityY(this.actualMS);
         if (this.lastDirection == 1) {
           this.anims.play("right1", true);
@@ -115,14 +115,18 @@ class Player extends Phaser.GameObjects.Sprite {
         those.lastDirectionInput = 12;
         soundPlayerSteps.play();
 
-      } else if (keydown_D.isDown && keydown_A.isUp) {
+      } else {
+        those.body.setVelocityY(0);
+      }
+      
+      if (keydown_D.isDown) {
         those.body.setVelocityX(this.actualMS);
         those.anims.play("right1", true);
         those.lastDirection = 1;
         those.lastDirectionInput = 14;
         soundPlayerSteps.play();
 
-      } else if (keydown_A.isDown && keydown_D.isUp) {
+      } else if (keydown_A.isDown) {
         those.body.setVelocityX(-this.actualMS);
         those.anims.play("left1", true);
         those.lastDirection = 2;
@@ -130,25 +134,30 @@ class Player extends Phaser.GameObjects.Sprite {
         soundPlayerSteps.play();
 
       } else {
-        those.body.setVelocity(0, 0);
+        those.body.setVelocityX(0);
+      }
+
+      if (keydown_D.isUp && keydown_A.isUp && keydown_W.isUp && keydown_S.isUp) {
         those.anims.play("turn1");
       }
 
     } else if (this.id == "PLAYER2") {
-      if (cursors.left.isDown && cursors.right.isUp) {
+      if (cursors.left.isDown) {
         this.body.setVelocityX(-this.actualMS);
         this.anims.play("left2", true);
         this.lastDirection = 0;
         this.lastDirectionInput = 13;
         soundPlayerSteps.play();
-      } else if (cursors.right.isDown && cursors.left.isUp) {
+      } else if (cursors.right.isDown) {
         this.body.setVelocityX(this.actualMS);
         this.anims.play("right2", true);
         this.lastDirection = 1;
         this.lastDirectionInput = 14;
         soundPlayerSteps.play();
 
-      } else if (cursors.up.isDown && cursors.down.isUp) {
+      } else {
+        those.body.setVelocityX(0);
+      } if (cursors.up.isDown) {
         this.body.setVelocityY(-this.actualMS);
         if (this.lastDirection == 1) {
           this.anims.play("right2", true);
@@ -159,22 +168,21 @@ class Player extends Phaser.GameObjects.Sprite {
         this.lastDirectionInput = 11;
         soundPlayerSteps.play();
 
-      } else if (cursors.down.isDown && cursors.up.isUp) {
+      } else if (cursors.down.isDown) {
         this.body.setVelocityY(this.actualMS);
         if (this.lastDirection == 1) {
           this.anims.play("right2", true);
-
         } else {
           this.anims.play("left2", true);
         }
         this.lastDirectionInput = 12;
         soundPlayerSteps.play();
-
       } else {
-        this.body.setVelocityX(0);
-        this.body.setVelocityY(0);
-        this.anims.play("turn2");
+        those.body.setVelocityY(0);
+      }
 
+      if (cursors.down.isUp && cursors.up.isUp && cursors.right.isUp && cursors.left.isUp) {
+          those.anims.play("turn2");
       }
     }
   }
