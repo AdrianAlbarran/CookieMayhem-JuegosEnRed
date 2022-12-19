@@ -100,11 +100,16 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
             //sonido de golpe
             soundCookieDamaged.play();
             enemy.hp = enemy.hp - bullet.damage;
+            enemy.setScale(enemy.getScale * 0.9); //escala modificada cuando son golpeados
+            setInterval(normal, 75); //escala normal despues de ser golpeados
             //Pre update se encarga de que la bala desaparezca
             bullet.maxTraverse = bullet.maxTraverse - 1;
             console.log(bullet.maxTraverse);
             if (bullet.maxTraverse <= 0) {
                 bullet.setPosition(999, 999);
+            }
+            function normal() {
+                enemy.setScale(enemy.getScale);
             }
         }
         bullet.lastEnemyHitted = enemy;

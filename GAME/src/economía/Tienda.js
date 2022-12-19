@@ -107,6 +107,10 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.item1 = this.scene.add.image(400, 300, "BMENU1").setInteractive().setDepth(3).setScale(1.5);
     this.item1.on('pointerdown', () => {
       this.buffManager(this.shop1);});
+    this.item1.on('pointerover', () => {
+      this.item1.setScale(1.6);});
+    this.item1.on('pointerout', () => {
+      this.item1.setScale(1.5);});
     this.text1 = this.scene.add.text(this.item1.x+7, this.item1.y, this.shop1.name,style).setDepth(3).setOrigin(0.5,0.5);
     this.price1 = this.scene.add.image(this.item1.x+75, this.item1.y+30, "BMENU2").setInteractive().setDepth(3).setScale(0.5);
     this.priceText1 = this.scene.add.text(this.price1.x, this.price1.y, "$"+this.shop1.value,style2).setDepth(3).setOrigin(0.5,0.5);
@@ -115,6 +119,10 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.item2 = this.scene.add.image(400, 200, "BMENU1").setInteractive().setDepth(3).setScale(1.5);
     this.item2.on('pointerdown', () => {
       this.buffManager(this.shop2);});
+    this.item2.on('pointerover', () => {
+      this.item2.setScale(1.6);});
+    this.item2.on('pointerout', () => {
+      this.item2.setScale(1.5);});
     this.text2 = this.scene.add.text(this.item2.x+7, this.item2.y, this.shop2.name,style).setDepth(3).setOrigin(0.5,0.5);
     this.price2 =this.scene.add.image(this.item2.x-75, this.item2.y+30, "BMENU2").setInteractive().setDepth(3).setScale(0.5);
     this.priceText2 = this.scene.add.text(this.price2.x, this.price2.y, "$"+this.shop2.value,style2).setDepth(3).setOrigin(0.5,0.5);
@@ -123,6 +131,10 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.item3 = this.scene.add.image(400, 400, "BMENU1").setInteractive().setDepth(3).setScale(1.5);
     this.item3.on('pointerdown', () => {  
       this.buffManager(this.shop3);});
+    this.item3.on('pointerover', () => {
+      this.item3.setScale(1.6);});
+    this.item3.on('pointerout', () => {
+      this.item3.setScale(1.5);});
     this.text3 = this.scene.add.text(this.item3.x+7 ,this.item3.y, this.shop3.name,style).setDepth(3).setOrigin(0.5,0.5);
     this.price3 =this.scene.add.image(this.item3.x-75, this.item3.y+30, "BMENU2").setInteractive().setDepth(3).setScale(0.5);
     this.priceText3 = this.scene.add.text(this.price3.x, this.price3.y, "$"+this.shop3.value,style2).setDepth(3).setOrigin(0.5,0.5);
@@ -204,6 +216,8 @@ class Tienda extends Phaser.GameObjects.Sprite {
         player2.setBuffs(buff.percentage, buff.id);
         player1.economy.setMoney(buff.value)
         buyshop.play();
+        } else {
+          failshop.play();
         }
       break;
       case 1:
@@ -212,6 +226,8 @@ class Tienda extends Phaser.GameObjects.Sprite {
         player2.setBuffs(buff.percentage, buff.id);
         player1.economy.setMoney(buff.value)
         buyshop.play();
+        } else {
+          failshop.play();
         }
       break;
       case 2:
@@ -220,6 +236,8 @@ class Tienda extends Phaser.GameObjects.Sprite {
         player2.setBuffs(buff.percentage, buff.id);
         player1.economy.setMoney(buff.value)
         buyshop.play();
+        } else {
+          failshop.play();
         }
       break;
       case 3:
@@ -228,7 +246,8 @@ class Tienda extends Phaser.GameObjects.Sprite {
         player2.setBuffs(buff.percentage, buff.id);
         player1.economy.setMoney(buff.value)
         buyshop.play();
-
+        } else {
+          failshop.play();
         }
       break;
     }

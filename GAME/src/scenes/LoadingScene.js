@@ -67,6 +67,7 @@ class LoadingScene extends Phaser.Scene
         this.load.audio("MONEYSOUND", "./assets/sonidos/CogerDinero.mp3");
         // * Comprar Tienda
         this.load.audio("BUYSHOP", "./assets/sonidos/Coger_Tienda.mp3");
+        this.load.audio("FAILSHOP", "./assets/sonidos/Fallar_Tienda.mp3");
 
         // * Background music
         this.load.audio("GAMEMUSIC", "./assets/musica/Cancion_JeR_1.mp3");

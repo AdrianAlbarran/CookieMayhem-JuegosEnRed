@@ -15,6 +15,7 @@ class oreoCookie extends Phaser.GameObjects.Sprite{
         scene.physics.world.enable(this);
         scene.add.existing(this);
         this.setScale(0.7);
+        this.getScale = 0.7;
         scene.physics.add.collider(this, tienda, this.atacar);
         this.initializeAnimation(scene);
       }
