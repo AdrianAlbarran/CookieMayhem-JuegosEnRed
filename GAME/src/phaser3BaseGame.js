@@ -26,6 +26,10 @@ let failshop;
 // JUGADORES
 var player1;
 var player2;
+var cont1 = 0;
+var cont2 = 0;
+var cont3 = 0;
+var cont4 = 0;
 
 var game = new Phaser.Game(gameConfig);
 
