@@ -15,7 +15,7 @@ class MainMenu extends Phaser.Scene {
 
         let fullscreen = this.add.image(50, 550, "fullscreen").setScale(0.25).setInteractive();
         let mouseSpritePlay = this.add.image(485, 370, "sugarIcon");
-        let mouseSpriteSettings = this.add.image(535, 430, "sugarIcon");
+        let mouseSpriteSettings = this.add.image(540, 430, "sugarIcon");
         let exitControl = 0;
         let sound = 0;
         let active  = 0;
@@ -54,10 +54,12 @@ class MainMenu extends Phaser.Scene {
 
         textoJugar.on('pointerover', () => {
             mouseSpritePlay.setVisible(true);
+            textoJugar.setScale(1.1);
         });
         
         textoJugar.on('pointerout', () => {
             mouseSpritePlay.setVisible(false);
+            textoJugar.setScale(1);
         });
 
         var textoAjustes = this.add.text(400, 430, 'SETTINGS', {
@@ -77,10 +79,12 @@ class MainMenu extends Phaser.Scene {
 
         textoAjustes.on('pointerover', () => {
             mouseSpriteSettings.setVisible(true);
+            textoAjustes.setScale(1.1);
         });
 
         textoAjustes.on('pointerout', () => {
             mouseSpriteSettings.setVisible(false);
+            textoAjustes.setScale(1);
         });
 
         let settingsBackground = this.add.image(400, 300, "settingsBackground");
