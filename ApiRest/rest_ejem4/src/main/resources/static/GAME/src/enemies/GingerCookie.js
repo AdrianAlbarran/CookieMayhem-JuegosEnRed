@@ -13,6 +13,7 @@ class gingerCookie extends Phaser.GameObjects.Sprite{
         this.attackSpeed = 8;
         this.lastAttacked = false;
         this.setScale(1.5);
+        this.getScale = 1.5;
         scene.physics.world.enable(this);
         scene.add.existing(this);
         scene.physics.add.collider(this, tienda, this.atacar);
