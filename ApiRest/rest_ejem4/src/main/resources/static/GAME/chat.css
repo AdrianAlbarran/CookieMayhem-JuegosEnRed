@@ -75,6 +75,7 @@ body {
     color: rgb(0, 0, 0);
     font-size: 16px;
     cursor: pointer;
+    font-family: "Pixel";
     outline: none;
     border: none;
 }
@@ -83,6 +84,7 @@ body {
     padding: 10px 20px;
     background: rgb(124, 162, 220);
     color: rgb(0, 0, 0);
+    font-family: "Pixel";
     font-size: 16px;
     cursor: pointer;
     outline: none;
@@ -124,6 +126,7 @@ body {
     border: 1px solid rgb(184, 241, 243);
     background: rgb(184, 241, 243);
     color: rgb(0, 0, 0);
+    font-family: "Pixel";
     font-size: 15px;
     cursor: pointer;
     outline: none;
@@ -135,6 +138,7 @@ body {
     border: 1px solid rgb(164, 221, 223);
     background: rgb(164, 221, 223);
     color: rgb(0, 0, 0);
+    font-family: "Pixel";
     font-size: 15px;
     cursor: pointer;
     outline: none;
@@ -218,6 +222,7 @@ body {
     height: 100%;
     background-color: rgb(62, 116, 233);
     color: #eee;
+    font-family: "Pixel";
     font-size: 16px;
     outline: none;
     border: none;
@@ -243,6 +248,7 @@ body {
     height: 100%;
     background-color: rgb(22, 76, 193);
     color: #eee;
+    font-family: "Pixel";
     font-size: 16px;
     outline: none;
     border: none;
