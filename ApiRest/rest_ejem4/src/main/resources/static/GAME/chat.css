@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Pixel";
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -47,6 +47,7 @@ body {
 
 .screen h2 {
     margin-bottom: 20px;
+    font-family: "Pixel";
     font-size: 30px;
     color: rgb(53, 116, 211);
     border-bottom: 4px solid #f16785;
@@ -62,12 +63,18 @@ body {
 .screen .form-input input {
     width: 100%;
     padding: 10px;
+<<<<<<< Updated upstream:ApiRest/rest_ejem4/src/main/resources/static/GAME/chat.css
     border: 1px solid rgb(227, 241, 245);
+=======
+    border: 1px solid #555;
+    font-family: "Pixel";
+>>>>>>> Stashed changes:GAME/chat.css
     font-size: 16px;
 }
 
 .screen .form-input button{
     padding: 10px 20px;
+<<<<<<< Updated upstream:ApiRest/rest_ejem4/src/main/resources/static/GAME/chat.css
     background: rgb(144, 182, 240);
     color: rgb(0, 0, 0);
     font-size: 16px;
@@ -90,6 +97,11 @@ body {
     padding: 10px 20px;
     background: rgb(104, 142, 200);
     color: rgb(0, 0, 0);
+=======
+    background: #111;
+    color: #eee;
+    font-family: "Pixel";
+>>>>>>> Stashed changes:GAME/chat.css
     font-size: 16px;
     cursor: pointer;
     outline: none;
@@ -106,6 +118,7 @@ body {
 }
 
 .chat-screen .header .logo{
+    font-family: "Pixel";
     font-size: 18px;
     color: #eee;
     font-weight: 600;
@@ -114,6 +127,7 @@ body {
 .chat-screen .header button 
 {
     padding: 5px 10px;
+<<<<<<< Updated upstream:ApiRest/rest_ejem4/src/main/resources/static/GAME/chat.css
     border: 1px solid rgb(184, 241, 243);
     background: rgb(184, 241, 243);
     color: rgb(0, 0, 0);
@@ -139,6 +153,12 @@ body {
     border: 1px solid rgb(144, 201, 203);
     background:  rgb(144, 201, 203);
     color: rgb(0, 0, 0);
+=======
+    border: 1px solid #eee;
+    background: transparent;
+    color: #eee;
+    font-family: "Pixel";
+>>>>>>> Stashed changes:GAME/chat.css
     font-size: 15px;
     cursor: pointer;
     outline: none;
@@ -172,6 +192,7 @@ body {
 }
 
 .chat-screen .messages .message .name {
+    font-family: "Pixel";
     font-size: 13px;
     color: hsl(231, 71%, 30%);
     margin-bottom: 5px;
@@ -184,6 +205,7 @@ body {
 .chat-screen .messages .update {
     text-align: center;
     padding: 10px;
+    font-family: "Pixel";
     font-style:  italic;
 }
 
@@ -196,6 +218,7 @@ body {
 .chat-screen .typebox input {
    flex: 1;
    height: 50px;
+   font-family: "Pixel";
    font-size: 18px;
 }
 
@@ -216,6 +239,7 @@ body {
     height: 100%;
     background-color: rgb(42, 96, 213);
     color: #eee;
+    font-family: "Pixel";
     font-size: 16px;
     outline: none;
     border: none;
