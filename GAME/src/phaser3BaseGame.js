@@ -21,6 +21,7 @@ let bcMusicMenu;
 let bcMusicGame;
 let endGameMusic;
 let buyshop;
+let failshop;
 
 // JUGADORES
 var player1;

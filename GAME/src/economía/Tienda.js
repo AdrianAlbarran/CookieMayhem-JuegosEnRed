@@ -117,7 +117,10 @@ class Tienda extends Phaser.GameObjects.Sprite {
       this.item1.setScale(1.4);
       var that = this.item1;
       this.scene.time.delayedCall(750, function () {that.setScale(1.5);});
-    });
+    this.item1.on('pointerover', () => {
+      this.item1.setScale(1.6);});
+    this.item1.on('pointerout', () => {
+      this.item1.setScale(1.5);});
     this.text1 = this.scene.add.text(this.item1.x+7, this.item1.y, this.shop1.name,style).setDepth(3).setOrigin(0.5,0.5);
     this.price1 = this.scene.add.image(this.item1.x+75, this.item1.y+30, "BMENU2").setInteractive().setDepth(3).setScale(0.5);
     this.priceText1 = this.scene.add.text(this.price1.x, this.price1.y, "$"+this.shop1.value,style2).setDepth(3).setOrigin(0.5,0.5);
@@ -125,6 +128,14 @@ class Tienda extends Phaser.GameObjects.Sprite {
 
     this.item2 = this.scene.add.image(400, 200, "BMENU1").setInteractive().setDepth(3).setScale(1.5);
     this.item2.on('pointerdown', () => {
+      this.buffManager(this.shop2);
+      this.item2.setScale(1.4);
+      var that = this.item2;
+      this.scene.time.delayedCall(750, function () {that.setScale(1.5);});
+    this.item2.on('pointerover', () => {
+      this.item2.setScale(1.6);});
+    this.item2.on('pointerout', () => {
+      this.item2.setScale(1.5);});
       this.buffManager(this.shop2);
       this.item2.setScale(1.4);
       var that = this.item2;
@@ -137,6 +148,14 @@ class Tienda extends Phaser.GameObjects.Sprite {
 
     this.item3 = this.scene.add.image(400, 400, "BMENU1").setInteractive().setDepth(3).setScale(1.5);
     this.item3.on('pointerdown', () => {  
+      this.buffManager(this.shop3);
+      this.item3.setScale(1.4);
+      var that = this.item3;
+      this.scene.time.delayedCall(750, function () {that.setScale(1.5);});
+    this.item3.on('pointerover', () => {
+      this.item3.setScale(1.6);});
+    this.item3.on('pointerout', () => {
+      this.item3.setScale(1.5);});
       this.buffManager(this.shop3);
       this.item3.setScale(1.4);
       var that = this.item3;
@@ -251,6 +270,8 @@ class Tienda extends Phaser.GameObjects.Sprite {
         cont1 +=1;
         this.statText1.setText(cont1);
         buyshop.play();
+        } else {
+          failshop.play();
         }
       break;
       case 1:
@@ -261,6 +282,8 @@ class Tienda extends Phaser.GameObjects.Sprite {
         cont2 +=1;
         this.statText3.setText(cont2);
         buyshop.play();
+        } else {
+          failshop.play();
         }
       break;
       case 2:
@@ -271,6 +294,8 @@ class Tienda extends Phaser.GameObjects.Sprite {
         cont3 +=1;
         this.statText2.setText(cont3);
         buyshop.play();
+        } else {
+          failshop.play();
         }
       break;
       case 3:
@@ -281,7 +306,8 @@ class Tienda extends Phaser.GameObjects.Sprite {
         cont4 +=1;
         this.statText4.setText(cont4);
         buyshop.play();
-
+        } else {
+          failshop.play();
         }
       break;
     }

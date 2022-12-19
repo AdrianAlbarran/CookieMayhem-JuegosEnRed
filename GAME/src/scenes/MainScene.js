@@ -145,6 +145,12 @@ class MainScene extends Phaser.Scene {
             mute: false,
             volume: 0.15
         });
+        failshop = this.sound.add("FAILSHOP",
+        {
+            loop: false,
+            mute: false,
+            volume: 0.15
+        });
         
 
 
