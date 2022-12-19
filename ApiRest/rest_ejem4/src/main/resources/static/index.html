@@ -1,0 +1,75 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>COOKIE MAYHEM</title>
+    <link rel="preload" href="GAME/assets/interface/interfaceFont.ttf" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="GAME/fonts.css" type="text/css"/>
+    <script src="GAME/libs/phaser.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="GAME/chatController.js"></script>
+
+    <script src="GAME/src/enemies/chipCookie.js"></script>
+    <script src="GAME/src/enemies/oreoCookie.js"></script>
+    <script src="GAME/src/enemies/fruitCookie.js"></script>
+    <script src="GAME/src/enemies/dinoCookie.js"></script>
+    <script src="GAME/src/enemies/gingerCookie.js"></script>
+
+    <!-- LOAD NEEDED CLASSES-->
+    <script src="GAME/src/economía/Buffs.js"></script>
+    <script src="GAME/src/economía/Economy.js"> </script>
+    <script src="GAME/src/economía/Tienda.js"> </script>
+    <script src="GAME/src/player/Player.js"> </script>
+    <script src="GAME/src/bulletsGroup/baseBulletGroup.js"> </script>
+
+
+    
+    <!-- LOAD SCENES -->
+    <script src="GAME/src/scenes/LoadingMenu.js"> </script>
+    <script src="GAME/src/scenes/LoadingScene.js"> </script>
+    <script src="GAME/src/scenes/MainMenu.js"> </script>
+    <script src="GAME/src/scenes/MainScene.js"> </script>
+    <script src="GAME/src/scenes/GameOver.js"> </script>
+
+    <!-- LOAD GAME -->
+    <script src="GAME/src/config/config.js">       </script>
+    <script src="GAME/src/phaser3BaseGame.js"> </script>
+
+    <style type="GAME/text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="GAME/chat.css" type="text/css"/>
+    <div class = "app">
+        <div class = "screen join-screen active">  
+            <div class = "form">
+                <h2> Join Chatroom</h2>
+                <div class = "form-input">
+                    <label>Username</label>
+                    <input type = "text" id = "username"> 
+                </div>
+                <div class="form-input">
+                    <button id = "join-user">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="screen chat-screen">
+            <div class="header">
+                <div class="logo">CookieMayhemChat</div>
+                <button id="exit-chat">Exit</button>
+            </div>
+            <div class="messages">
+              <!-- text messages -->
+                
+            </div>
+            <div class="typebox">
+                <input type="text" id = "message-input">
+                <button id = "send-message">Send</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,256 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Pixel";
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    background: #dde5f1;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+.app > .screen {
+    display: none;
+}
+
+.app > .screen.active {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.screen .form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;   
+}
+
+.screen .form-input {
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.screen h2 {
+    margin-bottom: 20px;
+    font-family: "Pixel";
+    font-size: 30px;
+    color: rgb(53, 116, 211);
+    border-bottom: 4px solid #f16785;
+    padding: 5px 0px;
+    display: inline-block;
+}
+
+.screen .form-input label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.screen .form-input input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(227, 241, 245);
+    border: 1px solid #555;
+    font-family: "Pixel";
+    font-size: 16px;
+}
+
+.screen .form-input button{
+    padding: 10px 20px;
+    background: rgb(144, 182, 240);
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "Pixel";
+    outline: none;
+    border: none;
+}
+
+.screen .form-input button:hover{
+    padding: 10px 20px;
+    background: rgb(124, 162, 220);
+    color: rgb(0, 0, 0);
+    font-family: "Pixel";
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.screen .form-input button:active{
+    padding: 10px 20px;
+    background: rgb(104, 142, 200);
+    color: rgb(0, 0, 0);
+    background: #111;
+    color: #eee;
+    font-family: "Pixel";
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.chat-screen .header {
+    background: #f16785;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.chat-screen .header .logo{
+    font-family: "Pixel";
+    font-size: 18px;
+    color: #eee;
+    font-weight: 600;
+}
+
+.chat-screen .header button 
+{
+    padding: 5px 10px;
+    border: 1px solid rgb(184, 241, 243);
+    background: rgb(184, 241, 243);
+    color: rgb(0, 0, 0);
+    font-family: "Pixel";
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+.chat-screen .header button:hover
+{
+    padding: 5px 10px;
+    border: 1px solid rgb(164, 221, 223);
+    background: rgb(164, 221, 223);
+    color: rgb(0, 0, 0);
+    font-family: "Pixel";
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+.chat-screen .header button:active
+{
+    padding: 5px 10px;
+    border: 1px solid rgb(144, 201, 203);
+    background:  rgb(144, 201, 203);
+    color: rgb(0, 0, 0);
+    border: 1px solid #eee;
+    background: transparent;
+    color: #eee;
+    font-family: "Pixel";
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+.chat-screen .messages {
+    width: 100%;
+    height: calc(100% - 100px);
+    background: #dde5f1;
+    overflow: auto;
+}
+
+.chat-screen .messages .message {
+    display: flex;
+    padding: 10px;
+}
+
+.chat-screen .messages .message > div {
+    max-width: 80%;
+    background: rgb(98, 144, 231);
+    box-shadow: 0px 0px 20px 5px rgba(97, 8, 85, 0.219);
+    padding: 10px;
+}
+
+.chat-screen .messages .message.my-message {
+    justify-content: flex-end;
+}
+
+.chat-screen .messages .message.other-message {
+    justify-content: flex-start;
+}
+
+.chat-screen .messages .message .name {
+    font-family: "Pixel";
+    font-size: 13px;
+    color: hsl(231, 71%, 30%);
+    margin-bottom: 5px;
+}
+
+.chat-screen .messages .message .text {
+    word-wrap: break-word;
+}
+
+.chat-screen .messages .update {
+    text-align: center;
+    padding: 10px;
+    font-family: "Pixel";
+    font-style:  italic;
+}
+
+.chat-screen .typebox {
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+
+.chat-screen .typebox input {
+   flex: 1;
+   height: 50px;
+   font-family: "Pixel";
+   font-size: 18px;
+}
+
+.chat-screen .typebox button {
+    width: 80px;
+    height: 100%;
+    background-color: rgb(62, 116, 233);
+    color: #eee;
+    font-family: "Pixel";
+    font-size: 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.chat-screen .typebox button:hover
+ {
+    width: 80px;
+    height: 100%;
+    background-color: rgb(42, 96, 213);
+    color: #eee;
+    font-family: "Pixel";
+    font-size: 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.chat-screen .typebox button:active
+{
+    width: 80px;
+    height: 100%;
+    background-color: rgb(22, 76, 193);
+    color: #eee;
+    font-family: "Pixel";
+    font-size: 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
