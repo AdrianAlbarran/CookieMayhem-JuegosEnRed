@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/messages")
 public class ChatController {
-
+	
+	CreateJson a = new CreateJson();
+	
 	Map<Long, Message> messages = new ConcurrentHashMap<>(); 
 	AtomicLong nextId = new AtomicLong(0);
 	
@@ -34,15 +36,14 @@ public class ChatController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Message AJAXPOST_newMessage(@RequestBody Message message) {
 
-		System.out.println(message);
 		long id = nextId.incrementAndGet();
 		message.setId(id);
 		if(message.getType() != 101 && message.getType() != 200 && message.getType() != 201)
 		{
 			message.setType(101);
-			System.out.println("entro");
 		}
 		messages.put(id, message);
+		a.main(message);
 		
 
 		return message;
