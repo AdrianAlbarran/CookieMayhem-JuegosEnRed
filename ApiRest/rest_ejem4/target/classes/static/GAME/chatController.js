@@ -2,6 +2,7 @@
 var lastId = 0;
 var uName = '';
 var onChat = false;
+var disconnected = false;
 
 function showArrayMessage(message)
 {
@@ -25,7 +26,8 @@ function showMessageInHTML(data)
 	// type
 	// 100 = mis mensajes, a la derecha
 	// 101 = otros mensajes, a la izquierda
-	// 200 =
+	// 200 = mensaje de entrada en el server
+	// 201 = mensaje de salida en el server
 
 	if (data.type == 200)
 	{
@@ -73,12 +75,12 @@ function showMessageInHTML(data)
 function postMessage(message) {
     $.ajax({
         method: "POST",
-        url: 'http://localhost:8080/messages',
+        url: window.location.href + 'messages',
         data: JSON.stringify(message), 
         processData: false,
         headers: {
             "Content-Type": "application/json"
-        }
+        },
     }).done(function (message) {
        
 		if(message.type == 101)
@@ -86,24 +88,58 @@ function postMessage(message) {
 			message.type = 100;
 		}
        	getMessage();
-       	//lastId++;
     })
 }
+
 
 function getMessage()
 {
 	$.ajax({
 		method: "GET",
-        url: 'http://localhost:8080/messages',
+        url: window.location.href + 'messages',
 		success:function(result){
+			if(disconnected){
+				disconnected = false;
+     		 console.log("Server Reconnected");
+     		$('.messages').append(
+				'<div class="update">' +
+				'Server Reconnected' +
+				'</div>'
+     			);
+			}
 			showArrayMessage(result);
-		}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			if(!disconnected ){
+			 disconnected = true;
+     		 console.log("Server Disconnected");
+     		$('.messages').append(
+				'<div class="update">' +
+				'Server Disconnected' +
+				'</div>'
+     			);
+     		}
+ },
 	});
 }
 
 
 function enterChat()
 {
+	
+	setInterval(function() {
+  $.ajax({
+    url: window.location.href + 'heartbeat',
+    type: 'POST',
+    data: {uName},
+    success: function(response) {
+      console.log('Heartbeat sent');
+    },
+      
+    
+  });
+}, 500); // send a heartbeat message every 10 seconds
+
 	if(uName.length == 0 || /\s/.test(uName)){
 		 alert("You can't enter an space in the username!");
 		 return;
@@ -136,14 +172,9 @@ function createMessage(_type, messageData)
     
   	postMessage(message);
 }
-function writeOnJSON(data, type)
-{
-	
-}
 
 $(document).ready(function()
 {
-
 	
 	var intervalId = window.setInterval(function(){
 		if(onChat == true)

@@ -1,0 +1,31 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+[32m :: Spring Boot :: [39m              [2m (v3.0.0)[0;39m
+
+[2m2022-12-20T21:00:41.239+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[           main][0;39m [36me.u.c.j.RestEjer1ConUiApplication       [0;39m [2m:[0;39m Starting RestEjer1ConUiApplication using Java 17.0.4.1 with PID 6588 (C:\Users\lmora\Documents\GitHub\CookieMayhem-JuegosEnRed\ApiRest\rest_ejem4\target\classes started by lmora in C:\Users\lmora\Documents\GitHub\CookieMayhem-JuegosEnRed\ApiRest\rest_ejem4)
+[2m2022-12-20T21:00:41.243+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[           main][0;39m [36me.u.c.j.RestEjer1ConUiApplication       [0;39m [2m:[0;39m No active profile set, falling back to 1 default profile: "default"
+[2m2022-12-20T21:00:41.819+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.s.b.w.embedded.tomcat.TomcatWebServer [0;39m [2m:[0;39m Tomcat initialized with port(s): 8080 (http)
+[2m2022-12-20T21:00:41.826+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.apache.catalina.core.StandardService  [0;39m [2m:[0;39m Starting service [Tomcat]
+[2m2022-12-20T21:00:41.826+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.apache.catalina.core.StandardEngine   [0;39m [2m:[0;39m Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2m2022-12-20T21:00:41.905+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/]      [0;39m [2m:[0;39m Initializing Spring embedded WebApplicationContext
+[2m2022-12-20T21:00:41.905+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[           main][0;39m [36mw.s.c.ServletWebServerApplicationContext[0;39m [2m:[0;39m Root WebApplicationContext: initialization completed in 630 ms
+[2m2022-12-20T21:00:42.061+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.s.b.a.w.s.WelcomePageHandlerMapping   [0;39m [2m:[0;39m Adding welcome page: class path resource [static/index.html]
+[2m2022-12-20T21:00:42.174+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.s.b.w.embedded.tomcat.TomcatWebServer [0;39m [2m:[0;39m Tomcat started on port(s): 8080 (http) with context path ''
+[2m2022-12-20T21:00:42.180+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[           main][0;39m [36me.u.c.j.RestEjer1ConUiApplication       [0;39m [2m:[0;39m Started RestEjer1ConUiApplication in 1.207 seconds (process running for 1.718)
+[2m2022-12-20T21:00:46.884+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/]      [0;39m [2m:[0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2m2022-12-20T21:00:46.884+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mo.s.web.servlet.DispatcherServlet       [0;39m [2m:[0;39m Initializing Servlet 'dispatcherServlet'
+[2m2022-12-20T21:00:46.884+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mo.s.web.servlet.DispatcherServlet       [0;39m [2m:[0;39m Completed initialization in 0 ms
+Client uName=a has disconnected
+[2m2022-12-20T21:05:04.415+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[on(9)-127.0.0.1][0;39m [36minMXBeanRegistrar$SpringApplicationAdmin[0;39m [2m:[0;39m Application shutdown requested.
+[2m2022-12-20T21:05:04.424+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[on(9)-127.0.0.1][0;39m [36mo.apache.catalina.core.StandardService  [0;39m [2m:[0;39m Stopping service [Tomcat]
+[2m2022-12-20T21:05:04.425+01:00[0;39m [32m INFO[0;39m [35m6588[0;39m [2m---[0;39m [2m[on(9)-127.0.0.1][0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/]      [0;39m [2m:[0;39m Destroying Spring FrameworkServlet 'dispatcherServlet'
+[2m2022-12-20T21:05:04.428+01:00[0;39m [33m WARN[0;39m [35m6588[0;39m [2m---[0;39m [2m[on(9)-127.0.0.1][0;39m [36mo.a.c.loader.WebappClassLoaderBase      [0;39m [2m:[0;39m The web application [ROOT] appears to have started a thread named [Timer-15] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.4.1/java.lang.Object.wait(Native Method)
+ java.base@17.0.4.1/java.lang.Object.wait(Object.java:338)
+ java.base@17.0.4.1/java.util.TimerThread.mainLoop(Timer.java:537)
+ java.base@17.0.4.1/java.util.TimerThread.run(Timer.java:516)
