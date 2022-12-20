@@ -79,7 +79,7 @@ function postMessage(message) {
         processData: false,
         headers: {
             "Content-Type": "application/json"
-        }
+        },
     }).done(function (message) {
        
 		if(message.type == 101)
@@ -97,7 +97,11 @@ function getMessage()
         url: 'http://localhost:8080/messages',
 		success:function(result){
 			showArrayMessage(result);
-		}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+     		alert("Server Disconnected");
+     		console.log("Server Disconnected");
+ },
 	});
 }
 

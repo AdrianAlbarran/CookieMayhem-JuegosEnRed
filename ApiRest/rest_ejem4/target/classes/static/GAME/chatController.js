@@ -25,7 +25,8 @@ function showMessageInHTML(data)
 	// type
 	// 100 = mis mensajes, a la derecha
 	// 101 = otros mensajes, a la izquierda
-	// 200 =
+	// 200 = mensaje de entrada en el server
+	// 201 = mensaje de salida en el server
 
 	if (data.type == 200)
 	{
@@ -78,7 +79,7 @@ function postMessage(message) {
         processData: false,
         headers: {
             "Content-Type": "application/json"
-        }
+        },
     }).done(function (message) {
        
 		if(message.type == 101)
@@ -86,7 +87,6 @@ function postMessage(message) {
 			message.type = 100;
 		}
        	getMessage();
-       	//lastId++;
     })
 }
 
@@ -97,7 +97,11 @@ function getMessage()
         url: 'http://localhost:8080/messages',
 		success:function(result){
 			showArrayMessage(result);
-		}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+     		alert("Server Disconnected");
+     		console.log("Server Disconnected");
+ },
 	});
 }
 
