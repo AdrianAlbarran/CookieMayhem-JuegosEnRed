@@ -2,6 +2,7 @@
 var lastId = 0;
 var uName = '';
 var onChat = false;
+var disconnected = false;
 
 function showArrayMessage(message)
 {
@@ -74,7 +75,7 @@ function showMessageInHTML(data)
 function postMessage(message) {
     $.ajax({
         method: "POST",
-        url: 'http://localhost:8080/messages',
+        url: window.location.href + 'messages',
         data: JSON.stringify(message), 
         processData: false,
         headers: {
@@ -90,17 +91,34 @@ function postMessage(message) {
     })
 }
 
+
 function getMessage()
 {
 	$.ajax({
 		method: "GET",
-        url: 'http://localhost:8080/messages',
+        url: window.location.href + 'messages',
 		success:function(result){
+			if(disconnected){
+				disconnected = false;
+     		 console.log("Server Reconnected");
+     		$('.messages').append(
+				'<div class="update">' +
+				'Server Reconnected' +
+				'</div>'
+     			);
+			}
 			showArrayMessage(result);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-     		alert("Server Disconnected");
-     		console.log("Server Disconnected");
+			if(!disconnected ){
+			 disconnected = true;
+     		 console.log("Server Disconnected");
+     		$('.messages').append(
+				'<div class="update">' +
+				'Server Disconnected' +
+				'</div>'
+     			);
+     		}
  },
 	});
 }
@@ -108,6 +126,20 @@ function getMessage()
 
 function enterChat()
 {
+	
+	setInterval(function() {
+  $.ajax({
+    url: window.location.href + 'heartbeat',
+    type: 'POST',
+    data: {uName},
+    success: function(response) {
+      console.log('Heartbeat sent');
+    },
+      
+    
+  });
+}, 500); // send a heartbeat message every 10 seconds
+
 	if(uName.length == 0 || /\s/.test(uName)){
 		 alert("You can't enter an space in the username!");
 		 return;
@@ -140,14 +172,9 @@ function createMessage(_type, messageData)
     
   	postMessage(message);
 }
-function writeOnJSON(data, type)
-{
-	
-}
 
 $(document).ready(function()
 {
-
 	
 	var intervalId = window.setInterval(function(){
 		if(onChat == true)
