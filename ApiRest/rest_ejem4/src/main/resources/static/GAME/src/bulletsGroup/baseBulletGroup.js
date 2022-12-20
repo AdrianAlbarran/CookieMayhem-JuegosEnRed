@@ -93,15 +93,16 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         bullet.setPosition(999, 999);
 
     }
-
+    
     hitEnemy(bullet, enemy) {
         console.log("Last enemy hitted:" + bullet.lastEnemyHitted);
         if (bullet.lastEnemyHitted != enemy) {
             //sonido de golpe
             soundCookieDamaged.play();
             enemy.hp = enemy.hp - bullet.damage;
-            enemy.setScale(enemy.getScale * 0.9); //escala modificada cuando son golpeados
-            setInterval(normal, 75); //escala normal despues de ser golpeados
+            enemy.setScale(enemy.getScale * 0.85); //escala modificada cuando son golpeados
+            enemy.animateHit();
+            setInterval(normal, 150); //escala normal despues de ser golpeados
             //Pre update se encarga de que la bala desaparezca
             bullet.maxTraverse = bullet.maxTraverse - 1;
             console.log(bullet.maxTraverse);
@@ -114,8 +115,8 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         }
         bullet.lastEnemyHitted = enemy;
     }
-
 }
+
 class Bullets extends Phaser.Physics.Arcade.Group {
     constructor(scene) {
         super(scene.physics.world, scene);
