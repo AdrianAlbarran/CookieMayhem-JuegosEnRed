@@ -34,6 +34,11 @@ class fruitCookie extends Phaser.GameObjects.Sprite{
         this.anims.play("FCMOVE", true);
       }
 
+      animateHit()
+      {
+        this.anims.play("FCMOVE", true);
+      }
+
       atacar(that, tienda) {
         if (that.lastAttacked == false) {
           tienda.hp = tienda.hp - that.dmg;

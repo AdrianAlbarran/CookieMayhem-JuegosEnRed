@@ -34,6 +34,11 @@ class chipCookie extends Phaser.GameObjects.Sprite {
     this.anims.play("CCMOVE", true);
   }
 
+  animateHit()
+  {
+    this.anims.play("CCMOVE", false);
+  }
+
   atacar(that, tienda) {
     if (that.lastAttacked == false) {
       tienda.hp = tienda.hp - that.dmg;

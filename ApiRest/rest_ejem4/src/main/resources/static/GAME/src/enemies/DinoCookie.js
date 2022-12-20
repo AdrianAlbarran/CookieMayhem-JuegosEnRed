@@ -34,6 +34,11 @@ class dinoCookie extends Phaser.GameObjects.Sprite {
     this.anims.play("DCMOVE", true);
   }
 
+  animateHit()
+  {
+    this.anims.play("DCMOVE", false);
+  }
+
   atacar(that, tienda) {
     if (that.lastAttacked == false) {
       tienda.hp = tienda.hp - that.dmg;

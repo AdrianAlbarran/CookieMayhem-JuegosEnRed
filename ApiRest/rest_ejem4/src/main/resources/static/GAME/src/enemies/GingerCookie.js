@@ -35,6 +35,11 @@ class gingerCookie extends Phaser.GameObjects.Sprite{
         this.anims.play("GCMOVE", true);
       }
 
+      animateHit()
+      {
+        this.anims.play("GCMOVE", false);
+      }
+
       atacar(that, tienda) {
         if (that.lastAttacked == false) {
           tienda.hp = tienda.hp - that.dmg;

@@ -36,6 +36,11 @@ class oreoCookie extends Phaser.GameObjects.Sprite{
         this.anims.play("OCMOVE", true);
       }
 
+      animateHit()
+      {
+        this.anims.play("OCMOVE", false);
+      }
+
       atacar(that, tienda) {
         if (that.lastAttacked == false) {
           tienda.hp = tienda.hp - that.dmg;
