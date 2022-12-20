@@ -102,6 +102,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
             enemy.hp = enemy.hp - bullet.damage;
             enemy.setScale(enemy.getScale * 0.85); //escala modificada cuando son golpeados
             enemy.animateHit();
+            enemy.setTint(0xff0000);
             setInterval(normal, 150); //escala normal despues de ser golpeados
             //Pre update se encarga de que la bala desaparezca
             bullet.maxTraverse = bullet.maxTraverse - 1;
@@ -111,6 +112,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
             }
             function normal() {
                 enemy.setScale(enemy.getScale);
+                enemy.clearTint();
             }
         }
         bullet.lastEnemyHitted = enemy;
