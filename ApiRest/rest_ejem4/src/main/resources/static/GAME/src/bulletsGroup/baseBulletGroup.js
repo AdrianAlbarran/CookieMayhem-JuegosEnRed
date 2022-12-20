@@ -100,7 +100,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
             //sonido de golpe
             soundCookieDamaged.play();
             enemy.hp = enemy.hp - bullet.damage;
-            enemy.setScale(enemy.getScale * 0.85); //escala modificada cuando son golpeados
+            enemy.setScale(enemy.getScale * 0.95); //escala modificada cuando son golpeados
             enemy.animateHit();
             enemy.setTint(0xff0000);
             setInterval(normal, 150); //escala normal despues de ser golpeados
