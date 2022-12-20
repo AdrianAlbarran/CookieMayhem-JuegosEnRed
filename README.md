@@ -131,7 +131,7 @@ La escena cambia a la pantalla de derrota cuando la vida de la tetera llega a 0 
 
 ## Diagrama de Clases API REST
 
-![Clases JeR](https://user-images.githubusercontent.com/115086690/208741520-c8ae5f1e-d4d7-421a-a4ee-6a58e6da6dee.png)
+![JeR Clases](https://user-images.githubusercontent.com/115086690/208757343-23f091bd-2aec-4f31-b093-4ff6b9b62629.png)
 
 ## Diseño de Enemigos, Personajes y Mejoras
 
