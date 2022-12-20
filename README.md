@@ -133,6 +133,15 @@ La escena cambia a la pantalla de derrota cuando la vida de la tetera llega a 0 
 
 ![JeR Clases](https://user-images.githubusercontent.com/115086690/208757343-23f091bd-2aec-4f31-b093-4ff6b9b62629.png)
 
+## Instrucciones para ejecutar el .jar
+
+- Descomprimir jar.zip
+- Abrir la consola de comandos
+- Poner java -jar Direccion del Jar
+- Abrir localhost:8080
+
+(Se puede producir un error si java no está actualizado)
+
 ## Diseño de Enemigos, Personajes y Mejoras
 
 ## Enemigos
