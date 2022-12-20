@@ -94,21 +94,19 @@ Este diagrama indica los estados del juego y cómo se relacionan entre ellos, in
 
 ## Pantalla de Inicio
 
-![image16](https://user-images.githubusercontent.com/93784360/204644119-886b5d1f-b6f3-4c99-8ec7-f33f8c74bde4.png)
+![image](https://user-images.githubusercontent.com/97071556/208744609-49372749-58c6-4c86-a851-434581dc04ec.png)
 
 El juego comienza con una pantalla de menú de inicio que ofrece las siguientes posibilidades: el botón PLAY, que avanza hacia la escena de gameplay, el botón SETTINGS, que por el momento permite silenciar el sonido del juego, un botón para activar la pantalla completa y otro botón en la parte inferior derecha para ver los controles del juego.
 
 ## Pantalla de Ajustes
 
-![image13](https://user-images.githubusercontent.com/93784360/204644134-dd6104b7-2780-46f1-aa91-d209a1cbbb1e.png)
-
+![image](https://user-images.githubusercontent.com/97071556/208744826-5f57679e-5374-4d98-9d95-e1bf69cd7189.png)
 
 Al presionar el botón de SETTINGS se muestra un menú que permite silenciar el juego y un botón de EXIT para regresar al menú principal.
 
 ## Pantalla de Controles
 
-![image12](https://user-images.githubusercontent.com/93784360/204644140-71d7db35-721c-474d-ac17-e48ba9a1caa0.png)
-
+![image](https://user-images.githubusercontent.com/97071556/208744918-385df242-4492-4708-a0ae-685534d5978c.png)
 
 Al presionar el botón de controles, se muestran en pantalla los controles del juego. Al volver a presionar este botón, se vuelve al menú principal.
 
@@ -118,18 +116,15 @@ Al presionar el botón de controles, se muestran en pantalla los controles del j
 
 Al presionar el botón PLAY comienza una escena en la que el jugador puede interactuar con el escenario, progresar en el sistema de oleadas y abrir la tienda para comprar mejoras.
 
-![image7](https://user-images.githubusercontent.com/93784360/204644190-945b855e-9c38-4282-80cc-cf0b27e841df.png)
-
+![image](https://user-images.githubusercontent.com/97071556/208745145-6b1115bb-a535-4232-b819-ee39e58cbf50.png)
 
 La tienda del juego se puede abrir presionando la tecla P, desde esta pantalla se pueden comprar objetos a cambio de la moneda del juego para obtener mejoras de velocidad de movimiento, daño, más proyectiles por disparo y cadencia de disparo.
 
-
-![image1](https://user-images.githubusercontent.com/93784360/204644208-328645f7-9838-486f-87f6-4fb164ac1d4b.png)
-
+![image](https://user-images.githubusercontent.com/97071556/208745286-020726e0-6d8a-41e9-8064-e0bb207c2fca.png)
 
 ## Pantalla de Derrota
 
-![image15](https://user-images.githubusercontent.com/93784360/204644221-c6029506-2ccc-448c-8040-0da203a2b49e.png)
+![image](https://user-images.githubusercontent.com/97071556/208745581-9de98029-2a2c-404b-852e-fcdddd7b892e.png)
 
 
 La escena cambia a la pantalla de derrota cuando la vida de la tetera llega a 0 o cuándo ambos jugadores son eliminados. Desde esta pantalla se puede regresar al menú de inicio mediante el botón EXIT o volver a reiniciar el gameplay desde el botón RESTART.
