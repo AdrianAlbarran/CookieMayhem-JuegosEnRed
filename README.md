@@ -134,6 +134,10 @@ La tienda del juego se puede abrir presionando la tecla P, desde esta pantalla s
 
 La escena cambia a la pantalla de derrota cuando la vida de la tetera llega a 0 o cuándo ambos jugadores son eliminados. Desde esta pantalla se puede regresar al menú de inicio mediante el botón EXIT o volver a reiniciar el gameplay desde el botón RESTART.
 
+## Diagrama de Clases API REST
+
+![Clases JeR](https://user-images.githubusercontent.com/115086690/208741520-c8ae5f1e-d4d7-421a-a4ee-6a58e6da6dee.png)
+
 ## Diseño de Enemigos, Personajes y Mejoras
 
 ## Enemigos
