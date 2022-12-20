@@ -1,9 +1,0 @@
-@font-face {
-    font-family: 'Pixel';
-    src: local("Pixel"),
-       url("./assets/interface/interfaceFont.ttf") 
-}
-
-canvas {
-    cursor: url('./assets/interface/cursor.png') 0 0, default;
-  }
