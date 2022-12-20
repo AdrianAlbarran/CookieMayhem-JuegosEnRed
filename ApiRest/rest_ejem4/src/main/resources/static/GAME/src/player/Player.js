@@ -195,6 +195,13 @@ class Player extends Phaser.GameObjects.Sprite {
       player.hp = player.hp - enemy.dmg;
       player.setInvulnerability(player);
       soundPlayerDamage.play();
+      player.setTint(0xff0000);
+      player.setScale(0.95);
+      setInterval(normal, 300);
+      function normal() {
+        player.clearTint();
+        player.setScale(1);
+    }
     }
 
     enemy.body.immovable = false;
