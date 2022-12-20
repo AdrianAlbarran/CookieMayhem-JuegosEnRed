@@ -4,6 +4,6 @@
        url("./assets/interface/interfaceFont.ttf") 
 }
 
-canvas {
+body {
     cursor: url('./assets/interface/cursor.png') 0 0, default;
   }
