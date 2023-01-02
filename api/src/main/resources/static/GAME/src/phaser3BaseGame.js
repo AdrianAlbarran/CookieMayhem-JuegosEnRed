@@ -31,6 +31,10 @@ var cont2 = 0;
 var cont3 = 0;
 var cont4 = 0;
 
+var auxPlayer1;
+var auxPlayer2;
+
+
 var game = new Phaser.Game(gameConfig);
 
 

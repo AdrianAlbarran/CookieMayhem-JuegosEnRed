@@ -107,7 +107,7 @@ class Player extends Phaser.GameObjects.Sprite {
       } else if (keydown_S.isDown) {
         those.body.setVelocityY(this.actualMS);
         if (this.lastDirection == 1) {
-          this.anims.play("right1", true);
+          this.anims.play("right1", true);s
 
         } else {
           this.anims.play("left1", true);
@@ -184,6 +184,12 @@ class Player extends Phaser.GameObjects.Sprite {
       if (cursors.down.isUp && cursors.up.isUp && cursors.right.isUp && cursors.left.isUp) {
           those.anims.play("turn2");
       }
+
+      let message ={
+		  p_x:this.x,
+		  p_y:this.y
+	  };
+      connection.send(JSON.stringify(message));
     }
   }
 

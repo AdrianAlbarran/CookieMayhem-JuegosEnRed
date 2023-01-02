@@ -11,6 +11,7 @@ class MainScene extends Phaser.Scene {
     }
 
     create() {
+		
         bcMusicMenu.pause();
         enemies = this.physics.add.group();
         //varaibles
@@ -157,8 +158,12 @@ class MainScene extends Phaser.Scene {
     }
 
     update() {
+		if(auxPlayer1){
         player1.movement(this);
+        }
+        if(auxPlayer2){
         player2.movement(this);
+        }
 
         //esto será provisional, lo he añadido para ver si la función tiraba
         //if (this.input.keyboard.addKey('P').isDown) {

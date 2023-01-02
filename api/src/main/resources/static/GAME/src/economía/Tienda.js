@@ -100,10 +100,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
           break;
       }
     }
-    console.log(buffos);
-    console.log(this.shop1);
-    console.log(this.shop2);
-    console.log(this.shop3);
+
   }
 
   createInterface() {
