@@ -161,6 +161,7 @@ class MainScene extends Phaser.Scene {
 		if(auxPlayer1){
         player1.movement(this);
         }
+        // usar else{...}
         if(auxPlayer2){
         player2.movement(this);
         }

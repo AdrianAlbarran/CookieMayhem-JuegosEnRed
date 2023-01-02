@@ -30,28 +30,28 @@ class Player extends Phaser.GameObjects.Sprite {
     this.actualMS = this.baseMS * this.extraMS;
   }
 
-  playerIntialize(scene) {
+  playerIntialize() {
     this.body.setGravity(0);
     this.body.collideWorldBounds = true;
 
     // * CREATING MOVEMENT ANIMATIONS
     // * JUGADOR 1
-    scene.anims.create({
+    this.scene.anims.create({
       key: "left1",
-      frames: scene.anims.generateFrameNumbers("PLAYER1", { start: 0, end: 3 }),
+      frames: this.scene.anims.generateFrameNumbers("PLAYER1", { start: 0, end: 3 }),
       frameRate: 10,
       repeat: -1,
     });
 
-    scene.anims.create({
+    this.scene.anims.create({
       key: "turn1",
       frames: [{ key: "PLAYER1", frame: 4 }],
       frameRate: 20,
     });
 
-    scene.anims.create({
+    this.scene.anims.create({
       key: "right1",
-      frames: scene.anims.generateFrameNumbers("PLAYER1", { start: 5, end: 8 }),
+      frames: this.scene.anims.generateFrameNumbers("PLAYER1", { start: 5, end: 8 }),
       frameRate: 10,
       repeat: -1,
     });
@@ -59,22 +59,22 @@ class Player extends Phaser.GameObjects.Sprite {
     // Añadir animacion de arriba (derecha) y abajo (izquierda)
 
     // * JUGADOR 2
-    scene.anims.create({
+    this.scene.anims.create({
       key: "left2",
-      frames: scene.anims.generateFrameNumbers("PLAYER2", { start: 0, end: 3 }),
+      frames: this.scene.anims.generateFrameNumbers("PLAYER2", { start: 0, end: 3 }),
       frameRate: 10,
       repeat: -1,
     });
 
-    scene.anims.create({
+    this.scene.anims.create({
       key: "turn2",
       frames: [{ key: "PLAYER2", frame: 4 }],
       frameRate: 20,
     });
 
-    scene.anims.create({
+    this.scene.anims.create({
       key: "right2",
-      frames: scene.anims.generateFrameNumbers("PLAYER2", { start: 5, end: 8 }),
+      frames: this.scene.anims.generateFrameNumbers("PLAYER2", { start: 5, end: 8 }),
       frameRate: 10,
       repeat: -1,
     });
@@ -82,18 +82,26 @@ class Player extends Phaser.GameObjects.Sprite {
     // AÑADIR COLLIDERS CON LOS OBJETOS QUE CONVENGAN
   }
 
-  movement(scene) {
+  movement(direction) {
     var those = this;
-    var cursors = scene.input.keyboard.createCursorKeys();
-
+    var cursors = this.scene.input.keyboard.createCursorKeys();
+    
+    /*
+	let message ={
+		p_x:this.x,
+		p_y:this.y,
+		dir:
+	};
+      connection.send(JSON.stringify(message));
+	*/
     if (this.id == "PLAYER1") {
       
-      var keydown_W = scene.input.keyboard.addKey("W");
-      var keydown_D = scene.input.keyboard.addKey("D");
-      var keydown_S = scene.input.keyboard.addKey("S");
-      var keydown_A = scene.input.keyboard.addKey("A");
+      var keydown_W = this.scene.input.keyboard.addKey("W");
+      var keydown_D = this.scene.input.keyboard.addKey("D");
+      var keydown_S = this.scene.input.keyboard.addKey("S");
+      var keydown_A = this.scene.input.keyboard.addKey("A");
 
-      if (keydown_W.isDown) {
+      if (keydown_W.isDown || direction == 'up') {
         those.body.setVelocityY(-this.actualMS);
         if (this.lastDirection == 1) {
           this.anims.play("right1", true);
@@ -103,11 +111,18 @@ class Player extends Phaser.GameObjects.Sprite {
         }
         those.lastDirectionInput = 11;
         soundPlayerSteps.play();
-
-      } else if (keydown_S.isDown) {
+        
+        let message ={
+			p_x:this.x,
+			p_y:this.y,
+			dir: 'up'
+		};
+		connection.send(JSON.stringify(message));
+		
+      } else if (keydown_S.isDown || direction == 'down') {
         those.body.setVelocityY(this.actualMS);
         if (this.lastDirection == 1) {
-          this.anims.play("right1", true);s
+          this.anims.play("right1", true);
 
         } else {
           this.anims.play("left1", true);
@@ -119,14 +134,14 @@ class Player extends Phaser.GameObjects.Sprite {
         those.body.setVelocityY(0);
       }
       
-      if (keydown_D.isDown) {
+      if (keydown_D.isDown || direction == 'right') {
         those.body.setVelocityX(this.actualMS);
         those.anims.play("right1", true);
         those.lastDirection = 1;
         those.lastDirectionInput = 14;
         soundPlayerSteps.play();
 
-      } else if (keydown_A.isDown) {
+      } else if (keydown_A.isDown || direction == 'left') {
         those.body.setVelocityX(-this.actualMS);
         those.anims.play("left1", true);
         those.lastDirection = 2;
@@ -142,13 +157,13 @@ class Player extends Phaser.GameObjects.Sprite {
       }
 
     } else if (this.id == "PLAYER2") {
-      if (cursors.left.isDown) {
+      if (cursors.left.isDown || direction == 'left') {
         this.body.setVelocityX(-this.actualMS);
         this.anims.play("left2", true);
         this.lastDirection = 0;
         this.lastDirectionInput = 13;
         soundPlayerSteps.play();
-      } else if (cursors.right.isDown) {
+      } else if (cursors.right.isDown || direction == 'right') {
         this.body.setVelocityX(this.actualMS);
         this.anims.play("right2", true);
         this.lastDirection = 1;
@@ -157,7 +172,7 @@ class Player extends Phaser.GameObjects.Sprite {
 
       } else {
         those.body.setVelocityX(0);
-      } if (cursors.up.isDown) {
+      } if (cursors.up.isDown || direction == 'up') {
         this.body.setVelocityY(-this.actualMS);
         if (this.lastDirection == 1) {
           this.anims.play("right2", true);
@@ -168,7 +183,7 @@ class Player extends Phaser.GameObjects.Sprite {
         this.lastDirectionInput = 11;
         soundPlayerSteps.play();
 
-      } else if (cursors.down.isDown) {
+      } else if (cursors.down.isDown || direction == 'down') {
         this.body.setVelocityY(this.actualMS);
         if (this.lastDirection == 1) {
           this.anims.play("right2", true);
@@ -185,11 +200,7 @@ class Player extends Phaser.GameObjects.Sprite {
           those.anims.play("turn2");
       }
 
-      let message ={
-		  p_x:this.x,
-		  p_y:this.y
-	  };
-      connection.send(JSON.stringify(message));
+
     }
   }
 

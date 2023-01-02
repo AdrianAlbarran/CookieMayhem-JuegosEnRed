@@ -12,7 +12,10 @@ connection.onerror = function (e) {
     console.log("WS error: " + e);
 }
 connection.onmessage = function (msg) {
+	console.log(msg);
+	console.log(msg.data);
 	var obj = JSON.parse(msg.data);
-    player2.x =obj.p_x;
+	
+	player1.movement(obj.dir);
 }
 
