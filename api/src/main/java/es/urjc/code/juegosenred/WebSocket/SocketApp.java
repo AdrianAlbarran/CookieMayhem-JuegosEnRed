@@ -14,12 +14,16 @@ public class SocketApp implements WebSocketConfigurer{
 
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		registry.addHandler(echoHandler(), "/app")
+		registry.addHandler(wsHandler(), "/app")
 			.setAllowedOrigins("*");
+		registry.addHandler(wsHandler(), "/movement")
+		.setAllowedOrigins("*");
+		registry.addHandler(wsHandler(), "/shoot")
+		.setAllowedOrigins("*");
 	}
 	
 	@Bean
-	public WSHandler echoHandler() {
+	public WSHandler wsHandler() {
 		return new WSHandler();
 	}
 	public static void main(String[] args) {

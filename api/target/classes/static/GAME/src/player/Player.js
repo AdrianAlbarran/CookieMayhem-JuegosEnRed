@@ -94,6 +94,7 @@ class Player extends Phaser.GameObjects.Sprite {
 	};
       connection.send(JSON.stringify(message));
 	*/
+	
     if (this.id == "PLAYER1") {
       
       var keydown_W = this.scene.input.keyboard.addKey("W");
