@@ -1,5 +1,3 @@
-
-
 // WEBSOCKETS
 var serverIP = 'ws://127.0.0.1:8080/app';
 var connection = new WebSocket(serverIP);
