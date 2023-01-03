@@ -20,7 +20,7 @@ wsMov.onmessage = function (msg) {
 	
 }
 
-wsMov.enviarMensaje = function (x, y, dire, id) {
+wsMov.sendWS = function (x, y, dire, id) {
 	let message = {
 			p_x: x,
 			p_y: y,

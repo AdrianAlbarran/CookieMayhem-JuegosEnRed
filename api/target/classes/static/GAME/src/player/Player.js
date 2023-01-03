@@ -113,7 +113,7 @@ class Player extends Phaser.GameObjects.Sprite {
         those.lastDirectionInput = 11;
         soundPlayerSteps.play();
         if(direction != 'up'){
-		  wsMov.enviarMensaje(this.x, this.y, 'up', 1);	
+		  wsMov.sendWS(this.x, this.y, 'up', 1);	
 		}
 		
 		
@@ -128,7 +128,7 @@ class Player extends Phaser.GameObjects.Sprite {
         those.lastDirectionInput = 12;
         soundPlayerSteps.play();
         if(direction != 'down'){
-		  wsMov.enviarMensaje(this.x, this.y, 'down', 1);	
+		  wsMov.sendWS(this.x, this.y, 'down', 1);	
 		}
 
       } else {
@@ -142,7 +142,7 @@ class Player extends Phaser.GameObjects.Sprite {
         those.lastDirectionInput = 14;
         soundPlayerSteps.play();
         if(direction != 'right'){
-		  wsMov.enviarMensaje(this.x, this.y, 'right', 1);	
+		  wsMov.sendWS(this.x, this.y, 'right', 1);	
 		}
 
       } else if (keydown_A.isDown || direction == 'left') {
@@ -152,7 +152,7 @@ class Player extends Phaser.GameObjects.Sprite {
         those.lastDirectionInput = 13;
         soundPlayerSteps.play();
         if(direction != 'left'){
-		  wsMov.enviarMensaje(this.x, this.y, 'left', 1);	
+		  wsMov.sendWS(this.x, this.y, 'left', 1);	
 		}
 
       } else {
@@ -172,7 +172,7 @@ class Player extends Phaser.GameObjects.Sprite {
         soundPlayerSteps.play();
         
         if(direction != 'left'){
-		  wsMov.enviarMensaje(this.x, this.y, 'left', 2);	
+		  wsMov.sendWS(this.x, this.y, 'left', 2);	
 		}
 		
       } else if (cursors.right.isDown || direction == 'right') {
@@ -183,7 +183,7 @@ class Player extends Phaser.GameObjects.Sprite {
         soundPlayerSteps.play();
         
         if(direction != 'right'){
-		  wsMov.enviarMensaje(this.x, this.y, 'right', 2);	
+		  wsMov.sendWS(this.x, this.y, 'right', 2);	
 		}
 
       } else {
@@ -200,7 +200,7 @@ class Player extends Phaser.GameObjects.Sprite {
         soundPlayerSteps.play();
         
         if(direction != 'up'){
-		  wsMov.enviarMensaje(this.x, this.y, 'up', 2);	
+		  wsMov.sendWS(this.x, this.y, 'up', 2);	
 		}
 
       } else if (cursors.down.isDown || direction == 'down') {
@@ -214,7 +214,7 @@ class Player extends Phaser.GameObjects.Sprite {
         soundPlayerSteps.play();
         
         if(direction != 'down'){
-		  wsMov.enviarMensaje(this.x, this.y, 'down', 2);	
+		  wsMov.sendWS(this.x, this.y, 'down', 2);	
 		}
         
       } else {
