@@ -6,8 +6,6 @@ wsMov.onerror = function (e) {
     console.log("WS error: " + e);
 }
 wsMov.onmessage = function (msg) {
-	console.log(msg);
-	console.log(msg.data);
 	var obj = JSON.parse(msg.data);
 	
 	if(obj._player == 1 ){

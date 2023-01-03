@@ -12,7 +12,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
 
     }
 
-    fireConfig(x, y, player, type) {
+    fireConfig(x, y, player, type, dispersion) {
         this.body.reset(x, y);
 
         var direction = player.lastDirectionInput;
@@ -33,19 +33,19 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
             case 0:
                 this.damage = 20 * player.extraDmg;
                 this.maxTraverse = 0;
-                this.fire(direction, 700, 300);
+                this.fire(direction, 700, dispersion); // max disp = 300
                 break;
             case 1:
                 //CONFIG BULLETS FOR REVOLVER
                 this.damage = 80 * player.extraDmg;
                 this.maxTraverse = 2;
-                this.fire(direction, 1800, 50);
+                this.fire(direction, 1800, dispersion);  // max disp = 50
                 break;
             case 2:
                 //CONFIG BULLETS FOR SUBMACHINE GUN
                 this.damage = 20 * player.extraDmg;
                 this.maxTraverse = 0;
-                this.fire(direction, 700, 133);
+                this.fire(direction, 700, dispersion); // max disp = 133
                 break;
         }
 
@@ -62,25 +62,26 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    fire(direction, speed, maxDispersion) {
-        var randomDispersion = (Math.random() - 0.5) * maxDispersion;
-        var rotation = Math.atan(randomDispersion / speed) * 180 / Math.PI
+    fire(direction, speed, dispersion) {
+		
+        //var randomDispersion = (Math.random() - 0.5) * maxDispersion;
+        var rotation = Math.atan(dispersion / speed) * 180 / Math.PI
 
         switch (direction) {
             case 11:
-                this.setVelocity(randomDispersion, -speed);
+                this.setVelocity(dispersion, -speed);
                 this.angle = 0 + rotation;
                 break;
             case 12:
-                this.setVelocity(randomDispersion, speed);
+                this.setVelocity(dispersion, speed);
                 this.angle = 180 - rotation;
                 break;
             case 13:
-                this.setVelocity(-speed, randomDispersion);
+                this.setVelocity(-speed, dispersion);
                 this.angle = 270 - rotation;
                 break;
             case 14:
-                this.setVelocity(speed, randomDispersion);
+                this.setVelocity(speed, dispersion);
                 this.angle = 90 + rotation;
                 break;
         }
@@ -131,7 +132,7 @@ class Bullets extends Phaser.Physics.Arcade.Group {
         })
     }
 
-    fireBullet(x, y, player, type) {
+    fireBullet(x, y, player, type, dispersion) {
 
         if(type != 0)
         {
@@ -140,7 +141,7 @@ class Bullets extends Phaser.Physics.Arcade.Group {
                     let bullet = this.getFirstDead(false);
                     if (bullet) {
                         soundShoot.play();
-                        bullet.fireConfig(x, y, player, type);
+                        bullet.fireConfig(x, y, player, type, dispersion);
                         bullet.lastEnemyHitted = undefined;
                     }
                 }

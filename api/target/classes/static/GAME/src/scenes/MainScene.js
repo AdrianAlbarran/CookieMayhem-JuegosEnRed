@@ -188,6 +188,46 @@ class MainScene extends Phaser.Scene {
         bulletsPlayer2 = new Bullets(this);
     }
 
+	genRandomDisp(weaponID){
+		
+		let maxDispersion = 0;
+		switch(weaponID)
+		{
+			case 0:
+				maxDispersion =  300;
+				break;
+			case 1:
+				maxDispersion = 50;
+				break;
+			case 2: 
+				maxDispersion = 133;
+				break;
+		}
+		var randomDispersion = (Math.random() - 0.5) * maxDispersion;
+		return randomDispersion;
+	}
+	
+	shootHandler()
+	{
+		
+        var keyShoot1 = this.input.keyboard.addKey('SPACE');
+        var stillDown1 = this.input.keyboard.checkDown(keyShoot1, player1.actualFireRate);
+        if (stillDown1) {
+			let _disp = this.genRandomDisp(player1.weaponID); 
+            bulletsPlayer1.fireBullet(player1.x, player1.y, player1, player1.weaponID, _disp);
+            wsShoot.sendWS(_disp, 1);
+        }
+
+        var keyShoot2 = this.input.keyboard.addKey('ENTER');
+        var stillDown2 = this.input.keyboard.checkDown(keyShoot2, player2.actualFireRate);
+
+        if (stillDown2) {
+			let _disp = this.genRandomDisp(player2.weaponID); 
+            bulletsPlayer2.fireBullet(player2.x, player2.y, player2, player2.weaponID, _disp);
+            wsShoot.sendWS(_disp, 2);
+        }
+        
+	}
     eventHandler() {
 
         /*
@@ -197,20 +237,7 @@ class MainScene extends Phaser.Scene {
         * 2 - SUBMACHINE GUN  - Fire Rate: 200
         */
 
-        var scene = this;
-        var keyShoot1 = this.input.keyboard.addKey('SPACE');
-        var stillDown1 = this.input.keyboard.checkDown(keyShoot1, player1.actualFireRate);
-        if (stillDown1) {
-            bulletsPlayer1.fireBullet(player1.x, player1.y, player1, player1.weaponID);
-        }
-
-        var keyShoot2 = this.input.keyboard.addKey('ENTER');
-        var stillDown2 = this.input.keyboard.checkDown(keyShoot2, player2.actualFireRate);
-
-        if (stillDown2) {
-            bulletsPlayer2.fireBullet(player2.x, player2.y, player2, player2.weaponID);
-        }
-
+		this.shootHandler();
         var keyBuy1 = this.input.keyboard.addKey('W');
         var keyBuy2 = this.input.keyboard.addKey('A');
         var keyBuy3 = this.input.keyboard.addKey('D');

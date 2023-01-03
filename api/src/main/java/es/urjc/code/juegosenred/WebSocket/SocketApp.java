@@ -14,11 +14,11 @@ public class SocketApp implements WebSocketConfigurer{
 
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		registry.addHandler(wsHandler(), "/app")
-			.setAllowedOrigins("*");
 		registry.addHandler(wsHandler(), "/movement")
 		.setAllowedOrigins("*");
 		registry.addHandler(wsHandler(), "/shoot")
+		.setAllowedOrigins("*");
+		registry.addHandler(wsHandler(), "/genEnemies")
 		.setAllowedOrigins("*");
 	}
 	
