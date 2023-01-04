@@ -36,10 +36,10 @@ wsShop.sendWS = function (id, percentage, value, cont) {
     _id: id,
     _percentage: percentage,
     _value: value,
-    _cont: cont,
+    _cont: cont
   };
 
   var mes = JSON.stringify(message);
 
-  wsMov.send(mes);
+  wsShop.send(mes);
 };

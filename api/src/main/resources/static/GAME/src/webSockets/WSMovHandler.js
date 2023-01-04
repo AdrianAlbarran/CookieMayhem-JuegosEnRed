@@ -7,13 +7,13 @@ wsMov.onerror = function (e) {
 }
 wsMov.onmessage = function (msg) {
 	var obj = JSON.parse(msg.data);
-	
+	console.log(obj._player);
 	if(obj._player == 1 ){
-		player1.movement(obj.dir);
+		player1.movement(obj._dir);
 	}
 	
 	if(obj._player == 2 ){
-		player2.movement(obj.dir);
+		player2.movement(obj._dir);
 	}
 	
 }
@@ -22,8 +22,8 @@ wsMov.sendWS = function (x, y, dire, id) {
 	let message = {
 			p_x: x,
 			p_y: y,
-			dir: dire,
-			_player: id,
+			_dir: dire,
+			_player: id
 	};
 	
 	var mes = JSON.stringify(message)

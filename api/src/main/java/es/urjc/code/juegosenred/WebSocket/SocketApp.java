@@ -14,14 +14,14 @@ public class SocketApp implements WebSocketConfigurer{
 
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		registry.addHandler(wsHandler(), "/movement")
+		registry.addHandler(wsmoveHandler(), "/movement")
 		.setAllowedOrigins("*");
-		registry.addHandler(wsHandler(), "/shoot")
+		registry.addHandler(wsshootHandler(), "/shoot")
 		.setAllowedOrigins("*");
 
 		registry.addHandler(wsHandler(), "/genEnemies");
 
-		registry.addHandler(wsHandler(), "/shop")
+		registry.addHandler(wsshopHandler(), "/shop")
 
 		.setAllowedOrigins("*");
 	}
@@ -29,6 +29,18 @@ public class SocketApp implements WebSocketConfigurer{
 	@Bean
 	public WSHandler wsHandler() {
 		return new WSHandler();
+	}
+	@Bean
+	public WSMovHandler wsmoveHandler() {
+		return new WSMovHandler();
+	}
+	@Bean
+	public WSShootHandler wsshootHandler() {
+		return new WSShootHandler();
+	}
+	@Bean
+	public WSShopHandler wsshopHandler() {
+		return new WSShopHandler();
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(SocketApp.class, args);
