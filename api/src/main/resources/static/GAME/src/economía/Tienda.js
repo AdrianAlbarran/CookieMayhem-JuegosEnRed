@@ -266,6 +266,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
         cont1 +=1;
         this.statText1.setText(cont1);
         buyshop.play();
+        wsShop.sendWS(buff.id,buff.percentage,buff.value,cont1);
         } else {
           failshop.play();
         }
@@ -278,6 +279,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
         cont2 +=1;
         this.statText3.setText(cont2);
         buyshop.play();
+        wsShop.sendWS(buff.id,buff.percentage,buff.value,cont2);
         } else {
           failshop.play();
         }
@@ -290,6 +292,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
         cont3 +=1;
         this.statText2.setText(cont3);
         buyshop.play();
+        wsShop.sendWS(buff.id,buff.percentage,buff.value,cont3);
         } else {
           failshop.play();
         }
@@ -302,11 +305,13 @@ class Tienda extends Phaser.GameObjects.Sprite {
         cont4 +=1;
         this.statText4.setText(cont4);
         buyshop.play();
+        wsShop.sendWS(buff.id,buff.percentage,buff.value,cont4);
         } else {
           failshop.play();
         }
       break;
     }
+    
   }
 
   createHPbar() {
