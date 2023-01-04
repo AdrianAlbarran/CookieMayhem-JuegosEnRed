@@ -53,4 +53,8 @@ var score;
 let helpWavesText;
 let openShopText;
 
+// ANIMACIONES WS
+var directionPlayer1;
+var directionPlayer2;
+
 

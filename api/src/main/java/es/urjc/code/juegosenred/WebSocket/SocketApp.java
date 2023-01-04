@@ -22,7 +22,6 @@ public class SocketApp implements WebSocketConfigurer{
 		registry.addHandler(wsHandler(), "/genEnemies");
 
 		registry.addHandler(wsshopHandler(), "/shop")
-
 		.setAllowedOrigins("*");
 	}
 	

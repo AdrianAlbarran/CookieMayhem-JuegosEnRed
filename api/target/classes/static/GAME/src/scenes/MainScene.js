@@ -180,6 +180,8 @@ class MainScene extends Phaser.Scene {
 
         this.playersHealth();
 
+
+
     }
 
     initializeBullets() {

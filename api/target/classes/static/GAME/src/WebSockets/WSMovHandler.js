@@ -9,11 +9,13 @@ wsMov.onmessage = function (msg) {
 	var obj = JSON.parse(msg.data);
 	console.log(obj._player);
 	if(obj._player == 1 ){
-		player1.movement(obj._dir);
+		directionPlayer1 = obj._dir;
+		//player1.movement(obj._dir);
 	}
 	
 	if(obj._player == 2 ){
-		player2.movement(obj._dir);
+		directionPlayer2 = obj._dir;
+		//player2.movement(obj._dir);
 	}
 	
 }
