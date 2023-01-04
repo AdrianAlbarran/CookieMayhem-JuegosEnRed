@@ -18,8 +18,11 @@ public class SocketApp implements WebSocketConfigurer{
 		.setAllowedOrigins("*");
 		registry.addHandler(wsHandler(), "/shoot")
 		.setAllowedOrigins("*");
-		registry.addHandler(wsHandler(), "/genEnemies")
+
+		registry.addHandler(wsHandler(), "/genEnemies");
+
 		registry.addHandler(wsHandler(), "/shop")
+
 		.setAllowedOrigins("*");
 	}
 	
