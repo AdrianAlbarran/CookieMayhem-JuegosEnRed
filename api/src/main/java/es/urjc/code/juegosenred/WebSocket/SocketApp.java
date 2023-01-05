@@ -23,6 +23,10 @@ public class SocketApp implements WebSocketConfigurer{
 
 		registry.addHandler(wsshopHandler(), "/shop")
 		.setAllowedOrigins("*");
+		
+		registry.addHandler(wsweaponHandler(), "/weapon")
+		.setAllowedOrigins("*");
+		
 	}
 	
 	@Bean
@@ -40,6 +44,10 @@ public class SocketApp implements WebSocketConfigurer{
 	@Bean
 	public WSShopHandler wsshopHandler() {
 		return new WSShopHandler();
+	}
+	@Bean
+	public WSWeaponHandler wsweaponHandler() {
+		return new WSWeaponHandler();
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(SocketApp.class, args);

@@ -32,6 +32,8 @@ class MainScene extends Phaser.Scene {
         player1.playerIntialize(this);
         player2.playerIntialize(this);
 
+        wsWeapon.sendWS();
+
         //Interface health player 1
         this.healthPlayer1Low = this.add.image(40, 40, "HP").setDepth(4).setScale(2);
         this.healthPlayer1Medium = this.add.image(90, 40, "HP").setDepth(4).setScale(2);

@@ -13,3 +13,7 @@ var wsGenEnem = new WebSocket(genEnemIP);
 // SOCKET PARA COMPRARS EN LA TIENDA Y UPDATE DEL SCORE
 var shopIP = 'ws://127.0.0.1:8080/shop';
 var wsShop = new WebSocket(shopIP); 
+
+// SOCKET PARA LAS ARMAS
+var weaponIP = 'ws://127.0.0.1:8080/weapon';
+var wsWeapon = new WebSocket(weaponIP); 
