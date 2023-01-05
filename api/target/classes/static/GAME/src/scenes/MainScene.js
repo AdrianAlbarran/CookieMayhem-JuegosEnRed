@@ -215,7 +215,7 @@ class MainScene extends Phaser.Scene {
 	{
 		if(player.weaponID != 0 && player.hp > 0)
 		{
-			for(let i = 0; i < player.extraBullets; i++)
+			for(let i = 0; i <= player.extraBullets; i++)
 			{
 				let _disp = this.genRandomDisp(player1.weaponID); 
 				bulletsGroup.fireBullet(player.x, player.y, player, player.weaponID, _disp);
