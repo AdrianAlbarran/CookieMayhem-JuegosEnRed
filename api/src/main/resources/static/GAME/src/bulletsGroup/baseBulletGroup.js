@@ -63,7 +63,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
     }
 
     fire(direction, speed, dispersion) {
-		
+
         //var randomDispersion = (Math.random() - 0.5) * maxDispersion;
         var rotation = Math.atan(dispersion / speed) * 180 / Math.PI
 
@@ -94,7 +94,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         bullet.setPosition(999, 999);
 
     }
-    
+
     hitEnemy(bullet, enemy) {
         console.log("Last enemy hitted:" + bullet.lastEnemyHitted);
         if (bullet.lastEnemyHitted != enemy) {
@@ -134,34 +134,12 @@ class Bullets extends Phaser.Physics.Arcade.Group {
 
     fireBullet(x, y, player, type, dispersion) {
 
-        if(type != 0)
-        {
-            for (let aux = 0; aux <= player.extraBullets; aux++) {
-                if (player.hp > 0) {
-                    let bullet = this.getFirstDead(false);
-                    if (bullet) {
-                        soundShoot.play();
-                        bullet.fireConfig(x, y, player, type, dispersion);
-                        bullet.lastEnemyHitted = undefined;
-                    }
-                }
-            }
-        } else {
-            // ? Se podria cambiar el for de arriba para no tener que duplicarlo, 
-            // ? no se que manera seria mas eficiente
-            for (let aux = 0; aux <= 8 + player.extraBullets * 3; aux++) {
-                if (player.hp > 0) {
-                    let bullet = this.getFirstDead(false);
-                    if (bullet) {
-                        soundShoot.play();
-                        bullet.fireConfig(x, y, player, type, dispersion);
-                        bullet.lastEnemyHitted = undefined;
-                    }
-                }
-            }
+        let bullet = this.getFirstDead(false);
+        if (bullet) {
+            soundShoot.play();
+            bullet.fireConfig(x, y, player, type, dispersion);
+            bullet.lastEnemyHitted = undefined;
         }
-
-
     }
 }
 

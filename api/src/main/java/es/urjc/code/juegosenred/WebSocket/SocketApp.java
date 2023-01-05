@@ -19,12 +19,13 @@ public class SocketApp implements WebSocketConfigurer{
 		registry.addHandler(wsshootHandler(), "/shoot")
 		.setAllowedOrigins("*");
 
-		registry.addHandler(wsHandler(), "/genEnemies");
-
 		registry.addHandler(wsshopHandler(), "/shop")
 		.setAllowedOrigins("*");
 		
 		registry.addHandler(wsweaponHandler(), "/weapon")
+		.setAllowedOrigins("*");
+		
+		registry.addHandler(wsgenenemyHandler(), "/genenemy")
 		.setAllowedOrigins("*");
 		
 	}
@@ -48,6 +49,11 @@ public class SocketApp implements WebSocketConfigurer{
 	@Bean
 	public WSWeaponHandler wsweaponHandler() {
 		return new WSWeaponHandler();
+	}
+	
+	@Bean
+	public WSGenEnemyHandler wsgenenemyHandler() {
+		return new WSGenEnemyHandler();
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(SocketApp.class, args);

@@ -1,16 +1,18 @@
 package es.urjc.code.juegosenred.WebSocket;
 
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
-
 
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class WSMovHandler extends TextWebSocketHandler {
+public class WSGenEnemyHandler extends TextWebSocketHandler {
 
 	public Map<String, WebSocketSession> users = new ConcurrentHashMap<>();
 	
@@ -26,27 +28,16 @@ public class WSMovHandler extends TextWebSocketHandler {
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 
-		for(WebSocketSession user : users.values()) {
-			
-			if(!user.getId().equals(session.getId())){
-				String msg = message.getPayload();
-				user.sendMessage(new TextMessage(msg));
-			}
-			
-		}
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode node = mapper.readTree(message.getPayload());
+		int wave = node.get("wave").asInt();
+		System.out.println(wave);
+		
+		Random aux = new Random();
+		//int player1 = a.nextInt(3);
 		
 	}
-	
-	protected void sendOther(WebSocketSession session, String message) throws Exception {
-		
-		
-		for(WebSocketSession user : users.values()) {
-			if(user.getId().equals(session.getId())){
-				user.sendMessage(new TextMessage(message));
-			}
-		}
-		
-	}
+
 	
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus)throws Exception {
 		users.remove(session.getId());
