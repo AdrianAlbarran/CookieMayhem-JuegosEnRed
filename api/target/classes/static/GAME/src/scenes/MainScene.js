@@ -209,27 +209,48 @@ class MainScene extends Phaser.Scene {
 		return randomDispersion;
 	}
 	
+	shootIterator(bulletsGroup, player, plWS)
+	{
+		if(player.weaponID != 0 && player.hp > 0)
+		{
+			for(let i = 0; i < player.extraBullets; i++)
+			{
+				let _disp = this.genRandomDisp(player1.weaponID); 
+				bulletsGroup.fireBullet(player.x, player.y, player, player.weaponID, _disp);
+				wsShoot.sendWS(_disp, plWS);
+			}
+		}
+		else if(player.hp > 0)
+		{
+			 for (let aux = 0; aux <= 8 + player.extraBullets * 3; aux++)
+			 {
+				 let _disp = this.genRandomDisp(player1.weaponID); 
+				 bulletsGroup.fireBullet(player.x, player.y, player, player.weaponID, _disp);
+				 wsShoot.sendWS(_disp, plWS);
+			 }
+		}
+	}
+	
 	shootHandler()
 	{
 		
         var keyShoot1 = this.input.keyboard.addKey('SPACE');
         var stillDown1 = this.input.keyboard.checkDown(keyShoot1, player1.actualFireRate);
+        
         if (stillDown1) {
-			let _disp = this.genRandomDisp(player1.weaponID); 
-            bulletsPlayer1.fireBullet(player1.x, player1.y, player1, player1.weaponID, _disp);
-            wsShoot.sendWS(_disp, 1);
+			
+			this.shootIterator(bulletsPlayer1, player1, 1);
         }
 
         var keyShoot2 = this.input.keyboard.addKey('ENTER');
         var stillDown2 = this.input.keyboard.checkDown(keyShoot2, player2.actualFireRate);
 
         if (stillDown2) {
-			let _disp = this.genRandomDisp(player2.weaponID); 
-            bulletsPlayer2.fireBullet(player2.x, player2.y, player2, player2.weaponID, _disp);
-            wsShoot.sendWS(_disp, 2);
+            this.shootIterator(bulletsPlayer2, player2, 2);
+
         }
-        
 	}
+	
     eventHandler() {
 
         /*
