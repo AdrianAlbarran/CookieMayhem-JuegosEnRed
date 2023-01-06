@@ -35,11 +35,9 @@ public class WSGenEnemyHandler extends TextWebSocketHandler {
 		JsonNode node = mapper.readTree(message.getPayload());
 		
 		int wave = node.get("_wave").asInt();
-		System.out.print("wave:" + wave);
 		if(currentWave == wave)
 		{
 			int numEnemies = ThreadLocalRandom.current().nextInt((10*wave - 5*wave)+1) + 5*wave;
-			System.out.print("num:" + numEnemies);
 			
 			for(int i = 0; i < numEnemies; i++)
 			{

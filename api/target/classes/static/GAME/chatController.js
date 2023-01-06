@@ -100,6 +100,7 @@ function getMessage()
 		success:function(result){
 			if(disconnected){
 				disconnected = false;
+     		 console.log("Server Reconnected");
      		$('.messages').append(
 				'<div class="update">' +
 				'Server Reconnected' +
@@ -132,6 +133,7 @@ function enterChat()
     type: 'POST',
     data: {uName},
     success: function(response) {
+      console.log('Heartbeat sent');
     },
       
     

@@ -9,12 +9,7 @@ wsGenEnem.onmessage = function (msg) {
 	
 	var data = JSON.parse(msg.data);	
 	
-	console.log(data.enemyType);
-	console.log(data.x);
-	console.log(data.y);
-	
 	genEnem.fillEnemiesGroup(data);
-	console.log(data);
 	pauseGen = false;
 }
 

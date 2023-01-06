@@ -5,7 +5,6 @@ wsShop.onerror = function (e) {
   console.log("WS error: " + e);
 };
 wsShop.onmessage = function (msg) {
-  console.log(msg);
   var obj = JSON.parse(msg.data);
   switch (obj._id) {
     case 0:

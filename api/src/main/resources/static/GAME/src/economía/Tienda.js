@@ -206,9 +206,9 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.text1.setText(this.shop1.name);
     this.text2.setText(this.shop2.name);
     this.text3.setText(this.shop3.name);
-    this.priceText1.setText(this.shop1.value);
-    this.priceText2.setText(this.shop2.value);
-    this.priceText3.setText(this.shop3.value);
+    this.priceText1.setText("$" + this.shop1.value);
+    this.priceText2.setText("$" + this.shop2.value);
+    this.priceText3.setText("$" + this.shop3.value);
     var aux = false
     if(this.icono1.visible){
       aux = true;
