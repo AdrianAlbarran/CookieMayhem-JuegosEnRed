@@ -30,13 +30,11 @@ class MainMenu extends Phaser.Scene {
             {
                 window['game']['canvas'][this.sys.game.device.fullscreen.cancel];
                 bool = false;
-                console.log(bool);
             }
             else
             {
                 window['game']['canvas'][this.sys.game.device.fullscreen.request]();
                 bool = true;
-                console.log(bool);
             }
         });
 

@@ -1,5 +1,4 @@
 wsShop.onopen = function () {
-  console.log("Hi im the onopen ws function");
 };
 
 wsShop.onerror = function (e) {

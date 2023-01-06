@@ -1,6 +1,5 @@
 
 wsShoot.onopen = function () {
-    console.log('Hi im the onopen ws function');
 }
 
 wsShoot.onerror = function (e) {
@@ -12,9 +11,6 @@ wsShoot.onmessage = function (msg) {
 	
 	if(obj.type === 'shoot')
 	{
-		console.log(msg);
-		console.log(msg.data);
-		
 		
 		if(obj._player == 1 ){
 			bulletsPlayer1.fireBullet(player1.x, player1.y, player1, player1.weaponID, obj.dispersion);

@@ -1,5 +1,4 @@
 wsMov.onopen = function () {
-    console.log('Hi im the onopen ws function');
 }
 
 wsMov.onerror = function (e) {
@@ -7,7 +6,6 @@ wsMov.onerror = function (e) {
 }
 wsMov.onmessage = function (msg) {
 	var obj = JSON.parse(msg.data);
-	console.log(obj._player);
 	if(obj._player == 1 ){
 		directionPlayer1 = obj._dir;
 		//player1.movement(obj._dir);

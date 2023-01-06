@@ -45,7 +45,6 @@ class gingerCookie extends Phaser.GameObjects.Sprite{
           tienda.hp = tienda.hp - that.dmg;
           tienda.setMeterPercentageAnimated(tienda.hp/500,100)
           that.setAttack(that);
-          console.log(tienda.hp);
         }
       }
 

@@ -1,6 +1,5 @@
 
 wsGenEnem.onopen = function () {
-    console.log('Hi im the GenEnemy onopen ws function');
 }
 
 wsGenEnem.onerror = function (e) {
@@ -8,19 +7,23 @@ wsGenEnem.onerror = function (e) {
 }
 wsGenEnem.onmessage = function (msg) {
 	
-	//var obj = JSON.parse(msg.data);	
+	var data = JSON.parse(msg.data);	
 	
+	console.log(data.enemyType);
+	console.log(data.x);
+	console.log(data.y);
+	
+	genEnem.fillEnemiesGroup(data);
+	console.log(data);
+	pauseGen = false;
 }
 
-wsGenEnem.sendWS = function (disp, id) {
+wsGenEnem.sendWS = function () {
 
 	let message = {
-		type: 'shoot',	
-		dispersion: disp,
-		_player: id
+		_wave: wave
 	};
 	
-	var mes = JSON.stringify(message)
-		
+	var mes = JSON.stringify(message);
 	wsGenEnem.send(mes);
 }

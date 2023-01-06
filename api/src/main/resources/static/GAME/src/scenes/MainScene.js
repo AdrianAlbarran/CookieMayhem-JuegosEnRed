@@ -156,7 +156,8 @@ class MainScene extends Phaser.Scene {
         });
         
 
-
+		// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		genEnem = this;
     }
 
     update() {
@@ -400,103 +401,39 @@ class MainScene extends Phaser.Scene {
         var newWaveKey = this.input.keyboard.addKey('Y');
        
         if (newWaveKey.isDown) {
-            if (!somethingAlive) {
+            if (!somethingAlive && !pauseGen) {
                 tienda.openShop();
                 enemies.clear(true, true);
                 wave++;
-                this.fillEnemiesGroup();
+                
+                wsGenEnem.sendWS();
+                pauseGen = true;
             }
         }
 
     }
 
-    fillEnemiesGroup() {
-        /* 
-         * 0 : chipCookie   // comun = 0.4
-         * 1 : oreoCookie   // comun = 0.3
-         * 2 : fruitCookie  // comun = 0.15
-         * 3 : dinoCookie   // comun = 0.1
-         * 4 : gingerCookie // comun = 0.05
-        */
+    fillEnemiesGroup (data) {
 
-        let enemyType;
-        let numEnemies = (Math.random() * 10 * wave);
-
-        if (numEnemies < 5 * wave) {
-            numEnemies = 5 * wave;
-        }
-
-        for (let index = 0; index < numEnemies; index++) {
-            // ? PROBABILITIES IT CAN BE BETTER FOR SURE
-            let randNum = Math.random();
-            if (randNum <= 1 / 20) {
-                enemyType = 4;
-            }
-            else if (randNum <= 3 / 20) {
-                enemyType = 3;
-            }
-            else if (randNum <= 6 / 20) {
-                enemyType = 2;
-            }
-            else if (randNum <= 12 / 20) {
-                enemyType = 1;
-            }
-            else if (randNum <= 20 / 20) {
-                enemyType = 0;
-            }
-
-            // * GENERATE RANDOM POSITION OUTSIDE THE SCREEN
-            /*
-             * 0 : up
-             * 1 : right
-             * 2 : down
-             * 3 : left
-            */
-            let enemyDirection = Math.ceil(Math.random() * 3);
-            let xPosEnemy;
-            let yPosEnemy;
-
-            switch (enemyDirection) {
+        let auxArray = new Array();
+        auxArray = enemies.getChildren();
+            switch (data.enemyType) {
                 case 0:
-                    xPosEnemy = (Math.random() * 1200) - 200;
-                    yPosEnemy = (Math.random() * 100) - 200;
+                    enemies.add(new chipCookie(this, data.x, data.y));
                     break;
                 case 1:
-                    xPosEnemy = (Math.random() * 200) + 800;
-                    yPosEnemy = (Math.random() * 1000) - 200;
+                    enemies.add(new oreoCookie(this, data.x, data.y));
                     break;
                 case 2:
-                    xPosEnemy = (Math.random() * 1200) - 200;
-                    yPosEnemy = (Math.random() * 100) + 700;
+                    enemies.add(new fruitCookie(this, data.x, data.y));
                     break;
                 case 3:
-                    xPosEnemy = (Math.random() * 100) - 200;
-                    yPosEnemy = (Math.random() * 1000) - 200;
-                    break;
-            }
-            // From -200 to 1000
-            (Math.random() * 1200) - 200;
-            // From -200 to 800
-            (Math.random() * 1000) - 200;
-
-            switch (enemyType) {
-                case 0:
-                    enemies.add(new chipCookie(this, xPosEnemy, yPosEnemy));
-                    break;
-                case 1:
-                    enemies.add(new oreoCookie(this, xPosEnemy, yPosEnemy));
-                    break;
-                case 2:
-                    enemies.add(new fruitCookie(this, xPosEnemy, yPosEnemy));
-                    break;
-                case 3:
-                    enemies.add(new dinoCookie(this, xPosEnemy, yPosEnemy));
+                    enemies.add(new dinoCookie(this, data.x, data.y));
                     break;
                 case 4:
-                    enemies.add(new gingerCookie(this, xPosEnemy, yPosEnemy));
+                    enemies.add(new gingerCookie(this, data.x, data.y));
                     break;
             }
-        }
     }
 
     enemiesAttack() {
