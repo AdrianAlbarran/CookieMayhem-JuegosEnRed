@@ -32,9 +32,7 @@ public class WSMovHandler extends TextWebSocketHandler {
 				String msg = message.getPayload();
 				user.sendMessage(new TextMessage(msg));
 			}
-			
 		}
-		
 	}
 	
 	protected void sendOther(WebSocketSession session, String message) throws Exception {

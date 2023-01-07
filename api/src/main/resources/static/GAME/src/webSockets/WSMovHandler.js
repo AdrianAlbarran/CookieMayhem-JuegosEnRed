@@ -7,22 +7,23 @@ wsMov.onerror = function (e) {
 wsMov.onmessage = function (msg) {
 	var obj = JSON.parse(msg.data);
 	if(obj._player == 1 ){
-		directionPlayer1 = obj._dir;
-		//player1.movement(obj._dir);
+		directionVPlayer1 = obj._dirV;
+		directionHPlayer1 = obj._dirH;
 	}
 	
 	if(obj._player == 2 ){
-		directionPlayer2 = obj._dir;
-		//player2.movement(obj._dir);
+		directionVPlayer2 = obj._dirV;
+		directionHPlayer2 = obj._dirH;
 	}
 	
 }
 
-wsMov.sendWS = function (x, y, dire, id) {
+wsMov.sendWS = function (x, y, dirV, dirH, id) {
 	let message = {
 			p_x: x,
 			p_y: y,
-			_dir: dire,
+			_dirV: dirV,
+			_dirH: dirH,
 			_player: id
 	};
 	

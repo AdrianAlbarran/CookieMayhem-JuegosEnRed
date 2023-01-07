@@ -1,5 +1,5 @@
 
-wsGenEnem.onopen = function () {
+wsGenEnem.onopen = function (msg) {
 }
 
 wsGenEnem.onerror = function (e) {
@@ -7,10 +7,17 @@ wsGenEnem.onerror = function (e) {
 }
 wsGenEnem.onmessage = function (msg) {
 	
-	var data = JSON.parse(msg.data);	
-	
-	genEnem.fillEnemiesGroup(data);
-	pauseGen = false;
+	var data = JSON.parse(msg.data);
+	if(data._type == "onConnection")
+	{
+		wave = data._wave;
+	}
+	else
+	{
+		genEnem.fillEnemiesGroup(data);
+		wave = data._wave;
+		pauseGen = false;
+	}
 }
 
 wsGenEnem.sendWS = function () {

@@ -25,6 +25,14 @@ public class WSGenEnemyHandler extends TextWebSocketHandler {
 			users.put(session.getId(), session);
 
 			users.forEach( (key, value) -> System.out.println("user: " + key + " = " + value));
+			
+            JSONObject json = new JSONObject();
+            json.put("_wave", currentWave);
+            json.put("_type", "onConnection");
+
+    		for(WebSocketSession user : users.values()) {
+    			user.sendMessage(new TextMessage(json.toJSONString()));
+    		}
 		}
 	}
 	
@@ -35,6 +43,8 @@ public class WSGenEnemyHandler extends TextWebSocketHandler {
 		JsonNode node = mapper.readTree(message.getPayload());
 		
 		int wave = node.get("_wave").asInt();
+		System.out.println(currentWave);
+		System.out.println(wave);
 		if(currentWave == wave)
 		{
 			int numEnemies = ThreadLocalRandom.current().nextInt((10*wave - 5*wave)+1) + 5*wave;
@@ -93,6 +103,7 @@ public class WSGenEnemyHandler extends TextWebSocketHandler {
 	    		json.put("enemyType", enemyType);
 	    		json.put("x", x);
 	    		json.put("y", y);
+	    		json.put("_wave", currentWave+1);
 	
 	    		for(WebSocketSession user : users.values()) {
 	    			user.sendMessage(new TextMessage(json.toJSONString()));

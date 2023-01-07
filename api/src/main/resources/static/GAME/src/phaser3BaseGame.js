@@ -56,6 +56,8 @@ let helpWavesText;
 let openShopText;
 
 // ANIMACIONES WS
-var directionPlayer1;
-var directionPlayer2;
+var directionVPlayer1;
+var directionHPlayer1;
 
+var directionVPlayer2;
+var directionHPlayer2;

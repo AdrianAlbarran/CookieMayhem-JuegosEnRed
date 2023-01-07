@@ -31,8 +31,6 @@ public class WSWeaponHandler extends TextWebSocketHandler {
 		JSONObject json = new JSONObject();
 		json.put("player1", player1);
 		json.put("player2",player2);
-		System.out.println(player1);
-		System.out.println(player2);
 		session.sendMessage(new TextMessage(json.toJSONString()));
 		
 	}

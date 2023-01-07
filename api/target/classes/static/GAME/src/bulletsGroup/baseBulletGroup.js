@@ -55,8 +55,10 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
 
-        if (this.y <= -32 || this.y >= 632 || this.x >= 832 || this.x <= -32) {
+        if (this.y <= -1 || this.y >= 601 || this.x >= 801 || this.x <= -1) {
             this.setVelocity(0, 0);
+            this.x = 10000;
+            this.y = 10000;
             this.setActive(false);
             this.setVisible(false);
         }
@@ -122,7 +124,7 @@ class Bullets extends Phaser.Physics.Arcade.Group {
     constructor(scene) {
         super(scene.physics.world, scene);
         this.createMultiple({
-            frameQuantity: 40,
+            frameQuantity: 60,
             key: 'bullet',
             active: false,
             visible: false,

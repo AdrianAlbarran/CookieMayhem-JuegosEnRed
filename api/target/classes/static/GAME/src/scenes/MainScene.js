@@ -289,7 +289,7 @@ class MainScene extends Phaser.Scene {
     checkEnemiesHP() {
         var enemiesArray = new Array();
         enemiesArray = enemies.getChildren();
-
+        console.log(enemiesArray);
         for (let i = 0; i < enemiesArray.length; i++) {
             if (enemiesArray[i].hp <= 0 || isNaN(enemiesArray[i].hp)) {
                 enemiesArray[i].setPosition(9000, 9000);
@@ -298,6 +298,7 @@ class MainScene extends Phaser.Scene {
                 enemiesArray[i].hp = -100;
                 this.addScore(enemiesArray[i].value);
                 enemiesArray.splice(i, 1);
+                console.log(enemiesArray);
                 soundMoney.play();
             }
         }
@@ -402,12 +403,13 @@ class MainScene extends Phaser.Scene {
        
         if (newWaveKey.isDown) {
             if (!somethingAlive && !pauseGen) {
+                pauseGen = true;
                 tienda.openShop();
                 enemies.clear(true, true);
-                wave++;
-                
                 wsGenEnem.sendWS();
-                pauseGen = true;
+                wave++;
+
+                
             }
         }
 
