@@ -50,7 +50,9 @@ public class WSLobbyHandler extends TextWebSocketHandler {
 
 	
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus)throws Exception {
+		System.out.println(users.get(session.getId()));
 		users.remove(session.getId());
+
 		
 	}
 	

@@ -84,16 +84,31 @@ class Player extends Phaser.GameObjects.Sprite {
 
   movement(direction) {
     var those = this;
-    var cursors;
+    var cursors = this.scene.input.keyboard.createCursorKeys();
 	var keydown_W = this.scene.input.keyboard.addKey("W");
     var keydown_D = this.scene.input.keyboard.addKey("D");
     var keydown_S = this.scene.input.keyboard.addKey("S");
     var keydown_A = this.scene.input.keyboard.addKey("A");
     
-    if(currentPlayer == 2){
+    if(currentPlayer == 1){
 		
-    cursors = this.scene.input.keyboard.createCursorKeys();
+    
+    cursors.left.isDown = false;
+    cursors.right.isDown = false;
+    cursors.up.isDown = false;
+    cursors.down.isDown = false;
     }
+    if(currentPlayer ==2){
+			keydown_W.isDown = false;
+			keydown_D.isDown = false;
+			keydown_S.isDown = false;
+			keydown_A.isDown = false;
+			
+			keydown_W.isUp = true;
+			keydown_D.isUp = true;
+			keydown_S.isUp = true;
+			keydown_A.isUp = true;
+		}
     
     let dirV = null;
     let dirH = null;
@@ -107,9 +122,7 @@ class Player extends Phaser.GameObjects.Sprite {
 	*/
 	
     if (this.id == "PLAYER1") {
-    	if(currentPlayer ==1){
 
-		}
 
 
       if (keydown_W.isDown || directionVPlayer1 == 'up') {

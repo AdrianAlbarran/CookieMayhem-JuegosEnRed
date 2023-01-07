@@ -283,7 +283,6 @@ class MainScene extends Phaser.Scene {
     checkEnemiesHP() {
         var enemiesArray = new Array();
         enemiesArray = enemies.getChildren();
-        console.log(enemiesArray);
         for (let i = 0; i < enemiesArray.length; i++) {
             if (enemiesArray[i].hp <= 0 || isNaN(enemiesArray[i].hp)) {
                 enemiesArray[i].setPosition(9000, 9000);
