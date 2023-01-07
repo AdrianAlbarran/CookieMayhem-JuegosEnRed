@@ -61,3 +61,8 @@ var directionHPlayer1;
 
 var directionVPlayer2;
 var directionHPlayer2;
+
+// LOBBY WS
+var p1Connected = false;
+var p2Connected = false;
+var currentPlayer = 0; 

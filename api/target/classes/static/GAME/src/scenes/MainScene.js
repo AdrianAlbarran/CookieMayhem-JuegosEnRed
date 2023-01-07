@@ -162,15 +162,9 @@ class MainScene extends Phaser.Scene {
 
     update() {
         player1.movement(this);
-        
-        // usar else{...}
         player2.movement(this);
-        
-        //esto será provisional, lo he añadido para ver si la función tiraba
-        //if (this.input.keyboard.addKey('P').isDown) {
-         //   tienda.openShop(player1, player2);
-        //}
 
+        
         enemiesArray = enemies.getChildren();
         this.eventHandler();
         this.checkEnemiesHP();

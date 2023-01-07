@@ -14,8 +14,10 @@ public class SocketApp implements WebSocketConfigurer{
 
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+		
 		registry.addHandler(wsmoveHandler(), "/movement")
 		.setAllowedOrigins("*");
+		
 		registry.addHandler(wsshootHandler(), "/shoot")
 		.setAllowedOrigins("*");
 
@@ -23,10 +25,14 @@ public class SocketApp implements WebSocketConfigurer{
 		.setAllowedOrigins("*");
 		
 		registry.addHandler(wsweaponHandler(), "/weapon")
-		.setAllowedOrigins("*");
+		.setAllowedOrigins("*");	
 		
 		registry.addHandler(wsgenenemyHandler(), "/genenemy")
 		.setAllowedOrigins("*");
+		
+		registry.addHandler(wslobbyHandler(), "/lobby")
+		.setAllowedOrigins("*");
+		
 		
 	}
 	
@@ -35,7 +41,7 @@ public class SocketApp implements WebSocketConfigurer{
 		return new WSHandler();
 	}
 	@Bean
-	public WSMovHandler wsmoveHandler() {
+	public WSMovHandler wsmoveHandler() {                
 		return new WSMovHandler();
 	}
 	@Bean
@@ -49,11 +55,16 @@ public class SocketApp implements WebSocketConfigurer{
 	@Bean
 	public WSWeaponHandler wsweaponHandler() {
 		return new WSWeaponHandler();
-	}
+	}	
 	
 	@Bean
 	public WSGenEnemyHandler wsgenenemyHandler() {
 		return new WSGenEnemyHandler();
+	}
+	
+	@Bean
+	public WSLobbyHandler wslobbyHandler() {
+		return new WSLobbyHandler();
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(SocketApp.class, args);

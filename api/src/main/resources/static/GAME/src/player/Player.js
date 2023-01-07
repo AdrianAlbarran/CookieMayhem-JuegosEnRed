@@ -1,4 +1,4 @@
-/** @type { import ("../../typings/phaser") } */
+	/** @type { import ("../../typings/phaser") } */
 
 class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, sprite, id, economy) {
@@ -84,7 +84,16 @@ class Player extends Phaser.GameObjects.Sprite {
 
   movement(direction) {
     var those = this;
-    var cursors = this.scene.input.keyboard.createCursorKeys();
+    var cursors;
+	var keydown_W = this.scene.input.keyboard.addKey("W");
+    var keydown_D = this.scene.input.keyboard.addKey("D");
+    var keydown_S = this.scene.input.keyboard.addKey("S");
+    var keydown_A = this.scene.input.keyboard.addKey("A");
+    
+    if(currentPlayer == 2){
+		
+    cursors = this.scene.input.keyboard.createCursorKeys();
+    }
     
     let dirV = null;
     let dirH = null;
@@ -98,11 +107,10 @@ class Player extends Phaser.GameObjects.Sprite {
 	*/
 	
     if (this.id == "PLAYER1") {
-      
-      var keydown_W = this.scene.input.keyboard.addKey("W");
-      var keydown_D = this.scene.input.keyboard.addKey("D");
-      var keydown_S = this.scene.input.keyboard.addKey("S");
-      var keydown_A = this.scene.input.keyboard.addKey("A");
+    	if(currentPlayer ==1){
+
+		}
+
 
       if (keydown_W.isDown || directionVPlayer1 == 'up') {
         those.body.setVelocityY(-this.actualMS);
