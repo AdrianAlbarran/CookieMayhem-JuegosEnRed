@@ -142,6 +142,19 @@ La escena cambia a la pantalla de derrota cuando la vida de la tetera llega a 0 
 
 (Se puede producir un error si java no está actualizado)
 
+## Protocolo Usado en WebSocket
+
+![image](https://user-images.githubusercontent.com/115086690/211213815-7d77c28b-90b2-4188-b8b6-ccece34ca06c.png)
+
+- Método onopen(): Método ejecutado cuando se establece conexión con el servidor. La clase WSLobbyHandler implementa este método.
+- Método onerror(): Método que se ejecuta cuando salta algún error dentro de la ejecución en el servidor. No se ha llegado a implementar en ninguna clase.
+- Método onmessage(): Método que se ejecuta cuando se recibe un mensaje. Cada clase implementa este método de forma propia debido a que se quiere hacer una determinada funcionalidad dado un websocket concreto.
+- Método sendWS(): Método encargado de enviar atributos necesarios para realizar el juego en línea. Por ejemplo, el WSMovHandler, implementa este método enviando la posición de los jugadores y sus direcciones, siendo estos atributos necesarios para poder ejecutar el movimiento en el servidor
+
+## Diagrama de Clases WebSocket
+
+![Diagrama sin título drawio (1)](https://user-images.githubusercontent.com/115086690/211213781-e7eb52c3-215d-4acf-93df-b6a0a51856a1.png)
+
 ## Diseño de Enemigos, Personajes y Mejoras
 
 ## Enemigos
