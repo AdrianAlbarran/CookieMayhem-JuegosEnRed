@@ -234,7 +234,7 @@ class MainScene extends Phaser.Scene {
         var keyShoot1 = this.input.keyboard.addKey('SPACE');
         var stillDown1 = this.input.keyboard.checkDown(keyShoot1, player1.actualFireRate);
         
-        if (stillDown1) {
+        if (stillDown1 && currentPlayer == 1) {
 			
 			this.shootIterator(bulletsPlayer1, player1, 1);
         }
@@ -242,7 +242,7 @@ class MainScene extends Phaser.Scene {
         var keyShoot2 = this.input.keyboard.addKey('ENTER');
         var stillDown2 = this.input.keyboard.checkDown(keyShoot2, player2.actualFireRate);
 
-        if (stillDown2) {
+        if (stillDown2 && currentPlayer == 2) {
             this.shootIterator(bulletsPlayer2, player2, 2);
 
         }
