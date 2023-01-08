@@ -53,6 +53,5 @@ class GameOver extends Phaser.Scene {
         restart.on('pointerout', () => {
             mouseSpriteRestart.setVisible(false);
         });
-        wsLobby.close();
     }
 }

@@ -23,8 +23,6 @@ public class WSGenEnemyHandler extends TextWebSocketHandler {
 		if(users.size() < 2)
 		{
 			users.put(session.getId(), session);
-
-			users.forEach( (key, value) -> System.out.println("user: " + key + " = " + value));
 			
             JSONObject json = new JSONObject();
             json.put("_wave", currentWave);
@@ -44,7 +42,6 @@ public class WSGenEnemyHandler extends TextWebSocketHandler {
 		
 		int wave = node.get("_wave").asInt();
 		System.out.println(currentWave);
-		System.out.println(wave);
 		if(currentWave == wave)
 		{
 			int numEnemies = ThreadLocalRandom.current().nextInt((10*wave - 5*wave)+1) + 5*wave;
@@ -118,7 +115,6 @@ public class WSGenEnemyHandler extends TextWebSocketHandler {
 	
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus)throws Exception {
 		users.remove(session.getId());
-		System.out.println("out" + session.getId());
 	}
 	
 	

@@ -38,7 +38,6 @@ public class WSWeaponHandler extends TextWebSocketHandler {
 	
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus)throws Exception {
 		users.remove(session.getId());
-		System.out.println("out" + session.getId());
 	}
 	
 

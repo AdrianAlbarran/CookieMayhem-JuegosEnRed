@@ -65,4 +65,9 @@ var directionHPlayer2;
 // LOBBY WS
 var p1Connected = false;
 var p2Connected = false;
-var currentPlayer = 0; 
+var currentPlayer = 0;
+var lobbyThis;
+var openLobby;
+var statusPlayer1;
+var statusPlayer2;
+

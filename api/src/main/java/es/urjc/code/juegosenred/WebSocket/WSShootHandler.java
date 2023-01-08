@@ -16,8 +16,6 @@ public class WSShootHandler extends TextWebSocketHandler {
 		if(users.size() < 2)
 		{
 			users.put(session.getId(), session);
-
-			users.forEach( (key, value) -> System.out.println("user: " + key + " = " + value));
 		}
 	}
 	
@@ -48,7 +46,6 @@ public class WSShootHandler extends TextWebSocketHandler {
 	
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus)throws Exception {
 		users.remove(session.getId());
-		System.out.println("out" + session.getId());
 	}
 	
 	

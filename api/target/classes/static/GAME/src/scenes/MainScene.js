@@ -315,9 +315,10 @@ class MainScene extends Phaser.Scene {
         }
 
         if(player1.hp <= 0 && player2.hp <= 0){
-            this.scene.pause();
+            this.scene.stop();
             bcMusicGame.pause();
             endGameMusic.play();
+            wsLobby.sendWS("gameOver");
             this.scene.start("gameOver");
         }
     }

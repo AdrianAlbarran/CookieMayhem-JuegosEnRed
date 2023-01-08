@@ -87,14 +87,16 @@ class LoadingScene extends Phaser.Scene
         this.load.image('ICONOREVOLVER', 'GAME/assets/iconos/iconoRevolver.png');
         this.load.image('ICONOSUBFUSIL', 'GAME/assets/iconos/iconoSubfusil.png');
         
-
+		// * ESTATUS PLAYER
+    	this.load.image("playersOnline", "GAME/assets/playersOnline.png");
+    	this.load.image("fondoPlayerEstatus", "GAME/assets/fondoPlayerEstatus.png");
         
     }
     create()
     {
         this.add.text(20, 20, "loading data...");
-        this.scene.start("mainScene");
-        
+        //this.scene.start("mainScene");
+        this.scene.start("lobby");
     }
 
     

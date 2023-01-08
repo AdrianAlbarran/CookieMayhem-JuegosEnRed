@@ -48,6 +48,7 @@ class MainMenu extends Phaser.Scene {
 
         this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
             this.scene.start('loadingScene');
+            openLobby();
         });
 
         textoJugar.on('pointerover', () => {

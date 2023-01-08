@@ -19,5 +19,6 @@ var weaponIP = 'ws://127.0.0.1:8080/weapon';
 var wsWeapon = new WebSocket(weaponIP); 
 
 // SOCKET PARA EL LOBBY
+
 var lobbyIP = 'ws://127.0.0.1:8080/lobby';
-var wsLobby = new WebSocket(lobbyIP); 
+var wsLobby; // Inicializada al darle al boton "play"
