@@ -88,7 +88,6 @@ public class WSLobbyHandler extends TextWebSocketHandler {
 			
 			user2ID = null;
 		}
-		System.out.println(users);
 		users.remove(session.getId());
 		for(WebSocketSession user : users.values()) {
 			JSONObject json = new JSONObject();

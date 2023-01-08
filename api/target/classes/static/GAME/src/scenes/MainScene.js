@@ -291,7 +291,6 @@ class MainScene extends Phaser.Scene {
                 enemiesArray[i].hp = -100;
                 this.addScore(enemiesArray[i].value);
                 enemiesArray.splice(i, 1);
-                console.log(enemiesArray);
                 soundMoney.play();
             }
         }
@@ -319,6 +318,7 @@ class MainScene extends Phaser.Scene {
             bcMusicGame.pause();
             endGameMusic.play();
             wsLobby.sendWS("gameOver");
+            wsGenEnem.sendWS("reset");
             this.scene.start("gameOver");
         }
     }
@@ -400,7 +400,7 @@ class MainScene extends Phaser.Scene {
                 pauseGen = true;
                 tienda.openShop();
                 enemies.clear(true, true);
-                wsGenEnem.sendWS();
+                wsGenEnem.sendWS("");
                 wave++;
 
                 
@@ -411,8 +411,6 @@ class MainScene extends Phaser.Scene {
 
     fillEnemiesGroup (data) {
 
-        let auxArray = new Array();
-        auxArray = enemies.getChildren();
             switch (data.enemyType) {
                 case 0:
                     enemies.add(new chipCookie(this, data.x, data.y));

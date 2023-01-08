@@ -20,12 +20,8 @@ class GameOver extends Phaser.Scene {
        mouseSpriteMain.setVisible(false);
        mouseSpriteRestart.setVisible(false);
 
-       let mainMenu = this.add.text(420, 200, "EXIT", {
-            fontSize: '26px', fill: '#j78999', fontFamily: 'Pixel'
-        }).setOrigin(0.5).setInteractive();
-
-        let restart = this.add.text(420, 250, "RESTART", {
-            fontSize: '26px', fill: '#j78999', fontFamily: 'Pixel'
+       let mainMenu = this.add.text(420, 235, "EXIT", {
+            fontSize: '32px', fill: '#j78999', fontFamily: 'Pixel'
         }).setOrigin(0.5).setInteractive();
 
         mainMenu.on('pointerdown', () => {
@@ -39,19 +35,6 @@ class GameOver extends Phaser.Scene {
         });
         mainMenu.on('pointerout', () => {
             mouseSpriteMain.setVisible(false);
-        });
-
-        restart.on('pointerdown', () => {
-            bcSelect.play();
-            wave = 1;
-            this.scene.start("mainScene");
-            endGameMusic.pause();
-        });
-        restart.on('pointerover', () => {
-            mouseSpriteRestart.setVisible(true);
-        });
-        restart.on('pointerout', () => {
-            mouseSpriteRestart.setVisible(false);
         });
     }
 }

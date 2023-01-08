@@ -20,10 +20,10 @@ wsGenEnem.onmessage = function (msg) {
 	}
 }
 
-wsGenEnem.sendWS = function () {
+wsGenEnem.sendWS = function (aType) {
 
 	let message = {
-		_wave: wave
+		type: aType
 	};
 	
 	var mes = JSON.stringify(message);
