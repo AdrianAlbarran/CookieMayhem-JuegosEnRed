@@ -1,0 +1,14 @@
+Bug sheet
+gravedad:
+ -: poca
+ +: media
+ !: bastante
+ !!: hay que solucionarlo 
+ !!!!!!!!!!!!!!!!!!!!!: amenaza de bomba nuclear
+
++-  A veces al generar enemigos se mueren enemigos sin siquiera llegar a aparecer en pantalla (otogando el correspondiente score)
+-   Falta el favicon 
+!   Es muy facil que ocurra desincronizacion de las posiciones, hay que hacer que cada 1/3 de segundo o menos se envien las posiciones 
+    para fixearlas, hacer que el jug1 sea el que manda las posiciones
+!   Lo mismo que arriba pero mandar el array de enemigos (a pelo a ver si funciona) y el score
+
