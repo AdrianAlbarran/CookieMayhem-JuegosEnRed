@@ -23,7 +23,7 @@ class Buffs {
     this.percentage = Phaser.Math.Between(1, 5) / 100;
     this.name = "Damage Up \n" + Math.floor(this.percentage * 100) + "%";
     this.id = 0;
-    this.value = Math.floor(this.percentage *100 * (wave+1)* 20);
+    this.value = Math.floor(this.percentage *100 * (wave * 0.65) * 20);
     this.sprite="IDMG";
 
   }
@@ -31,14 +31,14 @@ class Buffs {
     this.percentage = Phaser.Math.Between(1, 5) / 100;
     this.name = "Att.Speed Up \n" + Math.floor(this.percentage * 100) + "%";
     this.id = 1;
-    this.value = Math.floor(this.percentage *100 * (wave+1) * 20);
+    this.value = Math.floor(this.percentage *100 * (wave * 0.65) * 20);
     this.sprite = "IVA";
   }
   createAmountProyectil() {
     this.percentage = 1;
     this.name = "Am.Proyectil \n+1";
     this.id = 2;
-    this.value = Math.floor((wave+1)*90);
+    this.value = Math.floor((wave * 0.65)*90);
     this.sprite = "IMB";
 
   }
@@ -46,7 +46,7 @@ class Buffs {
     this.percentage = Phaser.Math.Between(1, 10) / 100;
     this.name = "Mov.Speed Up \n" + Math.floor(this.percentage * 100) + "%";
     this.id = 3;
-    this.value = Math.floor(this.percentage *100 * (wave+1) * 15);
+    this.value = Math.floor(this.percentage *100 * (wave * 0.65) * 15);
     this.sprite = "IVM";
 
   }

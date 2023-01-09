@@ -1,4 +1,6 @@
 // SOCKET PARA MOVEMENT
+var aux = window.location.href;
+console.log(aux);
 var movIP = 'ws://127.0.0.1:8080/movement';
 var wsMov = new WebSocket(movIP);
 
