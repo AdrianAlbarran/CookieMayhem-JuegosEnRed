@@ -153,7 +153,7 @@ La escena cambia a la pantalla de derrota cuando la vida de la tetera llega a 0 
 
 ## Diagrama de Clases WebSocket
 
-![Diagrama sin título drawio (1)](https://user-images.githubusercontent.com/115086690/211213781-e7eb52c3-215d-4acf-93df-b6a0a51856a1.png)
+![Diagrama sin título drawio (3)](https://user-images.githubusercontent.com/115086690/211384102-a4df6029-1b38-4a5b-a442-0b42e87b0f6d.png)
 
 ## Diseño de Enemigos, Personajes y Mejoras
 
