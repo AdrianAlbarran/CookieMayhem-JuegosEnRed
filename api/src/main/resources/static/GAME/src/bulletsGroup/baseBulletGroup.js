@@ -12,7 +12,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
 
     }
 
-    fireConfig(x, y, player, type) {
+    fireConfig(x, y, player, type, dispersion) {
         this.body.reset(x, y);
 
         var direction = player.lastDirectionInput;
@@ -33,19 +33,19 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
             case 0:
                 this.damage = 20 * player.extraDmg;
                 this.maxTraverse = 0;
-                this.fire(direction, 700, 300);
+                this.fire(direction, 700, dispersion); // max disp = 300
                 break;
             case 1:
                 //CONFIG BULLETS FOR REVOLVER
                 this.damage = 80 * player.extraDmg;
                 this.maxTraverse = 2;
-                this.fire(direction, 1800, 50);
+                this.fire(direction, 1800, dispersion);  // max disp = 50
                 break;
             case 2:
                 //CONFIG BULLETS FOR SUBMACHINE GUN
                 this.damage = 20 * player.extraDmg;
                 this.maxTraverse = 0;
-                this.fire(direction, 700, 133);
+                this.fire(direction, 700, dispersion); // max disp = 133
                 break;
         }
 
@@ -55,32 +55,35 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
 
-        if (this.y <= -32 || this.y >= 632 || this.x >= 832 || this.x <= -32) {
+        if (this.y <= -1 || this.y >= 601 || this.x >= 801 || this.x <= -1) {
             this.setVelocity(0, 0);
+            this.x = 10000;
+            this.y = 10000;
             this.setActive(false);
             this.setVisible(false);
         }
     }
 
-    fire(direction, speed, maxDispersion) {
-        var randomDispersion = (Math.random() - 0.5) * maxDispersion;
-        var rotation = Math.atan(randomDispersion / speed) * 180 / Math.PI
+    fire(direction, speed, dispersion) {
+
+        //var randomDispersion = (Math.random() - 0.5) * maxDispersion;
+        var rotation = Math.atan(dispersion / speed) * 180 / Math.PI
 
         switch (direction) {
             case 11:
-                this.setVelocity(randomDispersion, -speed);
+                this.setVelocity(dispersion, -speed);
                 this.angle = 0 + rotation;
                 break;
             case 12:
-                this.setVelocity(randomDispersion, speed);
+                this.setVelocity(dispersion, speed);
                 this.angle = 180 - rotation;
                 break;
             case 13:
-                this.setVelocity(-speed, randomDispersion);
+                this.setVelocity(-speed, dispersion);
                 this.angle = 270 - rotation;
                 break;
             case 14:
-                this.setVelocity(speed, randomDispersion);
+                this.setVelocity(speed, dispersion);
                 this.angle = 90 + rotation;
                 break;
         }
@@ -93,9 +96,8 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         bullet.setPosition(999, 999);
 
     }
-    
+
     hitEnemy(bullet, enemy) {
-        console.log("Last enemy hitted:" + bullet.lastEnemyHitted);
         if (bullet.lastEnemyHitted != enemy) {
             //sonido de golpe
             soundCookieDamaged.play();
@@ -106,7 +108,6 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
             setInterval(normal, 150); //escala normal despues de ser golpeados
             //Pre update se encarga de que la bala desaparezca
             bullet.maxTraverse = bullet.maxTraverse - 1;
-            console.log(bullet.maxTraverse);
             if (bullet.maxTraverse <= 0) {
                 bullet.setPosition(999, 999);
             }
@@ -123,7 +124,7 @@ class Bullets extends Phaser.Physics.Arcade.Group {
     constructor(scene) {
         super(scene.physics.world, scene);
         this.createMultiple({
-            frameQuantity: 40,
+            frameQuantity: 60,
             key: 'bullet',
             active: false,
             visible: false,
@@ -131,36 +132,14 @@ class Bullets extends Phaser.Physics.Arcade.Group {
         })
     }
 
-    fireBullet(x, y, player, type) {
+    fireBullet(x, y, player, type, dispersion) {
 
-        if(type != 0)
-        {
-            for (let aux = 0; aux <= player.extraBullets; aux++) {
-                if (player.hp > 0) {
-                    let bullet = this.getFirstDead(false);
-                    if (bullet) {
-                        soundShoot.play();
-                        bullet.fireConfig(x, y, player, type);
-                        bullet.lastEnemyHitted = undefined;
-                    }
-                }
-            }
-        } else {
-            // ? Se podria cambiar el for de arriba para no tener que duplicarlo, 
-            // ? no se que manera seria mas eficiente
-            for (let aux = 0; aux <= 8 + player.extraBullets * 3; aux++) {
-                if (player.hp > 0) {
-                    let bullet = this.getFirstDead(false);
-                    if (bullet) {
-                        soundShoot.play();
-                        bullet.fireConfig(x, y, player, type);
-                        bullet.lastEnemyHitted = undefined;
-                    }
-                }
-            }
+        let bullet = this.getFirstDead(false);
+        if (bullet) {
+            soundShoot.play();
+            bullet.fireConfig(x, y, player, type, dispersion);
+            bullet.lastEnemyHitted = undefined;
         }
-
-
     }
 }
 

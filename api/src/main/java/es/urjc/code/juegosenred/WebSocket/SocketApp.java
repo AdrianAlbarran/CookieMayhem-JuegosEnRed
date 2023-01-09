@@ -14,13 +14,64 @@ public class SocketApp implements WebSocketConfigurer{
 
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		registry.addHandler(echoHandler(), "/app")
-			.setAllowedOrigins("*");
+		
+		registry.addHandler(wsmoveHandler(), "/movement")
+		.setAllowedOrigins("*");
+		
+		registry.addHandler(wsshootHandler(), "/shoot")
+		.setAllowedOrigins("*");
+
+		registry.addHandler(wsshopHandler(), "/shop")
+		.setAllowedOrigins("*");
+		
+		registry.addHandler(wsweaponHandler(), "/weapon")
+		.setAllowedOrigins("*");	
+		
+		registry.addHandler(wsgenenemyHandler(), "/genenemy")
+		.setAllowedOrigins("*");
+		
+		registry.addHandler(wslobbyHandler(), "/lobby")
+		.setAllowedOrigins("*");
+		
+		registry.addHandler(wsdsyncHandler(), "/dsync")
+		.setAllowedOrigins("*");
+		
 	}
 	
 	@Bean
-	public WSHandler echoHandler() {
+	public WSHandler wsHandler() {
 		return new WSHandler();
+	}
+	@Bean
+	public WSMovHandler wsmoveHandler() {                
+		return new WSMovHandler();
+	}
+	@Bean
+	public WSShootHandler wsshootHandler() {
+		return new WSShootHandler();
+	}
+	@Bean
+	public WSShopHandler wsshopHandler() {
+		return new WSShopHandler();
+	}
+	@Bean
+	public WSWeaponHandler wsweaponHandler() {
+		return new WSWeaponHandler();
+	}	
+	
+	@Bean
+	public WSGenEnemyHandler wsgenenemyHandler() {
+		return new WSGenEnemyHandler();
+	}
+	
+	@Bean
+	public WSLobbyHandler wslobbyHandler() {
+		return new WSLobbyHandler();
+	}
+	
+	@Bean
+	public WSDsyncHandler wsdsyncHandler() {
+		return new WSDsyncHandler();
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(SocketApp.class, args);

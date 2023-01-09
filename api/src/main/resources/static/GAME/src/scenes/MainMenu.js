@@ -30,18 +30,17 @@ class MainMenu extends Phaser.Scene {
             {
                 window['game']['canvas'][this.sys.game.device.fullscreen.cancel];
                 bool = false;
-                console.log(bool);
             }
             else
             {
                 window['game']['canvas'][this.sys.game.device.fullscreen.request]();
                 bool = true;
-                console.log(bool);
             }
         });
 
         var textoJugar = this.add.text(400, 370, 'PLAY', {
-            fontSize: '26px', fill: '#e78999', fontFamily: 'Pixel'
+            fontSize: '26px', fill: '#e78999', fontFamily: 'Pixel',
+            shadow: {offsetX: 2, offsetY: 2, color: '#000', stroke: true, fill: true}
         }).setOrigin(0.5).setInteractive();
         textoJugar.on('pointerdown', () => {
             bcSelect.play();
@@ -50,6 +49,7 @@ class MainMenu extends Phaser.Scene {
 
         this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
             this.scene.start('loadingScene');
+            openLobby();
         });
 
         textoJugar.on('pointerover', () => {
@@ -63,7 +63,8 @@ class MainMenu extends Phaser.Scene {
         });
 
         var textoAjustes = this.add.text(400, 430, 'SETTINGS', {
-            fontSize: '26px', fill: '#e78999', fontFamily: 'Pixel'
+            fontSize: '26px', fill: '#e78999', fontFamily: 'Pixel',
+            shadow: {offsetX: 2, offsetY: 2, color: '#000', stroke: true, fill: true}
         }).setOrigin(0.5).setInteractive();
         textoAjustes.on('pointerdown', () => {
             settingsBackground.setVisible(true);

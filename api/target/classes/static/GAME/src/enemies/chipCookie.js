@@ -1,5 +1,6 @@
 /** @type { import ("../../typings/phaser") } */
 class chipCookie extends Phaser.GameObjects.Sprite {
+  
   constructor(scene, x, y) {
     super(scene, x, y);
 
@@ -44,7 +45,6 @@ class chipCookie extends Phaser.GameObjects.Sprite {
       tienda.hp = tienda.hp - that.dmg;
       tienda.setMeterPercentageAnimated(tienda.hp/500,100)
       that.setAttack(that);
-      console.log(tienda.hp);
     }
   }
   setAttack(aux) {

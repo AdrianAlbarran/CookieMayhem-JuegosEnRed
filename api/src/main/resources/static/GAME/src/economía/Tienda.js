@@ -100,10 +100,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
           break;
       }
     }
-    console.log(buffos);
-    console.log(this.shop1);
-    console.log(this.shop2);
-    console.log(this.shop3);
+
   }
 
   createInterface() {
@@ -209,9 +206,9 @@ class Tienda extends Phaser.GameObjects.Sprite {
     this.text1.setText(this.shop1.name);
     this.text2.setText(this.shop2.name);
     this.text3.setText(this.shop3.name);
-    this.priceText1.setText(this.shop1.value);
-    this.priceText2.setText(this.shop2.value);
-    this.priceText3.setText(this.shop3.value);
+    this.priceText1.setText("$" + this.shop1.value);
+    this.priceText2.setText("$" + this.shop2.value);
+    this.priceText3.setText("$" + this.shop3.value);
     var aux = false
     if(this.icono1.visible){
       aux = true;
@@ -269,6 +266,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
         cont1 +=1;
         this.statText1.setText(cont1);
         buyshop.play();
+        wsShop.sendWS(buff.id,buff.percentage,buff.value,cont1);
         } else {
           failshop.play();
         }
@@ -281,6 +279,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
         cont2 +=1;
         this.statText3.setText(cont2);
         buyshop.play();
+        wsShop.sendWS(buff.id,buff.percentage,buff.value,cont2);
         } else {
           failshop.play();
         }
@@ -293,6 +292,7 @@ class Tienda extends Phaser.GameObjects.Sprite {
         cont3 +=1;
         this.statText2.setText(cont3);
         buyshop.play();
+        wsShop.sendWS(buff.id,buff.percentage,buff.value,cont3);
         } else {
           failshop.play();
         }
@@ -305,11 +305,13 @@ class Tienda extends Phaser.GameObjects.Sprite {
         cont4 +=1;
         this.statText4.setText(cont4);
         buyshop.play();
+        wsShop.sendWS(buff.id,buff.percentage,buff.value,cont4);
         } else {
           failshop.play();
         }
       break;
     }
+    
   }
 
   createHPbar() {

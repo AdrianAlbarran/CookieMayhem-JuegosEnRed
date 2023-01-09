@@ -11,6 +11,7 @@ class MainScene extends Phaser.Scene {
     }
 
     create() {
+		
         bcMusicMenu.pause();
         enemies = this.physics.add.group();
         //varaibles
@@ -30,6 +31,8 @@ class MainScene extends Phaser.Scene {
 
         player1.playerIntialize(this);
         player2.playerIntialize(this);
+
+        wsWeapon.sendWS();
 
         //Interface health player 1
         this.healthPlayer1Low = this.add.image(40, 40, "HP").setDepth(4).setScale(2);
@@ -153,18 +156,15 @@ class MainScene extends Phaser.Scene {
         });
         
 
-
+		// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		genEnem = this;
     }
 
     update() {
         player1.movement(this);
         player2.movement(this);
 
-        //esto será provisional, lo he añadido para ver si la función tiraba
-        //if (this.input.keyboard.addKey('P').isDown) {
-         //   tienda.openShop(player1, player2);
-        //}
-
+        
         enemiesArray = enemies.getChildren();
         this.eventHandler();
         this.checkEnemiesHP();
@@ -177,6 +177,8 @@ class MainScene extends Phaser.Scene {
 
         this.playersHealth();
 
+
+
     }
 
     initializeBullets() {
@@ -185,6 +187,67 @@ class MainScene extends Phaser.Scene {
         bulletsPlayer2 = new Bullets(this);
     }
 
+	genRandomDisp(weaponID){
+		
+		let maxDispersion = 0;
+		switch(weaponID)
+		{
+			case 0:
+				maxDispersion =  300;
+				break;
+			case 1:
+				maxDispersion = 50;
+				break;
+			case 2: 
+				maxDispersion = 133;
+				break;
+		}
+		var randomDispersion = (Math.random() - 0.5) * maxDispersion;
+		return randomDispersion;
+	}
+	
+	shootIterator(bulletsGroup, player, plWS)
+	{
+		if(player.weaponID != 0 && player.hp > 0)
+		{
+			for(let i = 0; i <= player.extraBullets; i++)
+			{
+				let _disp = this.genRandomDisp(player1.weaponID); 
+				bulletsGroup.fireBullet(player.x, player.y, player, player.weaponID, _disp);
+				wsShoot.sendWS(_disp, plWS);
+			}
+		}
+		else if(player.hp > 0)
+		{
+			 for (let aux = 0; aux <= 8 + player.extraBullets * 3; aux++)
+			 {
+				 let _disp = this.genRandomDisp(player1.weaponID); 
+				 bulletsGroup.fireBullet(player.x, player.y, player, player.weaponID, _disp);
+				 wsShoot.sendWS(_disp, plWS);
+			 }
+		}
+	}
+	
+	shootHandler()
+	{
+		
+        var keyShoot1 = this.input.keyboard.addKey('SPACE');
+        var stillDown1 = this.input.keyboard.checkDown(keyShoot1, player1.actualFireRate);
+        
+        if (stillDown1 && currentPlayer == 1) {
+			
+			this.shootIterator(bulletsPlayer1, player1, 1);
+        }
+
+        var keyShoot2 = this.input.keyboard.addKey('ENTER');
+        var stillDown2 = this.input.keyboard.checkDown(keyShoot2, player2.actualFireRate);
+
+        if (stillDown2 && currentPlayer == 2) {
+            this.shootIterator(bulletsPlayer2, player2, 2);
+
+        }
+	}
+	
     eventHandler() {
 
         /*
@@ -194,20 +257,7 @@ class MainScene extends Phaser.Scene {
         * 2 - SUBMACHINE GUN  - Fire Rate: 200
         */
 
-        var scene = this;
-        var keyShoot1 = this.input.keyboard.addKey('SPACE');
-        var stillDown1 = this.input.keyboard.checkDown(keyShoot1, player1.actualFireRate);
-        if (stillDown1) {
-            bulletsPlayer1.fireBullet(player1.x, player1.y, player1, player1.weaponID);
-        }
-
-        var keyShoot2 = this.input.keyboard.addKey('ENTER');
-        var stillDown2 = this.input.keyboard.checkDown(keyShoot2, player2.actualFireRate);
-
-        if (stillDown2) {
-            bulletsPlayer2.fireBullet(player2.x, player2.y, player2, player2.weaponID);
-        }
-
+		this.shootHandler();
         var keyBuy1 = this.input.keyboard.addKey('W');
         var keyBuy2 = this.input.keyboard.addKey('A');
         var keyBuy3 = this.input.keyboard.addKey('D');
@@ -233,7 +283,6 @@ class MainScene extends Phaser.Scene {
     checkEnemiesHP() {
         var enemiesArray = new Array();
         enemiesArray = enemies.getChildren();
-
         for (let i = 0; i < enemiesArray.length; i++) {
             if (enemiesArray[i].hp <= 0 || isNaN(enemiesArray[i].hp)) {
                 enemiesArray[i].setPosition(9000, 9000);
@@ -265,9 +314,11 @@ class MainScene extends Phaser.Scene {
         }
 
         if(player1.hp <= 0 && player2.hp <= 0){
-            this.scene.pause();
+            this.scene.stop();
             bcMusicGame.pause();
             endGameMusic.play();
+            wsLobby.sendWS("gameOver");
+            wsGenEnem.sendWS("reset");
             this.scene.start("gameOver");
         }
     }
@@ -345,103 +396,38 @@ class MainScene extends Phaser.Scene {
         var newWaveKey = this.input.keyboard.addKey('Y');
        
         if (newWaveKey.isDown) {
-            if (!somethingAlive) {
+            if (!somethingAlive && !pauseGen) {
+                pauseGen = true;
                 tienda.openShop();
                 enemies.clear(true, true);
+                wsGenEnem.sendWS("");
                 wave++;
-                this.fillEnemiesGroup();
+
+                
             }
         }
 
     }
 
-    fillEnemiesGroup() {
-        /* 
-         * 0 : chipCookie   // comun = 0.4
-         * 1 : oreoCookie   // comun = 0.3
-         * 2 : fruitCookie  // comun = 0.15
-         * 3 : dinoCookie   // comun = 0.1
-         * 4 : gingerCookie // comun = 0.05
-        */
+    fillEnemiesGroup (data) {
 
-        let enemyType;
-        let numEnemies = (Math.random() * 10 * wave);
-
-        if (numEnemies < 5 * wave) {
-            numEnemies = 5 * wave;
-        }
-
-        for (let index = 0; index < numEnemies; index++) {
-            // ? PROBABILITIES IT CAN BE BETTER FOR SURE
-            let randNum = Math.random();
-            if (randNum <= 1 / 20) {
-                enemyType = 4;
-            }
-            else if (randNum <= 3 / 20) {
-                enemyType = 3;
-            }
-            else if (randNum <= 6 / 20) {
-                enemyType = 2;
-            }
-            else if (randNum <= 12 / 20) {
-                enemyType = 1;
-            }
-            else if (randNum <= 20 / 20) {
-                enemyType = 0;
-            }
-
-            // * GENERATE RANDOM POSITION OUTSIDE THE SCREEN
-            /*
-             * 0 : up
-             * 1 : right
-             * 2 : down
-             * 3 : left
-            */
-            let enemyDirection = Math.ceil(Math.random() * 3);
-            let xPosEnemy;
-            let yPosEnemy;
-
-            switch (enemyDirection) {
+            switch (data.enemyType) {
                 case 0:
-                    xPosEnemy = (Math.random() * 1200) - 200;
-                    yPosEnemy = (Math.random() * 100) - 200;
+                    enemies.add(new chipCookie(this, data.x, data.y));
                     break;
                 case 1:
-                    xPosEnemy = (Math.random() * 200) + 800;
-                    yPosEnemy = (Math.random() * 1000) - 200;
+                    enemies.add(new oreoCookie(this, data.x, data.y));
                     break;
                 case 2:
-                    xPosEnemy = (Math.random() * 1200) - 200;
-                    yPosEnemy = (Math.random() * 100) + 700;
+                    enemies.add(new fruitCookie(this, data.x, data.y));
                     break;
                 case 3:
-                    xPosEnemy = (Math.random() * 100) - 200;
-                    yPosEnemy = (Math.random() * 1000) - 200;
-                    break;
-            }
-            // From -200 to 1000
-            (Math.random() * 1200) - 200;
-            // From -200 to 800
-            (Math.random() * 1000) - 200;
-
-            switch (enemyType) {
-                case 0:
-                    enemies.add(new chipCookie(this, xPosEnemy, yPosEnemy));
-                    break;
-                case 1:
-                    enemies.add(new oreoCookie(this, xPosEnemy, yPosEnemy));
-                    break;
-                case 2:
-                    enemies.add(new fruitCookie(this, xPosEnemy, yPosEnemy));
-                    break;
-                case 3:
-                    enemies.add(new dinoCookie(this, xPosEnemy, yPosEnemy));
+                    enemies.add(new dinoCookie(this, data.x, data.y));
                     break;
                 case 4:
-                    enemies.add(new gingerCookie(this, xPosEnemy, yPosEnemy));
+                    enemies.add(new gingerCookie(this, data.x, data.y));
                     break;
             }
-        }
     }
 
     enemiesAttack() {
@@ -453,5 +439,16 @@ class MainScene extends Phaser.Scene {
         }
 
     }
+    
+    checkDsync = window.setInterval(
+		function()
+		{
+			if(player2)
+			{
+				wsDsync.sendWS();
+			}
+			
+		}
+	, 225);
 
 }   

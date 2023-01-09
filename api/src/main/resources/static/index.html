@@ -6,12 +6,14 @@
         <script 
     	defer
     	src = "https://app.embed.im/snow.js"></script>
+   
+	<link rel="icon" href="GAME/assets/enemigos/cookie/cookie.png" type="image/x-icon">
 
     <link rel="preload" href="GAME/assets/interface/interfaceFont.ttf" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="stylesheet" href="GAME/fonts.css" type="text/css"/>
+    <link rel="stylesheet" href="GAME/cssFiles/fonts.css" type="text/css"/>
     <script src="GAME/libs/phaser.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script src="GAME/chatController.js"></script>
+    <script src="GAME/chatAPIREST/chatController.js"></script>
 
     <script src="GAME/src/enemies/chipCookie.js"></script>
     <script src="GAME/src/enemies/oreoCookie.js"></script>
@@ -34,24 +36,34 @@
     <script src="GAME/src/scenes/MainMenu.js"> </script>
     <script src="GAME/src/scenes/MainScene.js"> </script>
     <script src="GAME/src/scenes/GameOver.js"> </script>
-
+	<script src="GAME/src/scenes/Lobby.js"> </script>
+	
     <!-- LOAD GAME -->
     <script src="GAME/src/config/config.js">       </script>
     <script src="GAME/src/phaser3BaseGame.js"> </script>
 
-    <!-- LOAD WEBSOCKETS-->
-    <script src="GAME/WSHandler.js">    </script>
+    <!-- LOAD WEBSOCKETS -->
+    <script src="GAME/src/webSockets/WebSocketsGroup.js">    </script>
+    <script src="GAME/src/webSockets/WSMovHandler.js">    </script>
+    <script src="GAME/src/webSockets/WSShootHandler.js">    </script>
+    <script src="GAME/src/webSockets/WSShopHandler.js">    </script>
+    <script src="GAME/src/webSockets/WSWeaponHandler.js">    </script>
+    <script src="GAME/src/webSockets/WSGenEnemyHandler.js">    </script>
+    <script src="GAME/src/webSockets/WSLobbyHandler.js">    </script>
+    <script src="GAME/src/webSockets/WSDsyncHandler.js">    </script>
 
+    
     <!-- LOAD STYLE FOR CHAT-->
     <style type="GAME/text/css">
         body {
             margin: 0;
         }
     </style>
+    
 </head>
 <body>
 
-    <link rel="stylesheet" href="GAME/chat.css" type="text/css"/>
+    <link rel="stylesheet" href="GAME/cssFiles/chat.css" type="text/css"/>
     <div class = "app">
         <div class = "screen join-screen active">  
             <div class = "form">
