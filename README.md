@@ -188,12 +188,19 @@ La escena cambia a la pantalla de derrota cuando la vida de la tetera llega a 0 
 
 ## Bugs conocidos 
 
- A veces al generar enemigos se mueren enemigos sin siquiera llegar a aparecer en pantalla (otogando el correspondiente score)
- Es muy facil que ocurra desincronizacion de las posiciones, hay que hacer que cada 1/3 de segundo o menos se envien las posiciones 
- para fixearlas, hacer que el jug1 sea el que manda las posiciones
- Lo mismo que arriba pero mandar el array de enemigos (a pelo a ver si funciona) y el score
- Spam de disparo spammeando el boton de ataque. No deberia de poderse
- Bala atraviesa / hace mas ticks de daño de los que deberia
- Arreglar hitbox de los enemigos, hacer mas pequeños sus sprites
- Al reiniciar partida el otro jugador puede aparecer como conectado cuando realmente esta desconectado
+ A veces al generar enemigos se mueren enemigos sin siquiera llegar a aparecer en pantalla (otogando el correspondiente score).
+ 
+ Es muy facil que ocurra desincronizacion de las posiciones, hay que hacer que cada 1/3 de segundo o menos se envien las posiciones. 
+ para fixearlas, hacer que el jug1 sea el que manda las posiciones.
+ 
+ Lo mismo que arriba pero mandar el array de enemigos (a pelo a ver si funciona) y el score.
+ 
+ Spam de disparo spammeando el boton de ataque. No deberia de poderse.
+ 
+ Bala atraviesa / hace mas ticks de daño de los que deberia.
+ 
+ Arreglar hitbox de los enemigos, hacer mas pequeños sus sprites.
+ 
+ Al reiniciar partida el otro jugador puede aparecer como conectado cuando realmente esta desconectado.
+ 
 
