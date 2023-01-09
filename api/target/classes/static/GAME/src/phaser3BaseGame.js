@@ -71,3 +71,5 @@ var openLobby;
 var statusPlayer1;
 var statusPlayer2;
 
+//DSYNC WS
+var checkDsync;

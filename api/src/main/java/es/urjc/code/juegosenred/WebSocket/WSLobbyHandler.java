@@ -19,7 +19,6 @@ public class WSLobbyHandler extends TextWebSocketHandler {
 	public Map<String, WebSocketSession> users = new ConcurrentHashMap<>();
 	public String user1ID = null;
 	public String user2ID = null;
-	@SuppressWarnings("unchecked")
 	public void afterConnectionEstablished(WebSocketSession session)throws Exception{
 		if(users.size() < 2)
 		{

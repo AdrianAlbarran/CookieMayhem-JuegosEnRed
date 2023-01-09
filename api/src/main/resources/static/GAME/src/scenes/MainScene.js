@@ -439,5 +439,16 @@ class MainScene extends Phaser.Scene {
         }
 
     }
+    
+    checkDsync = window.setInterval(
+		function()
+		{
+			if(player2)
+			{
+				wsDsync.sendWS();
+			}
+			
+		}
+	, 225);
 
 }   

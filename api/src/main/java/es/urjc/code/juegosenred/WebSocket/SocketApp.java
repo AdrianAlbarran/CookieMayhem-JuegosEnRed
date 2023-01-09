@@ -33,6 +33,8 @@ public class SocketApp implements WebSocketConfigurer{
 		registry.addHandler(wslobbyHandler(), "/lobby")
 		.setAllowedOrigins("*");
 		
+		registry.addHandler(wsdsyncHandler(), "/dsync")
+		.setAllowedOrigins("*");
 		
 	}
 	
@@ -65,6 +67,11 @@ public class SocketApp implements WebSocketConfigurer{
 	@Bean
 	public WSLobbyHandler wslobbyHandler() {
 		return new WSLobbyHandler();
+	}
+	
+	@Bean
+	public WSDsyncHandler wsdsyncHandler() {
+		return new WSDsyncHandler();
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(SocketApp.class, args);
