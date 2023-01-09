@@ -22,7 +22,6 @@ class GameOver extends Phaser.Scene {
 
        let mainMenu = this.add.text(400, 235, "Back to Main Menu", {
             fontSize: '32px', fill: '#j78999', fontFamily: 'Pixel',
-            //shadow: {offsetX: 2, offsetY: 2, color: '#FFF', stroke: true, fill: true}
         }).setOrigin(0.5).setInteractive();
 
         mainMenu.on('pointerdown', () => {

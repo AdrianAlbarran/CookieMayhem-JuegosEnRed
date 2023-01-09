@@ -4,7 +4,6 @@ openLobby = function()
 	 wsLobby = new WebSocket(lobbyIP);
 	 
 	 wsLobby.onopen = function () {
-  	 console.log("Hi im the Lobby onOpen function");
   	 }
 
 	wsLobby.onerror = function (e) {
