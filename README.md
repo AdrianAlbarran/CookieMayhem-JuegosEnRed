@@ -30,6 +30,9 @@ Usaremos <a href = "https://phaser.io/phaser3"> Phaser3 </a>
 - Coordinación del equipo.
 Para la coordinación del equipo se usará Trello, usando <a href = "https://trello.com/invite/b/JZrPiCv6/ATTI46729dd3a9ab2625894f6d3f58aaac69019100A5/juegos-en-red">este tablero</a> .
 
+- Video demostración del juego para las entregas 4 y 5.
+[![image](https://user-images.githubusercontent.com/81293611/211415616-e2cd2aaf-bc9d-4d33-b15d-bb5c7a0c2e9a.png)](https://youtu.be/8Mn0MbisQS4)
+
 
  ## Team:
  <table>
